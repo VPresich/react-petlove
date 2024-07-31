@@ -1,0 +1,93 @@
+.headerContainer {
+  padding-top: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  border-radius: 50px;
+  height: 32px;
+  width: 32px;
+}
+
+.btn.green {
+  background-color: var(--green);
+}
+
+.btn.blue {
+  background-color: var(--blue);
+}
+
+.btn.red {
+  background-color: var(--red);
+}
+
+.btn.yellow {
+  background-color: var(--yellow);
+}
+
+.btn.pink {
+  background-color: var(--pink);
+}
+
+.btn.open .icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.label {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.label.green {
+  background-color: var(--green);
+}
+
+.label.blue {
+  background-color: var(--blue);
+}
+
+.label.red {
+  background-color: var(--red);
+}
+
+.label.yellow {
+  background-color: var(--yellow);
+}
+
+.label.pink {
+  background-color: var(--pink);
+}
+
+.label input {
+  display: none;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--white);
+  transition: transform 0.3s ease;
+}

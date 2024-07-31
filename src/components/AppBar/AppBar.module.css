@@ -1,0 +1,50 @@
+.header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  padding-top: 28px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.header.home {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.wrapper {
+  display: flex;
+  column-gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding-top: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .header.home {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding-top: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .header.home {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}

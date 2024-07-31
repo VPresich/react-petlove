@@ -1,0 +1,65 @@
+.link {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.iconContainer {
+  width: 17px;
+  height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.iconContainer.main {
+  width: 44px;
+  height: 44px;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: var(--orange);
+}
+
+.icon.home {
+  fill: var(--white);
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+}
+
+.logoText.home {
+  color: var(--white);
+}
+
+.logoText.main {
+  font-size: 50px;
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .iconContainer {
+    width: 23px;
+    height: 23px;
+  }
+
+  .iconContainer.main {
+    width: 82px;
+    height: 82px;
+  }
+
+  .logoText {
+    font-size: 28px;
+  }
+
+  .logoText.main {
+    font-size: 100px;
+  }
+}

@@ -1,0 +1,17 @@
+:root {
+  --primary: #262626;
+
+  --secondary: #fbfbfb;
+  --section-bgr: #cccccc;
+
+  --orange: #f6b83d;
+  --orange-hover: #f9b020;
+
+  --orange-light: #fff4df;
+  --orange-light-hover: #fbe7c1;
+
+  --white: #fff;
+  --green: #08aa83;
+
+  --red: #f03f3b;
+}

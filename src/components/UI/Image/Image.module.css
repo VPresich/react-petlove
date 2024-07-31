@@ -1,0 +1,60 @@
+.container {
+  width: 120px;
+  height: 120px;
+  padding: 12px;
+  display: flex;
+  border-radius: 30px;
+  border: 2px solid rgba(240, 63, 59, 0.2);
+  background-color: transparent;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.img {
+  border-radius: 15px;
+  width: 96px;
+  height: 96px;
+  background: #e0e0e0;
+}
+
+.container.yellow {
+  border-color: var(--yellow-accent);
+}
+
+.container.green {
+  border-color: var(--green-accent);
+}
+
+.container.blue {
+  border-color: var(--blue-accent);
+}
+
+.container.pink {
+  border-color: var(--pink-accent);
+}
+
+.container.red {
+  border-color: var(--red-accent);
+}
+
+.onlineMarker {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+  border: 2px solid var(--white);
+}
+
+.onlineMarker::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--price);
+  display: block;
+  margin: 1px auto;
+}

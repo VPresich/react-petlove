@@ -1,0 +1,40 @@
+.btn {
+  font-family: "Helvetica Neue Medium", sans-serif;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  align-items: center;
+  width: 230px;
+  height: 60px;
+  background-color: transparent;
+  color: var(--secondary);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  transition: border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 17px;
+}
+
+.btn:hover {
+  border-color: rgba(251, 251, 251, 0.7);
+}
+
+.icon {
+  fill: var(--secondary);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover .icon {
+  transform: rotate(53deg);
+  width: 20px;
+}

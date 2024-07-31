@@ -1,0 +1,26 @@
+{
+  "_id": "52",
+  "name": "Iryna Ponomarenko",
+  "avatar_url": "https://ftp.goit.study/img/avatars/52.jpeg",
+  "birthday": "1993-04-10T22:25:57.010+00:00",
+  "experience": "8 years",
+  "reviews": [
+    {
+      "reviewer": "Mykola Z.",
+      "rating": 5,
+      "comment": "Iryna is very professional and has an innate ability to connect with children. Our daughter enjoys her time with Iryna immensely."
+    },
+    {
+      "reviewer": "Nadiia P.",
+      "rating": 4.8,
+      "comment": "She provides a balanced mix of education and play. We appreciate her dedication."
+    }
+  ],
+  "education": "Master's in Early Childhood Education, Specialization in Cognitive Development",
+  "kids_age": "6 months to 7 years old",
+  "price_per_hour": 18,
+  "location": "Poltava, Ukraine",
+  "about": "Children are like sponges, eager to learn and understand. I emphasize a holistic approach, blending physical activities, educational games, and expressive arts.",
+  "characters": ["compassionate", "dedicated", "knowledgeable", "holistic"],
+  "rating": 4.9
+}

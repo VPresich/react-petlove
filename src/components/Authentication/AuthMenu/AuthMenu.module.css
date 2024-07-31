@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .authPart {
+    display: none;
+  }
+}

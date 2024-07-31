@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    row-gap: 16px;
+  }
+
+  .title {
+    line-height: 100%;
+  }
+
+  .subtitle {
+    font-weight: 500;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+  }
+}

@@ -1,0 +1,83 @@
+.burgerBtn {
+  display: block;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 32px;
+  height: 32px;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  stroke: var(--primary);
+}
+
+.icon.home {
+  stroke: var(--white);
+}
+
+.mobileMenu {
+  display: block;
+  position: fixed;
+  top: 0px;
+  right: -300px;
+  width: 218px;
+  height: 100vh;
+  background-color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 96px;
+  padding-bottom: 40px;
+  transition: right 0.3s ease;
+  z-index: 102;
+}
+
+.mobileMenu.open {
+  right: 0;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 103;
+}
+
+.closeIcon {
+  width: 32px;
+  height: 32px;
+  fill: transparent;
+  stroke-width: 2.5px;
+  stroke: var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+  .burgerBtn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .burgerBtn {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}

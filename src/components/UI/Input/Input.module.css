@@ -4,38 +4,42 @@
 
 .input {
   width: 100%;
-  border: 1px solid rgba(17, 16, 28, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
   padding: 16px 16px 16px 18px;
   height: 52px;
-  font-family: "Helvetica Neue Regular", sans-serif;
-  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: var(--primary);
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
   background-color: transparent;
 }
 
 .input:focus {
   outline: none;
   background-color: transparent;
+  border-color: var(--orange);
 }
 
 .error {
   position: absolute;
-  bottom: -8px;
+  bottom: -12px;
   left: 0;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 12px;
-  line-height: 1.25;
-  color: var(--red);
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+  color: var(--error);
 }
 
 .icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  color: var(--primary);
+  color: var(--orange);
   position: absolute;
   transform: translate(-200%, 75%);
 }
@@ -43,6 +47,6 @@
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px transparent inset;
   box-shadow: 0 0 0 1000px transparent inset;
-  -webkit-text-fill-color: var(--primary);
+  -webkit-text-fill-color: var(--orange);
   transition: background-color 5000s ease-in-out 0s;
 }

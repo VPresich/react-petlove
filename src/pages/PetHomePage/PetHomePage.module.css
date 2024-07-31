@@ -27,7 +27,9 @@
 }
 
 .imgContainer {
+  border-radius: 30px;
   width: 100%;
+  overflow: hidden;
 }
 
 .title {
@@ -67,6 +69,10 @@
     row-gap: 32px;
     border-radius: 60px;
     align-items: flex-end;
+  }
+
+  .imgContainer {
+    border-radius: 60px;
   }
 
   .title {

@@ -1,6 +1,4 @@
 import { useForm, FormProvider, Controller } from "react-hook-form";
-import { Link } from "react-router-dom";
-import PageTitle from "../../../UI/PageTitle/PageTitle";
 import Button from "../../../UI/Button/Button";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -26,9 +24,6 @@ export default function LoginForm({ handleLogin }) {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <div className={css.content}>
-          <PageTitle subtitle="Welcome! Please enter your credentials to login to the platform:">
-            Log In
-          </PageTitle>
           <div className={css.inputsWrapper}>
             <Controller
               name="email"
@@ -46,12 +41,6 @@ export default function LoginForm({ handleLogin }) {
             />
           </div>
           <Button type="submit">Log in</Button>
-          <p className={css.link}>
-            Don&rsquo;t have an account?{" "}
-            <Link to="/register" className={css.linkAccent}>
-              Register
-            </Link>
-          </p>
         </div>
       </form>
     </FormProvider>

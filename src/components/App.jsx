@@ -12,6 +12,7 @@ const OurFriendsPage = lazy(() =>
 );
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage"));
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="friends" element={<OurFriendsPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

@@ -1,5 +1,9 @@
+import { Link } from "react-router-dom";
+import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import DocumentTitle from "../../components/DocumentTitle";
+import ResponsiveImage from "../../components/UI/ResponsiveImg/ResponsiveImg";
 import LoginForm from "../../components/Authentication/Forms/LoginForm/LoginForm";
+import PetBlock from "../../components/PetBlock/PetBlock";
 
 import imgDesktop1x from "../../assets/img/login/dog-desktop@1x.png";
 import imgDesktop2x from "../../assets/img/login/dog-desktop@2x.png";
@@ -12,6 +16,16 @@ import imgMobile2x from "../../assets/img/login/dog-mobile@2x.png";
 
 import css from "./LoginPage.module.css";
 
+const imageData = {
+  imgDesktop1x,
+  imgDesktop2x,
+  imgTablet1x,
+  imgTablet2x,
+  imgMobile1x,
+  imgMobile2x,
+  altText: "Pet photo",
+};
+
 const LoginPage = () => {
   return (
     <>
@@ -19,24 +33,29 @@ const LoginPage = () => {
       <section className={css.section}>
         <div className={css.container}>
           <div className={css.imgContainer}>
-            <picture>
-              <source
-                media="(min-width: 1280px)"
-                srcSet={`${imgDesktop1x} 1x, ${imgDesktop2x} 2x`}
-              />
-              <source
-                media="(min-width: 768px)"
-                srcSet={`${imgTablet1x} 1x, ${imgTablet2x} 2x`}
-              />
-              <source
-                media="(max-width: 767px)"
-                srcSet={`${imgMobile1x} 1x, ${imgMobile2x} 2x`}
-              />
-              <img src={imgMobile1x} alt="dog photo" />
-            </picture>
+            <ResponsiveImage imageData={imageData} />
+            <PetBlock
+              emodzi="🐶"
+              birthday="21.09.2020"
+              descr="Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!"
+              className={css.petBlock}
+            >
+              Rich
+            </PetBlock>
           </div>
           <div className={css.formContainer}>
-            <LoginForm />
+            <div className={css.form}>
+              <PageTitle subtitle="Welcome! Please enter your credentials to login to the platform:">
+                Log In
+              </PageTitle>
+              <LoginForm />
+            </div>
+            <p className={css.link}>
+              Don&rsquo;t have an account?{" "}
+              <Link to="/register" className={css.linkAccent}>
+                Register
+              </Link>
+            </p>
           </div>
         </div>
       </section>

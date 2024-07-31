@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import AppBar from "../AppBar/AppBar";
 import Loader from "../../components/UI/Loader/Loader";
@@ -17,6 +18,7 @@ const MainLayout = () => {
           <Outlet />
         </Suspense>
       </main>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

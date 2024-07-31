@@ -1,4 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  errNotify,
+  successNotify,
+} from "../../auxiliary/notification/notification";
+import {
+  ERR_REGISTRATION,
+  SUCCESS_REGISTRATION,
+} from "../../components/Authentication/Forms/constants";
+import { register } from "../../redux/auth/operations";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import PetBlock from "../../components/PetBlock/PetBlock";
 import DocumentTitle from "../../components/DocumentTitle";
@@ -27,6 +37,19 @@ const imageData = {
 };
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+
+  const handleRegister = (values) => {
+    dispatch(register(values))
+      .unwrap()
+      .then((data) => {
+        console.log(data);
+        successNotify(SUCCESS_REGISTRATION);
+      })
+      .catch(() => {
+        errNotify(ERR_REGISTRATION);
+      });
+  };
   return (
     <>
       <DocumentTitle>Login Page</DocumentTitle>
@@ -48,7 +71,7 @@ const RegisterPage = () => {
               <PageTitle subtitle="Thank you for your interest in our platform. ">
                 Registration
               </PageTitle>
-              <RegisterForm />
+              <RegisterForm handleRegister={handleRegister} />
             </div>
             <p className={css.link}>
               Already have an account?{" "}

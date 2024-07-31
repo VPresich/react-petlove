@@ -6,7 +6,7 @@ import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from "./RegisterForm.module.css";
 
-export default function RegisterForm({ handleRegistration }) {
+export default function RegisterForm({ handleRegister }) {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
@@ -16,10 +16,19 @@ export default function RegisterForm({ handleRegistration }) {
       confirmation: "",
     },
   });
-  const { handleSubmit } = methods;
+
+  const { handleSubmit, reset } = methods;
   const onSubmit = async (values) => {
-    handleRegistration(values);
+    const filteredValues = { ...values };
+    delete filteredValues.confirmation;
+    try {
+      await handleRegister(filteredValues);
+      // reset();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>

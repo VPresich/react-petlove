@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import iconsPath from "../../assets/img/icons.svg";
@@ -8,12 +7,6 @@ const Logo = () => {
   const location = useLocation();
   const isMain = location.pathname === "/";
   const isHomePage = location.pathname === "/home";
-  console.log("Current path:", location.pathname);
-  console.log("isMain:", isMain, "isHomePage:", isHomePage);
-
-  useEffect(() => {
-    console.log("Location changed:", location.pathname);
-  }, [location.pathname]);
 
   return (
     <Link to="/home" className={clsx(css.link, isMain && css.main)}>

@@ -14,10 +14,15 @@ export default function LoginForm({ handleLogin }) {
     },
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, reset } = methods;
 
   const onSubmit = async (values) => {
-    handleLogin(values);
+    try {
+      await handleLogin(values);
+      reset();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

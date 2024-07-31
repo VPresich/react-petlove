@@ -1,15 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAuthHeader } from "../../api/axiosInst";
-import {
-  register,
-  logIn,
-  logOut,
-  refreshUser,
-  updateTheme,
-} from "./operations";
+import { register, logIn, logOut, refreshUser } from "./operations";
 
 const initialState = {
-  user: { name: null, email: null, theme: "red", avatarURL: "" },
+  user: { name: null, email: null, avatarURL: "" },
   token: null,
   isLoggedIn: false,
   isRefreshing: true,
@@ -20,9 +14,6 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setTheme(state, action) {
-      state.user.theme = action.payload;
-    },
     resetRefreshState(state, action) {
       state.isRefreshing = action.payload;
     },
@@ -39,7 +30,8 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user.email = action.payload.email;
+        state.user.name = action.payload.name;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.error = null;
@@ -52,7 +44,8 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user.email = action.payload.email;
+        state.user.name = action.payload.name;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.error = null;
@@ -79,7 +72,8 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
@@ -87,22 +81,10 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload;
-      })
-
-      .addCase(updateTheme.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(updateTheme.fulfilled, (state, action) => {
-        state.user.theme = action.payload.theme;
-        state.error = null;
-      })
-      .addCase(updateTheme.rejected, (state, action) => {
-        state.error = action.payload;
       });
   },
 });
 
-export const { setTheme } = authSlice.actions;
 export const { resetRefreshState } = authSlice.actions;
 export default authSlice.reducer;
 export const { saveToken } = authSlice.actions;

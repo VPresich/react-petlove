@@ -1,4 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  errNotify,
+  successNotify,
+} from "../../auxiliary/notification/notification";
+import {
+  ERR_LOGIN,
+  SUCCESS_LOGIN,
+} from "../../components/Authentication/Forms/constants";
+import { logIn } from "../../redux/auth/operations";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import DocumentTitle from "../../components/DocumentTitle";
 import ResponsiveImage from "../../components/UI/ResponsiveImg/ResponsiveImg";
@@ -27,6 +37,18 @@ const imageData = {
 };
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const handleLogin = (values) => {
+    dispatch(logIn(values))
+      .unwrap()
+      .then((data) => {
+        console.log(data);
+        successNotify(SUCCESS_LOGIN);
+      })
+      .catch(() => {
+        errNotify(ERR_LOGIN);
+      });
+  };
   return (
     <>
       <DocumentTitle>Login Page</DocumentTitle>
@@ -48,7 +70,7 @@ const LoginPage = () => {
               <PageTitle subtitle="Welcome! Please enter your credentials to login to the platform:">
                 Log In
               </PageTitle>
-              <LoginForm />
+              <LoginForm handleLogin={handleLogin} />
             </div>
             <p className={css.link}>
               Don&rsquo;t have an account?{" "}

@@ -3,11 +3,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInst, setAuthHeader, clearAuthHeader } from "../../api/axiosInst";
 
 export const register = createAsyncThunk(
-  "auth/register",
+  "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      credentials.app = "nannies";
-      const resp = await axiosInst.post("users/register", credentials);
+      console.log("SIGNUP", credentials);
+      const resp = await axiosInst.post("users/signup", credentials);
       setAuthHeader(resp.data.token);
       return resp.data;
     } catch (error) {
@@ -17,11 +17,10 @@ export const register = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  "auth/login",
+  "auth/signin",
   async (credentials, thunkAPI) => {
     try {
-      credentials.app = "nannies";
-      const resp = await axiosInst.post("users/login", credentials);
+      const resp = await axiosInst.post("users/signin", credentials);
       setAuthHeader(resp.data.token);
       return resp.data;
     } catch (error) {
@@ -61,17 +60,5 @@ export const refreshUser = createAsyncThunk(
       // If there is no token, exit without performing any request
       return savedToken !== null;
     },
-  }
-);
-
-export const updateTheme = createAsyncThunk(
-  "users/themes",
-  async (data, thunkAPI) => {
-    try {
-      const response = await axiosInst.patch(`users/themes`, data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
   }
 );

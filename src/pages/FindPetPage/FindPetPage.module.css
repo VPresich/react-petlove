@@ -11,32 +11,27 @@
   gap: 10px;
 }
 
-.filtersContainer {
-  padding: 20px;
-  border-radius: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 12px;
-  column-gap: 8px;
-  background-color: var(--orange-light);
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 167px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .container {
+    gap: 44px;
+  }
 }
 
-.searchContainer {
-  width: calc(100%);
-}
+@media screen and (min-width: 1280px) {
+  .section {
+    padding-top: 178px;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: var(--section-bgr);
+  }
 
-.categoryContainer {
-  width: calc(50% - 4px);
-}
-
-.genderContainer {
-  width: calc(50% - 4px);
-}
-
-.typeContainer {
-  width: 100%;
-}
-
-.locationContainer {
-  width: 100%;
+  .container {
+    gap: 40px;
+  }
 }

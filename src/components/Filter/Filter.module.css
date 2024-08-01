@@ -1,0 +1,70 @@
+.filtersContainer {
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  column-gap: 8px;
+  background-color: var(--orange-light);
+}
+
+.searchContainer {
+  width: calc(100%);
+}
+
+.categoryContainer {
+  width: calc(50% - 4px);
+}
+
+.genderContainer {
+  width: calc(50% - 4px);
+}
+
+.typeContainer {
+  width: 100%;
+}
+
+.locationContainer {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .filtersContainer {
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+
+  .searchContainer {
+    width: 265px;
+  }
+
+  .categoryContainer {
+    width: 170px;
+  }
+
+  .genderContainer {
+    width: 170px;
+  }
+
+  .typeContainer {
+    width: 190px;
+  }
+
+  .locationContainer {
+    width: 227px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .categoryContainer {
+    width: 190px;
+  }
+
+  .genderContainer {
+    width: 200px;
+  }
+
+  .typeContainer {
+    width: 190px;
+  }
+}

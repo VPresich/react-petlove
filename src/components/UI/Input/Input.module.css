@@ -6,7 +6,7 @@
   width: 100%;
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 12px 12px 12px 12px;
+  padding: 12px;
   height: 42px;
   outline: none;
 
@@ -51,4 +51,11 @@ input:-webkit-autofill {
   box-shadow: 0 0 0 1000px transparent inset;
   -webkit-text-fill-color: var(--orange);
   transition: background-color 5000s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    padding: 14px;
+    height: 48px;
+  }
 }

@@ -54,3 +54,22 @@
   color: var(--white);
   padding-right: 36px;
 }
+
+@media screen and (min-width: 768px) {
+  .filtersContainer {
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+
+  .radioLabel {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 48px;
+  }
+
+  .radioInput:checked + .radioLabel {
+    padding-right: 40px;
+  }
+}

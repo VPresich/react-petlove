@@ -80,3 +80,10 @@ input:-webkit-autofill {
   -webkit-text-fill-color: var(--primary);
   transition: background-color 3000s ease-in-out;
 }
+
+@media screen and (min-width: 768px) {
+  .input {
+    padding: 14px 30px 14px 14px;
+    height: 48px;
+  }
+}

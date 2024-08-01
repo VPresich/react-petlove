@@ -12,8 +12,8 @@
   cursor: pointer;
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 16px 40px 16px 18px;
-  height: 52px;
+  padding: 12px 30px 12px 12px;
+  height: 42px;
   outline: none;
   font-family: "Manrope", sans-serif;
   font-weight: 500;
@@ -21,7 +21,7 @@
   line-height: 1.25;
   letter-spacing: -0.03em;
   color: rgba(38, 38, 38, 0.5);
-  background-color: transparent;
+  background-color: var(--white);
   transition: border-color 300ms ease-in-out;
 }
 
@@ -65,7 +65,7 @@
   height: 100%;
   fill: transparent;
   stroke: var(--primary);
-  transform: translate(-100%, 80%);
+  transform: translate(-100%, 75%);
   transition: stroke 300ms ease-in-out;
 }
 

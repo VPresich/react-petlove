@@ -17,7 +17,7 @@ export default function RegisterForm({ handleRegister }) {
     },
   });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit /*, reset*/ } = methods;
 
   const onSubmit = async (values) => {
     const filteredValues = { ...values };

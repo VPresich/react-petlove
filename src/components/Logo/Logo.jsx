@@ -37,7 +37,7 @@ const Logo = () => {
           isHomePage && css.home
         )}
       >
-        ove
+        ve
       </span>
     </Link>
   );

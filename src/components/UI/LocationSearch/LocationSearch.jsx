@@ -3,11 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import InputWithButton from "../InputWithButton/InputWithButton";
 
-const SearchForm = ({ onSearch }) => {
+const LocationSearch = ({ onSearch }) => {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
-      topic: "",
+      location: "",
     },
   });
 
@@ -22,8 +22,8 @@ const SearchForm = ({ onSearch }) => {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <InputWithButton
-          name="topic"
-          placeholder="Search"
+          name="location"
+          placeholder="Location"
           type="text"
           onSubmit={methods.handleSubmit(onSubmit)}
         />
@@ -31,4 +31,4 @@ const SearchForm = ({ onSearch }) => {
     </FormProvider>
   );
 };
-export default SearchForm;
+export default LocationSearch;

@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../../redux/auth/selectors";
 import iconsPath from "../../../assets/img/icons.svg";
 import clsx from "clsx";
 import css from "./DropDownSelector.module.css";
 
 const DropDownSelector = ({ btnLabel, options, selectedOption, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const theme = useSelector(selectTheme);
 
   const handleOnChange = (event) => {
     onChange(event.target.value);
@@ -17,12 +14,12 @@ const DropDownSelector = ({ btnLabel, options, selectedOption, onChange }) => {
   return (
     <div className={css.container}>
       <button
-        className={clsx(css.btn, { [css.open]: isOpen }, css[theme])}
+        className={clsx(css.btn, { [css.open]: isOpen })}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className={css.text}>{btnLabel}</span>
-        <div className={clsx(css.iconContainer)}>
-          <svg className={clsx(css.icon)} aria-label="arrow icon">
+        <div className={css.iconContainer}>
+          <svg className={css.icon} aria-label="arrow icon">
             <use href={`${iconsPath}#icon-dropdown`} />
           </svg>
         </div>

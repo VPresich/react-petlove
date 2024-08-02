@@ -17,17 +17,27 @@ const PetModal = ({ notice, hadleContact, handleFavorite }) => {
     <React.Fragment>
       <form onSubmit={handleSubmit(handleFavorite)} className={css.form}>
         <div className={css.content}>
-          <Image imgUrl={imgURL} category={category} />
-          <p className={css.title}>{title}</p>
-          <Stars value={1} />
-          <p className={css.comment}>{comment}</p>
-          <KindList kinds={kinds} notice={notice} />
+          <div className={css.imgWrapper}>
+            <Image imgUrl={imgURL} category={category} />
+          </div>
+
+          <div className={css.titleWrapper}>
+            <p className={css.title}>{title}</p>
+            <Stars value={1} />
+          </div>
+          <div className={css.kindsWrapper}>
+            <KindList kinds={kinds} notice={notice} />
+            <p className={css.comment}>{comment}</p>
+          </div>
           <div className={css.buttons}>
-            <Button type="submit">Add to</Button>
+            <Button type="submit" size="sxsmall">
+              Add to
+            </Button>
             <Button
               onClick={hadleContact}
-              btnAuxStyles={css.cancelBtn}
               type="button"
+              size="sxsmall"
+              background="secondary"
             >
               Contact
             </Button>
@@ -39,3 +49,7 @@ const PetModal = ({ notice, hadleContact, handleFavorite }) => {
 };
 
 export default PetModal;
+
+// const size = ["large", "medium", "small", "sxsmall"];
+// const background = ["primary", "secondary", "transparent", "cancel"];
+// const uppercase = true;

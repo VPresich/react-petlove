@@ -45,9 +45,15 @@ export default function LoginForm({ handleLogin }) {
               )}
             />
           </div>
-          <Button type="submit">Log in</Button>
+          <Button type="submit" size="large" uppercase={true}>
+            Log in
+          </Button>
         </div>
       </form>
     </FormProvider>
   );
 }
+
+// const size = ["large", "medium", "small", "ssmall"];
+// const background = ["primary", "secondary", "transparent", "cancel"];
+// const uppercase = true;

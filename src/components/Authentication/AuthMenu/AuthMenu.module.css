@@ -1,11 +1,16 @@
+.signMenu {
+  display: none;
+}
+
 .container {
   display: flex;
   column-gap: 12px;
   align-items: center;
 }
 
-@media screen and (max-width: 767px) {
-  .authPart {
-    display: none;
+@media screen and (min-width: 767px) {
+  .signMenu {
+    display: flex;
+    gap: 8px;
   }
 }

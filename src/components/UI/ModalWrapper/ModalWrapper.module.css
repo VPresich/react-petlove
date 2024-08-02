@@ -12,22 +12,20 @@
 }
 
 .modal {
-  width: 599px;
+  width: 90%;
   background: #ffffff;
-  padding-top: 64px;
-  padding-left: 64px;
-  padding-bottom: 64px;
-  padding-right: 64px;
   border-radius: 30px;
   position: relative;
-  overflow-y: auto;
-  max-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .closeBtn {
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: 20px;
+  right: 20px;
   background: none;
   border: none;
   margin: 0;
@@ -40,31 +38,21 @@
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   fill: transparent;
   stroke-width: 2.5px;
   stroke: var(--primary);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 375px) {
   .modal {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 32px;
-    padding-left: 32px;
-    padding-bottom: 32px;
-    padding-right: 32px;
+    width: 335px;
   }
+}
 
-  .closeBtn {
-    top: 16px;
-    right: 16px;
-  }
-
-  .icon {
-    width: 24px;
-    height: 24px;
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 473px;
   }
 }

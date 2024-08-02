@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../UI/Button/Button";
+import Emodzi from "../UI/Emodzi/Emodzi";
 import css from "./ModalApproveAction.module.css";
 
 const ModalApproveAction = ({ onCancel, onApprove }) => {
@@ -9,23 +10,23 @@ const ModalApproveAction = ({ onCancel, onApprove }) => {
   return (
     <React.Fragment>
       <form onSubmit={handleSubmit(onApprove)} className={css.form}>
-        <div className={css.content}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>Approved Action</h3>
-            <p className={css.text}>
-              Are you sure you want to log out of your account?
-            </p>
-          </div>
-          <div className={css.buttons}>
-            <Button type="submit">Yes</Button>
-            <Button
-              onClick={onCancel}
-              btnAuxStyles={css.cancelBtn}
-              type="button"
-            >
-              Cancel
-            </Button>
-          </div>
+        <div className={css.titleWrapper}>
+          <Emodzi>🐈</Emodzi>
+          <p className={css.title}>Already leaving?</p>
+        </div>
+        <div className={css.buttons}>
+          <Button type="submit" size="sxsmall" width="137px">
+            Yes
+          </Button>
+          <Button
+            onClick={onCancel}
+            type="button"
+            size="sxsmall"
+            background="cancel"
+            width="134px"
+          >
+            Cancel
+          </Button>
         </div>
       </form>
     </React.Fragment>
@@ -33,3 +34,7 @@ const ModalApproveAction = ({ onCancel, onApprove }) => {
 };
 
 export default ModalApproveAction;
+
+// const size = ["large", "medium", "small", "sxsmall"];
+// const background = ["primary", "secondary", "transparent", "cancel"];
+// const uppercase = true;

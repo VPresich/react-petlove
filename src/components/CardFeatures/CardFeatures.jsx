@@ -1,6 +1,6 @@
 import VertSeparator from "../UI/VertSeparator/VertSeparator";
 import iconsPath from "../../assets/img/icons.svg";
-import formatNumber from "../../auxiliary/formatNumber";
+import formatNumber from "../../auxiliary/formats";
 
 import css from "./CardFeatures.module.css";
 

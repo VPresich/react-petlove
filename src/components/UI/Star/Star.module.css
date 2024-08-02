@@ -1,0 +1,22 @@
+.star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.icon.filled {
+  fill: var(--orange);
+  stroke: var(--orange);
+}
+
+.icon.notfilled {
+  fill: #d9d9d9;
+  stroke: #d9d9d9;
+}

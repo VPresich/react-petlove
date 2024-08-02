@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { selectTheme } from "../../redux/auth/selectors";
 import iconsPath from "../../assets/img/icons.svg";
-import formatNumber from "../../auxiliary/formatNumber";
+import formatNumber from "../../auxiliary/formats";
 import css from "./Reviewers.module.css";
 
 export default function Reviewers({ reviews = [] }) {

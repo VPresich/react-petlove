@@ -1,0 +1,54 @@
+.form {
+  width: 90%;
+}
+
+.content {
+  display: flex;
+  font-family: "Manrope", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary);
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancelBtn {
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  background-color: transparent;
+}
+
+.cancelBtn:hover {
+  border: none;
+  background-color: var(--orange-light);
+}
+
+.comment {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+}

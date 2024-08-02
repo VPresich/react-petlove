@@ -1,26 +1,95 @@
 .btn {
   width: 100%;
   border-radius: 30px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   border: none;
   outline: none;
 
   font-family: "Manrope", sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.29;
   letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: var(--white);
-  background-color: var(--orange);
 
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn:hover {
+.btn.uppercase {
+  text-transform: uppercase;
+}
+
+.btn.primary {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.btn.primary:hover {
   background-color: var(--orange-hover);
+}
+
+.btn.secondary {
+  background-color: var(--orange-light);
+  color: var(--orange);
+}
+
+.btn.secondary:hover {
+  background-color: var(--orange-light-hover);
+}
+
+.btn.transparent {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn.transparent:hover {
+  background-color: var(--orange-light);
+}
+
+.btn.cancel {
+  background: rgba(38, 38, 38, 0.05);
+  color: var(--primary);
+}
+
+.btn.cancel:hover {
+  background: #ccc;
+  color: var(--primary);
+}
+
+.btn.large,
+.btn.medium,
+.btn.small {
+  height: 42px;
+}
+
+.btn.sxsmall {
+  font-weight: 500;
+  height: 44px;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .btn.large {
+    height: 52px;
+  }
+
+  .btn.medium {
+    height: 50px;
+  }
+
+  .btn.small {
+    height: 48px;
+  }
+
+  .btn.sxsmall {
+    font-weight: 500;
+    height: 48px;
+  }
 }

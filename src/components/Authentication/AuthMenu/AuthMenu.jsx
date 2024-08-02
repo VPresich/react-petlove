@@ -11,8 +11,11 @@ const AuthMenu = () => {
 
   return (
     <div className={css.container}>
-      <AuthButton> {isLoggedIn ? "Logout" : "Log In"}</AuthButton>
-      {isLoggedIn ? <UserMenu /> : <RegistrationButton />}
+      <div className={css.signMenu}>
+        <AuthButton> {isLoggedIn ? "Logout" : "Log In"}</AuthButton>
+        {!isLoggedIn && <RegistrationButton />}
+      </div>
+      {isLoggedIn && <UserMenu />}
     </div>
   );
 };

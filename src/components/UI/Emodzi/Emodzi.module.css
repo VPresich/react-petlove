@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orange-light);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.emodzi {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100px;
+    height: 100px;
+  }
+  .emodzi {
+    font-size: 44px;
+  }
+}

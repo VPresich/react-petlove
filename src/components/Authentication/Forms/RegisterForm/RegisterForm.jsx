@@ -68,7 +68,9 @@ export default function RegisterForm({ handleRegister }) {
               )}
             />
           </div>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit" size="large" uppercase={true}>
+            Sign Up
+          </Button>
         </div>
       </form>
     </FormProvider>

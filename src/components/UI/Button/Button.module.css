@@ -74,19 +74,6 @@
   height: 44px;
 }
 
-.icon {
-  width: 18px;
-  height: 18px;
-  stroke: var(--white);
-  fill: var(--white);
-  fill: transparent;
-  margin-left: 4px;
-}
-
-.icon.love {
-  fill: var(--white);
-}
-
 @media screen and (min-width: 768px) {
   .btn {
     font-size: 16px;

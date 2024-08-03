@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getNanniesPerPage,
-  getNannyById,
-  getNanniesWithParams,
+  getNoticesPerPage,
+  getNoticeById,
+  getNoticesWithParams,
 } from "./operations";
 
-const nanniesSlice = createSlice({
+const noticesSlice = createSlice({
   name: "notices",
   initialState: {
     items: [],
@@ -25,7 +25,7 @@ const nanniesSlice = createSlice({
       state.currentPage = action.payload;
     },
 
-    resetNanniesState(state) {
+    resetNoticesState(state) {
       state.currentPage = 1;
       state.items = [];
       state.isLoading = false;
@@ -38,11 +38,11 @@ const nanniesSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getNanniesPerPage.pending, (state) => {
+      .addCase(getNoticesPerPage.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getNanniesPerPage.fulfilled, (state, action) => {
+      .addCase(getNoticesPerPage.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
@@ -51,22 +51,22 @@ const nanniesSlice = createSlice({
         state.totalPages = action.payload.totalPages;
 
         if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.nannies];
+          state.items = [...state.items, ...action.payload.results];
         else {
-          state.items = action.payload.nannies;
+          state.items = action.payload.results;
         }
       })
 
-      .addCase(getNanniesPerPage.rejected, (state, action) => {
+      .addCase(getNoticesPerPage.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
 
-      .addCase(getNanniesWithParams.pending, (state) => {
+      .addCase(getNoticesWithParams.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getNanniesWithParams.fulfilled, (state, action) => {
+      .addCase(getNoticesWithParams.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
@@ -75,21 +75,21 @@ const nanniesSlice = createSlice({
         state.totalPages = action.payload.totalPages;
 
         if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.nannies];
+          state.items = [...state.items, ...action.payload.results];
         else {
-          state.items = action.payload.nannies;
+          state.items = action.payload.results;
         }
       })
-      .addCase(getNanniesWithParams.rejected, (state, action) => {
+      .addCase(getNoticesWithParams.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
 
-      .addCase(getNannyById.pending, (state) => {
+      .addCase(getNoticeById.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getNannyById.fulfilled, (state, action) => {
+      .addCase(getNoticeById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const existingIndex = state.items.findIndex(
@@ -101,12 +101,12 @@ const nanniesSlice = createSlice({
           state.items.push(action.payload);
         }
       })
-      .addCase(getNannyById.rejected, (state, action) => {
+      .addCase(getNoticeById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
 
-export const { setPage, resetNanniesState } = nanniesSlice.actions;
-export default nanniesSlice.reducer;
+export const { setPage, resetNoticesState } = noticesSlice.actions;
+export default noticesSlice.reducer;

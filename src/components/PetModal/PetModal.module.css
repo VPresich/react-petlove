@@ -56,6 +56,18 @@
   text-align: center;
 }
 
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--white);
+  fill: transparent;
+  margin-left: 8px;
+}
+
+.icon.love {
+  fill: var(--white);
+}
+
 @media screen and (min-width: 768px) {
   .form {
     padding-top: 20px;

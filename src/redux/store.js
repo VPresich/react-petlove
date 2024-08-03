@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import authReducer from "../redux/auth/slice";
-import nanniesReducer from "./nannies/slice";
+import noticesReducer from "./notices/slice";
 import filtersReducer from "../redux/filters/slice";
 import favoritesReducer from "../redux/favorites/slice";
 
@@ -17,7 +17,7 @@ import {
 } from "redux-persist";
 
 const authPersistConfig = {
-  key: "authNannie",
+  key: "authPet",
   storage,
   whitelist: ["token"],
 };
@@ -25,7 +25,7 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    nannies: nanniesReducer,
+    notices: noticesReducer,
     filters: filtersReducer,
     favorites: favoritesReducer,
   },

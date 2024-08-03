@@ -1,25 +1,25 @@
 import { createSelector } from "reselect";
 
-export const selectNanniesState = (state) => state.nannies;
-export const selectNannies = (state) => state.nannies.items;
-export const selectNanniesNumber = (state) => state.nannies.items.length || 0;
+export const selectNoticesState = (state) => state.notices;
+export const selectNotices = (state) => state.notices.items;
+export const selectNoticesNumber = (state) => state.notices.items?.length || 0;
 
-export const selectIsLoading = (state) => state.nannies.isLoading;
-export const selectError = (state) => state.nannies.error;
+export const selectIsLoading = (state) => state.notices.isLoading;
+export const selectError = (state) => state.notices.error;
 
-export const selectItemsPerPage = (state) => state.nannies.itemsPerPage;
-export const selectCurrentPage = (state) => state.nannies.currentPage;
+export const selectItemsPerPage = (state) => state.notices.itemsPerPage;
+export const selectCurrentPage = (state) => state.notices.currentPage;
 
-const selectTotalPages = (state) => state.nannies.totalPages;
+const selectTotalPages = (state) => state.notices.totalPages;
 
-export const selectFavorites = (state) => state.nannies.favorites;
+export const selectFavorites = (state) => state.notices.favorites;
 
 export const selectIsMore = createSelector(
   [selectCurrentPage, selectTotalPages],
   (currPage, lastPage) => currPage < lastPage
 );
 
-export const selectNannyById = createSelector(
-  [selectNannies, (_, nannyId) => nannyId],
-  (nanniess, nannyId) => nanniess.find((nanny) => nanny._id === nannyId)
+export const selectNoticeById = createSelector(
+  [selectNotices, (_, noticeId) => noticeId],
+  (notices, noticeId) => notices.find((notice) => notice._id === noticeId)
 );

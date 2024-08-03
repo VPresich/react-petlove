@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logOut } from "../auth/operations";
 import {
-  fetchFavoritesByNannyIds,
-  fetchFavorites,
+  fetchFavoritesByIds,
   addFavorite,
   removeFavorite,
 } from "../favorites/operations";
@@ -19,32 +18,32 @@ const favoritesSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFavoritesByNannyIds.pending, (state) => {
+      .addCase(fetchFavoritesByIds.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchFavoritesByNannyIds.fulfilled, (state, action) => {
+      .addCase(fetchFavoritesByIds.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchFavoritesByNannyIds.rejected, (state, action) => {
+      .addCase(fetchFavoritesByIds.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
       //---------------------------------------------
-      .addCase(fetchFavorites.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchFavorites.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
-      })
-      .addCase(fetchFavorites.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      // .addCase(fetchFavoriteById.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
+      // .addCase(fetchFavoriteById.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+      //   state.items = action.payload;
+      // })
+      // .addCase(fetchFavoriteById.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload;
+      // })
       //---------------------------------------------
       .addCase(addFavorite.pending, (state) => {
         state.isAdding = true;
@@ -53,7 +52,7 @@ const favoritesSlice = createSlice({
       .addCase(addFavorite.fulfilled, (state, action) => {
         state.isAdding = false;
         state.error = false;
-        state.items.push(action.payload.nanny);
+        state.items = action.payload;
       })
       .addCase(addFavorite.rejected, (state, action) => {
         state.isLoading = false;
@@ -66,7 +65,7 @@ const favoritesSlice = createSlice({
       })
       .addCase(removeFavorite.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          (favorite) => favorite._id === action.payload.nanny
+          (favorite) => favorite === action.payload
         );
         if (index !== -1) {
           state.items.splice(index, 1);

@@ -1,6 +1,7 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
+import { selectIsFavorite } from "../../redux/favorites/selectors";
 import Image from "../UI/Image/Image";
 import Stars from "../../components/UI/Stars/Stars";
 import KindList from "../KindList/KindList";
@@ -12,13 +13,16 @@ const kinds = ["name", "birthday", "sex", "species"];
 
 const PetModal = ({ notice, handleContact, handleFavorite }) => {
   const { imgURL, category, title, comment } = notice;
-  const isFavorite = true;
 
-  const { handleSubmit } = useForm();
+  const isFavorite = useSelector((state) =>
+    selectIsFavorite(state, notice._id)
+  );
+
+  console.log("isFavorite", isFavorite);
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit(handleFavorite)} className={css.form}>
+      <form className={css.form}>
         <div className={css.content}>
           <div className={css.imgWrapper}>
             <Image imgUrl={imgURL} category={category} />
@@ -34,7 +38,8 @@ const PetModal = ({ notice, handleContact, handleFavorite }) => {
           </div>
           <div className={css.buttons}>
             <Button
-              type="submit"
+              onClick={handleFavorite}
+              type="button"
               size="sxsmall"
               icon={
                 <svg

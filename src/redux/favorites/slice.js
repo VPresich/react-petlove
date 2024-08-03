@@ -64,12 +64,7 @@ const favoritesSlice = createSlice({
         state.error = null;
       })
       .addCase(removeFavorite.fulfilled, (state, action) => {
-        const index = state.items.findIndex(
-          (favorite) => favorite === action.payload
-        );
-        if (index !== -1) {
-          state.items.splice(index, 1);
-        }
+        state.items = action.payload;
         state.isDeleting = false;
         state.error = null;
       })

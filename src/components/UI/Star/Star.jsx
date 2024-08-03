@@ -4,7 +4,7 @@ import css from "./Star.module.css";
 
 export default function Star({ isFilled }) {
   return (
-    <li className={css.star}>
+    <div className={css.star}>
       <svg
         className={clsx(
           css.icon,
@@ -15,6 +15,6 @@ export default function Star({ isFilled }) {
       >
         <use href={`${iconsPath}#icon-star`} />
       </svg>
-    </li>
+    </div>
   );
 }

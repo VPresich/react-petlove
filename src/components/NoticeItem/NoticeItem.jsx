@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addFavorite, removeFavorite } from "../../redux/favorites/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectIsFavorite } from "../../redux/favorites/selectors";
 import NoticeImage from "../UI/NoticeImage/NoticeImage";
 import Button from "../UI/Button/Button";
 import Star from "../UI/Star/Star";
@@ -9,15 +11,16 @@ import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
 import PetModal from "../PetModal/PetModal";
 import UnauthorizedModal from "../UnauthorizedModal/UnauthorizedModal";
-
 import css from "./NoticeItem.module.css";
 
 const kinds = ["name", "birthday", "sex", "species", "category"];
 
 const NoticeItem = ({ notice }) => {
   const { _id, name, imgURL, popularity, comment } = notice;
+  const dispatch = useDispatch();
 
   const isLogeddIn = useSelector(selectIsLoggedIn);
+  const isFavorite = useSelector((state) => selectIsFavorite(state, _id));
 
   const [showPetModal, setShowPetModal] = useState(false);
   const [showUnauthModal, setShowUnauthModal] = useState(false);
@@ -35,22 +38,17 @@ const NoticeItem = ({ notice }) => {
   };
 
   const handleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(_id));
+    } else {
+      dispatch(addFavorite(_id));
+    }
     handlePetModaleClose();
   };
 
   const handleSend = () => {
     handlePetModaleClose();
   };
-
-  // const handleShowDetails = () => {
-  //   setShowDetails(!showDetails);
-  // };
-
-  // const handleValues = (values) => {
-  //   console.log(values);
-  //   setShowModal(false);
-  //   setShowDetails(false);
-  // };
 
   return (
     <div className={css.container}>

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import NoticeImage from "../UI/NoticeImage/NoticeImage";
 import Button from "../UI/Button/Button";
 import Star from "../UI/Star/Star";
@@ -6,6 +8,7 @@ import KindList from "../KindList/KindList";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
 import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
 import PetModal from "../PetModal/PetModal";
+import UnauthorizedModal from "../UnauthorizedModal/UnauthorizedModal";
 
 import css from "./NoticeItem.module.css";
 
@@ -14,22 +17,29 @@ const kinds = ["name", "birthday", "sex", "species", "category"];
 const NoticeItem = ({ notice }) => {
   const { _id, name, imgURL, popularity, comment } = notice;
 
-  const [showModal, setShowModal] = useState(false);
+  const isLogeddIn = useSelector(selectIsLoggedIn);
+
+  const [showPetModal, setShowPetModal] = useState(false);
+  const [showUnauthModal, setShowUnauthModal] = useState(false);
 
   const handleClick = () => {
-    setShowModal(true);
+    isLogeddIn ? setShowPetModal(true) : setShowUnauthModal(true);
   };
 
-  const handleClose = () => {
-    setShowModal(false);
+  const handlePetModaleClose = () => {
+    setShowPetModal(false);
+  };
+
+  const handleUnauthModalClose = () => {
+    setShowUnauthModal(false);
   };
 
   const handleFavorite = () => {
-    handleClose();
+    handlePetModaleClose();
   };
 
   const handleSend = () => {
-    handleClose();
+    handlePetModaleClose();
   };
 
   // const handleShowDetails = () => {
@@ -64,13 +74,18 @@ const NoticeItem = ({ notice }) => {
         </Button>
         <FavoriteButton id={_id} />
       </div>
-      {showModal && (
-        <ModalWrapper onClose={handleClose}>
+      {showPetModal && (
+        <ModalWrapper onClose={handlePetModaleClose}>
           <PetModal
             notice={notice}
             hadleContact={handleSend}
             handleFavorite={handleFavorite}
           />
+        </ModalWrapper>
+      )}
+      {showUnauthModal && (
+        <ModalWrapper onClose={handleUnauthModalClose}>
+          <UnauthorizedModal onClose={handleUnauthModalClose} />
         </ModalWrapper>
       )}
     </div>

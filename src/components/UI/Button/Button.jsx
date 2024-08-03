@@ -1,6 +1,7 @@
 import css from "./Button.module.css";
+import iconsPath from "../../../assets/img/icons.svg";
 import clsx from "clsx";
-
+console.log(iconsPath);
 const Button = ({
   children,
   onClick,
@@ -8,6 +9,7 @@ const Button = ({
   background = "primary",
   uppercase = false,
   width = "100%",
+  iconId = null,
   ...props
 }) => {
   const style = {
@@ -26,6 +28,11 @@ const Button = ({
       {...props}
     >
       {children}
+      {iconId && (
+        <svg className={clsx(css.icon)} aria-label="heart icon">
+          <use href={`${iconsPath}#icon-heart`} />
+        </svg>
+      )}
     </button>
   );
 };

@@ -8,7 +8,7 @@ import css from "./PetModal.module.css";
 
 const kinds = ["name", "birthday", "sex", "species"];
 
-const PetModal = ({ notice, hadleContact, handleFavorite }) => {
+const PetModal = ({ notice, handleContact, handleFavorite }) => {
   const { imgURL, category, title, comment } = notice;
 
   const { handleSubmit } = useForm();
@@ -30,11 +30,11 @@ const PetModal = ({ notice, hadleContact, handleFavorite }) => {
             <p className={css.comment}>{comment}</p>
           </div>
           <div className={css.buttons}>
-            <Button type="submit" size="sxsmall">
+            <Button type="submit" size="sxsmall" iconId="icon-heart">
               Add to
             </Button>
             <Button
-              onClick={hadleContact}
+              onClick={handleContact}
               type="button"
               size="sxsmall"
               background="secondary"

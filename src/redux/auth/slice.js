@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAuthHeader } from "../../api/axiosInst";
 import { register, logIn, logOut, refreshUser } from "./operations";
+import { saveFavorites } from "../favorites/slice";
 
 const initialState = {
   user: { name: null, email: null, avatarURL: "", phone: "" },

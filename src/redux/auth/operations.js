@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { saveFavorites } from "../favorites/slice";
 
 import { axiosInst, setAuthHeader, clearAuthHeader } from "../../api/axiosInst";
 
@@ -6,7 +7,6 @@ export const register = createAsyncThunk(
   "auth/signup",
   async (credentials, thunkAPI) => {
     try {
-      console.log("SIGNUP", credentials);
       const resp = await axiosInst.post("users/signup", credentials);
       setAuthHeader(resp.data.token);
       return resp.data;
@@ -22,6 +22,7 @@ export const logIn = createAsyncThunk(
     try {
       const resp = await axiosInst.post("users/signin", credentials);
       setAuthHeader(resp.data.token);
+      thunkAPI.dispatch(saveFavorites(resp.data.noticesFavorites));
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,7 +49,7 @@ export const refreshUser = createAsyncThunk(
     // Add it to the HTTP header and perform the request
     setAuthHeader(savedToken);
     const response = await axiosInst.get("users/current");
-
+    thunkAPI.dispatch(saveFavorites(response.data.noticesFavorites));
     return response.data;
   },
   {

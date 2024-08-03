@@ -36,7 +36,7 @@ import css from "./FindPetPage.module.css";
 const FindPetPage = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices);
-  // const notices = data.results;
+
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);

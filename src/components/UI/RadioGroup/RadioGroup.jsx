@@ -1,13 +1,10 @@
 import clsx from "clsx";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../../redux/auth/selectors";
 import { useFormContext, Controller } from "react-hook-form";
 import iconsPath from "../../../assets/img/icons.svg";
 import css from "./RadioGroup.module.css";
 
 const RadioGroup = ({ name, options }) => {
   const { control } = useFormContext();
-  const theme = useSelector(selectTheme);
 
   return (
     <Controller
@@ -23,7 +20,7 @@ const RadioGroup = ({ name, options }) => {
                 id={`${name}-${option}`}
                 checked={field.value === option}
                 onChange={() => field.onChange(option)}
-                className={clsx(css.radioInput, css[theme])}
+                className={clsx(css.radioInput)}
               />
               <label htmlFor={`${name}-${option}`} className={css.radioLabel}>
                 <span className={css.customRadio}>

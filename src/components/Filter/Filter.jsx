@@ -17,17 +17,17 @@ const Filter = () => {
   };
 
   const handleCategoryChange = (category) => {
-    console.log("CATEGORY:", category);
+    // console.log("CATEGORY:", category);
   };
   const handleGenderChange = (gender) => {
-    console.log("GENDER:", gender);
+    // console.log("GENDER:", gender);
   };
   const handleTypeChange = (type) => {
-    console.log("TYPE:", type);
+    // console.log("TYPE:", type);
   };
 
   const handleSorting = (selectedValue) => {
-    console.log("Sorting", selectedValue);
+    // console.log("Sorting", selectedValue);
   };
 
   return (

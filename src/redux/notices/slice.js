@@ -18,7 +18,7 @@ const noticesSlice = createSlice({
     currentPage: 1,
     totalItems: 30,
     totalPages: 1,
-    limit: 6,
+    itemsPerPage: 8,
   },
   reducers: {
     setPage(state, action) {

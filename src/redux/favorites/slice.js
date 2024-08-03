@@ -15,6 +15,12 @@ const favoritesSlice = createSlice({
     isDeleting: false,
     error: null,
   },
+  reducers: {
+    saveFavorites(state, action) {
+      state.items = action.payload.map((favorite) => favorite._id);
+      console.log("SAVE", action.payload);
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -30,21 +36,6 @@ const favoritesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      //---------------------------------------------
-      // .addCase(fetchFavoriteById.pending, (state) => {
-      //   state.isLoading = true;
-      //   state.error = null;
-      // })
-      // .addCase(fetchFavoriteById.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   state.items = action.payload;
-      // })
-      // .addCase(fetchFavoriteById.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload;
-      // })
-      //---------------------------------------------
       .addCase(addFavorite.pending, (state) => {
         state.isAdding = true;
         state.error = null;
@@ -85,3 +76,4 @@ const favoritesSlice = createSlice({
 });
 
 export default favoritesSlice.reducer;
+export const { saveFavorites } = favoritesSlice.actions;

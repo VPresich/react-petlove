@@ -16,9 +16,9 @@ export default function AuthButton({ children }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showModal, setShowModal] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
+
   const isHomePage = location.pathname === "/home";
 
   const handleButton = () => {

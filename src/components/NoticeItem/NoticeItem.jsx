@@ -4,6 +4,7 @@ import Button from "../UI/Button/Button";
 import Star from "../UI/Star/Star";
 import KindList from "../KindList/KindList";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
+import FavoriteButton from "../UI/FavoriteButton/FavoriteButton";
 import PetModal from "../PetModal/PetModal";
 
 import css from "./NoticeItem.module.css";
@@ -11,7 +12,7 @@ import css from "./NoticeItem.module.css";
 const kinds = ["name", "birthday", "sex", "species", "category"];
 
 const NoticeItem = ({ notice }) => {
-  const { name, imgURL, popularity, comment } = notice;
+  const { _id, name, imgURL, popularity, comment } = notice;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -57,10 +58,12 @@ const NoticeItem = ({ notice }) => {
           <p className={css.comment}>{comment}</p>
         </div>
       </div>
-
-      <Button onClick={handleClick} width="231px">
-        Read more
-      </Button>
+      <div className={css.buttons}>
+        <Button onClick={handleClick} width="231px">
+          Read more
+        </Button>
+        <FavoriteButton id={_id} />
+      </div>
       {showModal && (
         <ModalWrapper onClose={handleClose}>
           <PetModal

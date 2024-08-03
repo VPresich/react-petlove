@@ -3,7 +3,7 @@ import { setAuthHeader } from "../../api/axiosInst";
 import { register, logIn, logOut, refreshUser } from "./operations";
 
 const initialState = {
-  user: { name: null, email: null, avatarURL: "" },
+  user: { name: null, email: null, avatarURL: "", phone: "" },
   token: null,
   isLoggedIn: false,
   isRefreshing: true,

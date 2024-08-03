@@ -4,7 +4,7 @@ import clsx from "clsx";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import UnauthorizedModal from "../../../components/UnauthorizedModal/UnauthorizedModal";
 import { selectIsFavorite } from "../../../redux/favorites/selectors";
-import { selectTheme } from "../../../redux/auth/selectors";
+
 import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 import {
   addFavorite,
@@ -18,9 +18,8 @@ const FavoriteButton = ({ id }) => {
   const dispatch = useDispatch();
   const [showFavoriteDiny, setShowFavoriteDiny] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  const theme = useSelector(selectTheme);
   const isFavorite = useSelector((state) => selectIsFavorite(state, id));
+  // const isFavorite = true;
 
   const handleToggleFavorite = () => {
     if (!isLoggedIn) {
@@ -42,12 +41,12 @@ const FavoriteButton = ({ id }) => {
     <>
       <button className={css.btn} onClick={handleToggleFavorite}>
         <svg
-          className={clsx(isFavorite ? css[theme] : css.default)}
-          width="24"
-          height="24"
-          aria-label="btn icon"
+          className={clsx(css.icon, !isFavorite && css.love)}
+          width="18"
+          height="18"
+          aria-label="heart icon"
         >
-          <use href={`${iconsPath}#favorite`} />
+          <use href={`${iconsPath}#icon-heart`} />
         </svg>
       </button>
       {showFavoriteDiny && (

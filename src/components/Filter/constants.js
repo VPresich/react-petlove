@@ -1,6 +1,6 @@
 export const CATEGORY = ["Show all", "Sell", "Free", "Lost", "Found"];
-export const GENDER = ["Show all", "Unknown", "Female", "Male", "Multiple"];
-export const TYPE = [
+export const SEX = ["Show all", "Unknown", "Female", "Male", "Multiple"];
+export const SPECIES = [
   "Show all",
   "Dog",
   "Cat",
@@ -9,5 +9,12 @@ export const TYPE = [
   "Snake",
   "Turtle",
   "Lizard",
+  "frog",
+  "fish",
+  "ants",
+  "bees",
+  "butterfly",
+  "spider",
+  "scorpion",
 ];
 export const SORTING = ["Popular", "Unpopular", "Cheap", "Expensive"];

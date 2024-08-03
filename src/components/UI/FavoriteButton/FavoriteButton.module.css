@@ -1,37 +1,32 @@
 .btn {
-  background-color: transparent;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orange-light);
   margin: 0;
   padding: 0;
   border: none;
-  transition: fill 0.3s ease-in-out;
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
 }
 
-.default {
+.icon {
   fill: transparent;
-  stroke: var(--primary);
+  stroke: var(--orange);
 }
 
-.yellow {
-  fill: var(--yellow);
-  stroke: var(--yellow);
+.icon.secondary {
+  fill: transparent;
+  stroke: var(--white);
 }
 
-.green {
-  fill: var(--green);
-  stroke: var(--green);
+.icon.secondary.love {
+  fill: var(--white);
+  stroke: var(--white);
 }
 
-.blue {
-  fill: var(--blue);
-  stroke: var(--blue);
-}
-
-.pink {
-  fill: var(--pink);
-  stroke: var(--pink);
-}
-
-.red {
-  fill: var(--red);
-  stroke: var(--red);
+.icon.love {
+  fill: var(--orange);
 }

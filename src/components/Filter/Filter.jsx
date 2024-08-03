@@ -3,7 +3,7 @@ import LocationSearch from "../../components/UI/LocationSearch/LocationSearch";
 import DropDownSelector from "../../components/UI/DropDownSelector/DropDownSelector";
 import SortingForm from "../../components/UI/SortingForm/SortingForm";
 import HorSeparator from "../../components/UI/HorSeparator/HorSeparator";
-import { CATEGORY, GENDER, TYPE, SORTING } from "./constants";
+import { CATEGORY, SEX, SPECIES, SORTING } from "./constants";
 
 import css from "./Filter.module.css";
 
@@ -49,7 +49,7 @@ const Filter = () => {
         <div className={css.genderContainer}>
           <DropDownSelector
             btnLabel="By gender"
-            options={GENDER}
+            options={SEX}
             selectedOption="Show all"
             onChange={handleGenderChange}
           />
@@ -58,7 +58,7 @@ const Filter = () => {
         <div className={css.typeContainer}>
           <DropDownSelector
             btnLabel="By Type"
-            options={TYPE}
+            options={SPECIES}
             selectedOption="Show all"
             onChange={handleTypeChange}
           />

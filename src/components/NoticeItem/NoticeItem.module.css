@@ -61,8 +61,14 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .descrWrapper {
-    flex-direction: column;
+@media screen and (min-width: 768px) {
+  .container {
+    width: 342px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 363px;
   }
 }

@@ -15,9 +15,8 @@ const FindPetPage = () => {
         <div className={css.container}>
           <PageTitle>Find your favorite pet</PageTitle>
           <Filter />
-          <div className="">
-            <NoticeItemList notices={data.results} />
-          </div>
+
+          <NoticeItemList notices={data.results} />
         </div>
       </section>
     </>

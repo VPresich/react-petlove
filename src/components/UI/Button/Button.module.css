@@ -60,9 +60,13 @@
 }
 
 .btn.large,
-.btn.medium,
-.btn.small {
+.btn.medium {
   height: 42px;
+}
+
+.btn.small {
+  font-weight: 500;
+  height: 46px;
 }
 
 .btn.sxsmall {

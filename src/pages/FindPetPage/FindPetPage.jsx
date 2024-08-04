@@ -6,7 +6,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { setPage } from "../../redux/notices/slice";
 import {
   errNotify,
-  successNotify,
+  // successNotify,
 } from "../../auxiliary/notification/notification";
 
 // import {
@@ -53,9 +53,9 @@ const FindPetPage = () => {
       })
     )
       .unwrap()
-      .then((data) => {
-        console.log(data);
-        successNotify("Success loading notices");
+      .then(() => {
+        // console.log(data);
+        // successNotify("Success loading notices");
       })
       .catch(() => {
         errNotify("Error loading notices");
@@ -68,17 +68,6 @@ const FindPetPage = () => {
   };
 
   return (
-    // <>
-    //   <DocumentTitle>Find Pet Page</DocumentTitle>
-    //   <section className={css.section}>
-    //     <div className={css.container}>
-    //       <PageTitle>Find your favorite pet</PageTitle>
-    //       <Filter />
-    //       {/* <NoticeItemList notices={data.results} /> */}
-    //       <NoticeItemList notices={notices} />
-    //     </div>
-    //   </section>
-    // </>
     <>
       <DocumentTitle>Find pet age</DocumentTitle>
       <section className={css.section}>

@@ -1,0 +1,28 @@
+.workingHours {
+  font-size: 14px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.workingHours.open .hours {
+  color: var(--green);
+}
+
+.workingHours.closed .hours {
+  color: var(--error);
+}
+
+.workingHours {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border-radius: 30px;
+  padding: 8px;
+  background-color: var(--orange-light);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--orange);
+}

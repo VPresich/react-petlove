@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../UI/Button/Button";
 import {
   successNotify,
@@ -12,14 +12,11 @@ import ModalApproveAction from "../../ModalApproveAction/ModalApproveAction";
 import { logOut } from "../../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 
-export default function AuthButton({ children }) {
+export default function AuthButton({ widthBtn, background, handleClick }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const isHomePage = location.pathname === "/home";
 
   const handleButton = () => {
     if (isLoggedIn) {
@@ -27,14 +24,15 @@ export default function AuthButton({ children }) {
     } else {
       navigate("/login");
     }
+    handleClick && handleClick();
   };
-
   const handleApprove = () => {
     dispatch(logOut())
       .unwrap()
       .then((data) => {
         console.log(data);
         successNotify("success logout");
+        handleClick && handleClick();
       })
       .catch(() => {
         errNotify("error logout");
@@ -45,17 +43,16 @@ export default function AuthButton({ children }) {
   const handleClose = () => {
     setShowModal(false);
   };
-
   return (
     <>
       <Button
         onClick={handleButton}
         size="medium"
-        background={isHomePage ? "transparent" : "primary"}
+        background={background}
         uppercase={true}
-        width={isLoggedIn ? "136px" : "119px"}
+        width={widthBtn}
       >
-        {children}
+        {isLoggedIn ? "Logout" : "Log In"}
       </Button>
       {showModal && (
         <ModalWrapper onClose={handleClose}>

@@ -34,7 +34,10 @@ const AppMobileMenuBtn = () => {
         })}
       >
         <button className={css.closeBtn} onClick={handleClick}>
-          <svg className={clsx(css.closeIcon)} aria-label="close menu button">
+          <svg
+            className={clsx(css.closeIcon, isHomePage && css.home)}
+            aria-label="close menu button"
+          >
             <use href={`${iconsPath}#icon-x-close`} />
           </svg>
         </button>

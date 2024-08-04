@@ -7,12 +7,12 @@ const Button = ({
   size = "small",
   background = "primary",
   uppercase = false,
-  width = "100%",
+  width,
   icon = null,
   ...props
 }) => {
   const style = {
-    width: width,
+    width: width || "100%",
   };
   return (
     <button

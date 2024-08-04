@@ -29,13 +29,17 @@
   right: -300px;
   width: 218px;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--orange);
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 96px;
+  padding-top: 156px;
   padding-bottom: 40px;
   transition: right 0.3s ease;
   z-index: 102;
+}
+
+.mobileMenu.home {
+  background-color: var(--white);
 }
 
 .mobileMenu.open {
@@ -44,7 +48,7 @@
 
 .closeBtn {
   position: absolute;
-  top: 20px;
+  top: 28px;
   right: 20px;
   background: none;
   border: none;
@@ -62,6 +66,10 @@
   height: 32px;
   fill: transparent;
   stroke-width: 2.5px;
+  stroke: var(--white);
+}
+
+.closeIcon.home {
   stroke: var(--primary);
 }
 

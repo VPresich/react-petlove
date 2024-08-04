@@ -22,7 +22,6 @@ export const logIn = createAsyncThunk(
     try {
       const resp = await axiosInst.post("users/signin", credentials);
       setAuthHeader(resp.data.token);
-      thunkAPI.dispatch(saveFavorites(resp.data.noticesFavorites));
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

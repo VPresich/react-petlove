@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../../../redux/auth/selectors";
 import Button from "../../UI/Button/Button";
 
-const RegistrationButton = () => {
+const RegistrationButton = ({ widthBtn, handleClick }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
@@ -11,6 +11,7 @@ const RegistrationButton = () => {
 
   const handleButton = () => {
     navigate("/register");
+    handleClick && handleClick();
   };
 
   return (
@@ -19,7 +20,7 @@ const RegistrationButton = () => {
       size="medium"
       background="secondary"
       uppercase={true}
-      width="149px"
+      width={widthBtn}
     >
       Registration
     </Button>

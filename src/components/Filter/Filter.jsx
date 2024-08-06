@@ -1,13 +1,23 @@
+import { useSelector } from "react-redux";
 import SearchForm from "../../components/UI/SearchForm/SearchForm";
 import LocationSearch from "../../components/UI/LocationSearch/LocationSearch";
 import DropDownSelector from "../../components/UI/DropDownSelector/DropDownSelector";
 import SortingForm from "../../components/UI/SortingForm/SortingForm";
 import HorSeparator from "../../components/UI/HorSeparator/HorSeparator";
-import { CATEGORY, SEX, SPECIES, SORTING } from "./constants";
+import {
+  selectCategories,
+  selectSex,
+  selectSpecies,
+} from "../../redux/notices/selectors";
+import { SORTING } from "./constants";
 
 import css from "./Filter.module.css";
 
 const Filter = () => {
+  const categories = useSelector(selectCategories);
+  const species = useSelector(selectSpecies);
+  const sex = useSelector(selectSex);
+
   const handleSearch = (topic) => {
     console.log("SearchTOPIC", topic);
   };
@@ -40,7 +50,7 @@ const Filter = () => {
         <div className={css.categoryContainer}>
           <DropDownSelector
             btnLabel="Category"
-            options={CATEGORY}
+            options={categories}
             selectedOption="Show all"
             onChange={handleCategoryChange}
           />
@@ -49,7 +59,7 @@ const Filter = () => {
         <div className={css.genderContainer}>
           <DropDownSelector
             btnLabel="By gender"
-            options={SEX}
+            options={sex}
             selectedOption="Show all"
             onChange={handleGenderChange}
           />
@@ -58,7 +68,7 @@ const Filter = () => {
         <div className={css.typeContainer}>
           <DropDownSelector
             btnLabel="By Type"
-            options={SPECIES}
+            options={species}
             selectedOption="Show all"
             onChange={handleTypeChange}
           />

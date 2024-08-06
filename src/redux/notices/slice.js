@@ -3,6 +3,9 @@ import {
   getNoticesPerPage,
   getNoticeById,
   getNoticesWithParams,
+  getCategories,
+  getSpecies,
+  getSex,
 } from "./operations";
 
 const noticesSlice = createSlice({
@@ -61,6 +64,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      //------------------------------------------------------
 
       .addCase(getNoticesWithParams.pending, (state) => {
         state.isLoading = true;
@@ -84,6 +88,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      //------------------------------------------------------
 
       .addCase(getNoticeById.pending, (state) => {
         state.isLoading = true;
@@ -104,7 +109,59 @@ const noticesSlice = createSlice({
       .addCase(getNoticeById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      //------------------------------------------------------
+
+      .addCase(getCategories.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getCategories.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.categories = ["Show all"];
+        state.categories.push(...action.payload);
+      })
+
+      .addCase(getCategories.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //---------------------------------------------------------
+
+      .addCase(getSpecies.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getSpecies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.species = ["Show all"];
+        state.species.push(...action.payload);
+      })
+
+      .addCase(getSpecies.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //---------------------------------------------------------
+
+      .addCase(getSex.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getSex.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.sex = ["Show all"];
+        state.sex.push(...action.payload);
+      })
+
+      .addCase(getSex.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
+    //---------------------------------------------------------
   },
 });
 

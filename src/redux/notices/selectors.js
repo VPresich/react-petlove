@@ -23,3 +23,7 @@ export const selectNoticeById = createSelector(
   [selectNotices, (_, noticeId) => noticeId],
   (notices, noticeId) => notices.find((notice) => notice._id === noticeId)
 );
+
+export const selectCategories = (state) => state.notices.categories;
+export const selectSex = (state) => state.notices.sex;
+export const selectSpecies = (state) => state.notices.species;

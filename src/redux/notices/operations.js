@@ -48,3 +48,39 @@ export const getNoticesWithParams = createAsyncThunk(
     }
   }
 );
+
+export const getCategories = createAsyncThunk(
+  "notices/getCategories",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInst.get(`notices/categories`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getSpecies = createAsyncThunk(
+  "notices/getSpecies",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInst.get(`notices/species`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getSex = createAsyncThunk(
+  "notices/getSex",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInst.get(`notices/sex`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

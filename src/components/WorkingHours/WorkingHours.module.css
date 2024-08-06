@@ -13,9 +13,6 @@
 }
 
 .workingHours {
-  position: absolute;
-  right: 12px;
-  top: 12px;
   border-radius: 30px;
   padding: 8px;
   background-color: var(--orange-light);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import WorkingHours from "../WorkingHours/WorkingHours";
 import ModalWrapper from "../UI/ModalWrapper/ModalWrapper";
+import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import LogoFriend from "../LogoFriend/LogoFriend";
 import css from "./FriendsItem.module.css";
 
@@ -19,9 +20,8 @@ const FriendsItem = ({ item }) => {
     <div className={css.container}>
       <LogoFriend logoUrl={imageUrl} altText={`Logo of ${title}`} />
       <div className={css.infoWrapper}>
-        <WorkingHours workingDays={workDays} />
-
         <span className={css.title}>{title} </span>
+
         <div className={css.addressContainer}>
           <div className={css.addressItem}>
             <span className={css.label}>Email: </span>
@@ -32,16 +32,24 @@ const FriendsItem = ({ item }) => {
 
           <div onClick={handleClick} className={css.addressItem}>
             <span className={css.label}>Address: </span>
-            <span className={css.text}>{address}</span>
+            <EllipsisText
+              text={address ? address : "Only online"}
+              maxLines={3}
+              className={css.text}
+            />
           </div>
 
           <div className={css.addressItem}>
             <span className={css.label}>Phone: </span>
-            <span className={css.text}>{phone} </span>
+            <a href={`tel:${phone}`} className={css.link}>
+              {phone}
+            </a>
           </div>
         </div>
       </div>
-
+      <div className={css.workDaysContainer}>
+        <WorkingHours workingDays={workDays} />
+      </div>
       {showMap && <ModalWrapper onClose={handleClose}></ModalWrapper>}
     </div>
   );

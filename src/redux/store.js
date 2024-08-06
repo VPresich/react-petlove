@@ -3,6 +3,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/slice";
 import noticesReducer from "./notices/slice";
 import friendReducer from "./friends/slice";
+import newsReducer from "./news/slice";
 import filtersReducer from "./filters/slice";
 import favoritesReducer from "./favorites/slice";
 
@@ -28,6 +29,7 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     notices: noticesReducer,
     friends: friendReducer,
+    news: newsReducer,
     filters: filtersReducer,
     favorites: favoritesReducer,
   },

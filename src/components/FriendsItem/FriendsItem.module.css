@@ -1,8 +1,8 @@
 .container {
   width: 100%;
+  height: 184px;
   border-radius: 15px;
   padding-top: 40px;
-  padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
 
@@ -18,12 +18,6 @@
   row-gap: 14px;
 }
 
-.addreddConainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .title {
   font-weight: 700;
   font-size: 16px;
@@ -32,25 +26,49 @@
   color: var(--primary);
 }
 
+.addressConainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .addressItem {
   display: flex;
   gap: 4px;
+}
+
+.label {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
-}
-
-.label {
   color: rgba(38, 38, 38, 0.5);
 }
 
 .link {
-  color: #262626;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .text {
-  color: #262626;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+}
+
+.workDaysContainer {
+  right: 12px;
+  top: 12px;
+  position: absolute;
 }
 
 @media screen and (min-width: 375px) {
@@ -62,6 +80,7 @@
 @media screen and (min-width: 768px) {
   .container {
     width: 342px;
+    height: 196px;
     gap: 25px;
   }
 }

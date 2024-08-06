@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { selectFavorites } from "../../redux/favorites/selectors";
 import { selectTheme } from "../../redux/auth/selectors";
 import { fetchFavorites } from "../../redux/favorites/operations";
-import CardsList from "../../components/CardsList/CardsList";
+import CardsList from "../../components/NewsList/NewsList";
 import DocumentTitle from "../../components/DocumentTitle";
 
 import css from "./ProfilePage.module.css";

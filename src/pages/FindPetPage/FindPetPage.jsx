@@ -69,7 +69,7 @@ const FindPetPage = () => {
 
   return (
     <>
-      <DocumentTitle>Find pet age</DocumentTitle>
+      <DocumentTitle>Find pet page</DocumentTitle>
       <section className={css.section}>
         <div className={css.container}>
           <h2 className="visually-hidden"> Notices</h2>

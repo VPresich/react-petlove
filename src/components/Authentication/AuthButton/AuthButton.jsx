@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../UI/Button/Button";
 import {
-  successNotify,
+  // successNotify,
   errNotify,
 } from "../../../auxiliary/notification/notification";
 
@@ -29,9 +29,8 @@ export default function AuthButton({ widthBtn, background, handleClick }) {
   const handleApprove = () => {
     dispatch(logOut())
       .unwrap()
-      .then((data) => {
-        console.log(data);
-        successNotify("success logout");
+      .then(() => {
+        // successNotify("success logout");
         handleClick && handleClick();
       })
       .catch(() => {

@@ -3,11 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import InputWithButton from "../InputWithButton/InputWithButton";
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSearch, initTopic = "" }) => {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
-      topic: "",
+      topic: initTopic,
     },
   });
 
@@ -15,7 +15,6 @@ const SearchForm = ({ onSearch }) => {
     const topic = data.topic.trim();
     console.log(topic);
     onSearch(topic);
-    methods.reset();
   };
 
   return (

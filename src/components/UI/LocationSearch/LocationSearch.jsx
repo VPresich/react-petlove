@@ -3,11 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
 import InputWithButton from "../InputWithButton/InputWithButton";
 
-const LocationSearch = ({ onSearch }) => {
+const LocationSearch = ({ onSearch, initLocation = "" }) => {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
-      location: "",
+      location: initLocation,
     },
   });
 

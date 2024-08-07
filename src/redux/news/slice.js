@@ -45,7 +45,7 @@ const newsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
-        state.itemsPerPage = action.payload.limit;
+        state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
 
@@ -69,7 +69,7 @@ const newsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
-        state.itemsPerPage = action.payload.limit;
+        state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
 

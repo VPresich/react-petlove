@@ -27,9 +27,6 @@ const friendsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
-        // state.items = action.payload.sort((a, b) =>
-        //   a.title.localeCompare(b.title) //sorting by title
-        //);
       })
       .addCase(getAllFriends.rejected, (state, action) => {
         state.isLoading = false;

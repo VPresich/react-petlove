@@ -1,18 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getNoticesPerPage } from "../../redux/notices/operations";
-// import { fetchFavorites } from "../../redux/favorites/operations";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { getNoticesWithParams } from "../../redux/notices/operations";
 import { setPage } from "../../redux/notices/slice";
 import {
   errNotify,
-  // successNotify,
+  successNotify,
 } from "../../auxiliary/notification/notification";
 
-// import {
-//   selectSortParam,
-//   selectQueryParams,
-// } from "../../redux/filters/selectors";
+import {
+  selectQueryParams,
+  selectSortParam,
+} from "../../redux/filters/selectors";
 import {
   selectNotices,
   selectCurrentPage,
@@ -27,7 +25,6 @@ import Button from "../../components/UI/Button/Button";
 import DocumentTitle from "../../components/DocumentTitle";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import Filter from "../../components/Filter/Filter";
-// import data from "../../data/cards.json";
 
 import NoticeItemList from "../../components/NoticeItemList/NoticeItemList";
 
@@ -40,28 +37,33 @@ const FindPetPage = () => {
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const isMore = useSelector(selectIsMore);
   const error = useSelector(selectError);
   const noticesNum = useSelector(selectNoticesNumber);
+  const query = useSelector(selectQueryParams);
+  const sort = useSelector(selectSortParam);
 
-  useEffect(() => {
+  const loadNotices = useCallback(() => {
     dispatch(
-      getNoticesPerPage({
+      getNoticesWithParams({
         page: currentPage,
         limit: itemsPerPage,
+        query,
+        sort,
       })
     )
       .unwrap()
       .then(() => {
-        // console.log(data);
-        // successNotify("Success loading notices");
+        successNotify("Success loading notices");
       })
       .catch(() => {
         errNotify("Error loading notices");
       });
-    // isLoggedIn && dispatch(fetchFavorites());
-  }, [dispatch, currentPage, itemsPerPage, isLoggedIn]);
+  }, [dispatch, currentPage, itemsPerPage, query, sort]);
+
+  useEffect(() => {
+    loadNotices();
+  }, [loadNotices]);
 
   const handleLoadMore = () => {
     dispatch(setPage(currentPage + 1));

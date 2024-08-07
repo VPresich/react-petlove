@@ -3,13 +3,12 @@ import { useForm, FormProvider, useWatch } from "react-hook-form";
 import RadioGroup from "../RadioGroup/RadioGroup";
 import css from "./SortingForm.module.css";
 
-const SortingForm = ({ options, handleValues }) => {
+const SortingForm = ({ options, handleValues, initValue = "Oldest" }) => {
   const methods = useForm({
     defaultValues: {
-      sort: "popular",
+      sort: initValue,
     },
   });
-
   const { control } = methods;
   const selectedValue = useWatch({
     control,
@@ -17,15 +16,13 @@ const SortingForm = ({ options, handleValues }) => {
   });
 
   useEffect(() => {
-    handleValues({ sort: selectedValue });
+    handleValues(selectedValue);
   }, [selectedValue, handleValues]);
 
   return (
     <FormProvider {...methods}>
       <form className={css.form}>
-        <div className={css.container}>
-          <RadioGroup name="sort" options={options} />
-        </div>
+        <RadioGroup name="sort" options={options} />
       </form>
     </FormProvider>
   );

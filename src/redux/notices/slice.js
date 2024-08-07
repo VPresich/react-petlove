@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { capitalizeFirstLetter } from "../../auxiliary/formats";
 import {
   getNoticesPerPage,
   getNoticeById,
@@ -21,7 +22,7 @@ const noticesSlice = createSlice({
     currentPage: 1,
     totalItems: 30,
     totalPages: 1,
-    itemsPerPage: 8,
+    itemsPerPage: 6,
   },
   reducers: {
     setPage(state, action) {
@@ -35,7 +36,7 @@ const noticesSlice = createSlice({
       state.error = null;
       state.totalItems = 30;
       state.totalPages = 1;
-      state.itemsPerPage = 3;
+      state.itemsPerPage = 6;
     },
   },
 
@@ -49,7 +50,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
-        state.itemsPerPage = action.payload.limit;
+        state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
 
@@ -74,7 +75,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.currentPage = action.payload.page;
-        state.itemsPerPage = action.payload.limit;
+        state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
 
@@ -98,7 +99,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const existingIndex = state.items.findIndex(
-          (camper) => camper.id === action.payload.id
+          (item) => item._id === action.payload._id
         );
         if (existingIndex !== -1) {
           state.items[existingIndex] = action.payload;
@@ -119,8 +120,11 @@ const noticesSlice = createSlice({
       .addCase(getCategories.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        const capitalizedCategories = action.payload.map((category) =>
+          capitalizeFirstLetter(category)
+        );
         state.categories = ["Show all"];
-        state.categories.push(...action.payload);
+        state.categories.push(...capitalizedCategories);
       })
 
       .addCase(getCategories.rejected, (state, action) => {
@@ -137,7 +141,10 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.species = ["Show all"];
-        state.species.push(...action.payload);
+        const capitalizedSpecies = action.payload.map((species) =>
+          capitalizeFirstLetter(species)
+        );
+        state.species.push(...capitalizedSpecies);
       })
 
       .addCase(getSpecies.rejected, (state, action) => {
@@ -154,7 +161,10 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.sex = ["Show all"];
-        state.sex.push(...action.payload);
+        const capitalizedSex = action.payload.map((sex) =>
+          capitalizeFirstLetter(sex)
+        );
+        state.sex.push(...capitalizedSex);
       })
 
       .addCase(getSex.rejected, (state, action) => {

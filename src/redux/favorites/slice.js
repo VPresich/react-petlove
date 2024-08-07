@@ -18,7 +18,6 @@ const favoritesSlice = createSlice({
   reducers: {
     saveFavorites(state, action) {
       state.items = action.payload.map((favorite) => favorite._id);
-      console.log("SAVE", action.payload);
     },
   },
 

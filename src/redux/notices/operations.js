@@ -33,13 +33,14 @@ export const getNoticeById = createAsyncThunk(
 export const getNoticesWithParams = createAsyncThunk(
   "notices/getWithParams",
   async ({ page, limit, query, sort }, thunkAPI) => {
+    console.log(page, limit, query, sort);
     try {
       const response = await axiosInst.get(`notices`, {
         params: {
           page,
           limit,
-          query,
-          sort,
+          ...query,
+          ...sort,
         },
       });
       return response.data;

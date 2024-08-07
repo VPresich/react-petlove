@@ -16,7 +16,7 @@ import css from "./NoticeItem.module.css";
 const kinds = ["name", "birthday", "sex", "species", "category"];
 
 const NoticeItem = ({ notice }) => {
-  const { _id, name, imgURL, popularity, comment } = notice;
+  const { _id, name, imgURL, popularity, comment, price } = notice;
   const dispatch = useDispatch();
 
   const isLogeddIn = useSelector(selectIsLoggedIn);
@@ -55,8 +55,9 @@ const NoticeItem = ({ notice }) => {
       <NoticeImage imgUrl={imgURL} altText={name} />
       <div className={css.infoWrapper}>
         <div className={css.nameWrapper}>
-          <p>{name}</p>
+          <span className={css.name}>{name}</span>
           <div className={css.ratingWrapper}>
+            <span className={css.price}>{price}</span>
             <Star isFilled={true} />
             <span>{popularity}</span>
           </div>

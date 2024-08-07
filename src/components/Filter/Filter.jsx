@@ -48,6 +48,12 @@ const Filter = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const selectedSortLabel = useSelector(selectSortLabel);
+  const memoizedSelectedSortLabel = useMemo(
+    () => selectedSortLabel,
+    [selectedSortLabel]
+  );
+
   const categories = useSelector(selectCategoriesList);
   const species = useSelector(selectSpeciesList);
   const sex = useSelector(selectSexList);
@@ -74,37 +80,46 @@ const Filter = () => {
   const memoizedKeyword = useMemo(() => keyword, [keyword]);
   const memoizedLocation = useMemo(() => location, [location]);
 
-  const selectedSortLabel = useSelector(selectSortLabel);
-  const memoizedSortLabel = useMemo(
-    () => selectedSortLabel,
-    [selectedSortLabel]
+  const handleSearch = useCallback(
+    (topic) => {
+      dispatch(saveKeyword(topic));
+      dispatch(resetNoticesState());
+    },
+    [dispatch]
   );
 
-  const handleSearch = (topic) => {
-    dispatch(saveKeyword(topic));
-    dispatch(resetNoticesState());
-  };
+  const handleLocationSearch = useCallback(
+    (location) => {
+      dispatch(saveLocation(location));
+      dispatch(resetNoticesState());
+    },
+    [dispatch]
+  );
 
-  const handleLocationSearch = (location) => {
-    dispatch(saveLocation(location));
-    dispatch(resetNoticesState());
-  };
+  const handleCategoryChange = useCallback(
+    (category) => {
+      dispatch(saveCategory(category));
+      dispatch(resetNoticesState());
+      dispatch(resetSorting());
+    },
+    [dispatch]
+  );
 
-  const handleCategoryChange = (category) => {
-    dispatch(saveCategory(category));
-    dispatch(resetNoticesState());
-    dispatch(resetSorting());
-  };
+  const handleGenderChange = useCallback(
+    (gender) => {
+      dispatch(saveSex(gender));
+      dispatch(resetNoticesState());
+    },
+    [dispatch]
+  );
 
-  const handleGenderChange = (gender) => {
-    dispatch(saveSex(gender));
-    dispatch(resetNoticesState());
-  };
-
-  const handleTypeChange = (type) => {
-    dispatch(resetNoticesState());
-    dispatch(saveSpecies(type));
-  };
+  const handleTypeChange = useCallback(
+    (type) => {
+      dispatch(saveSpecies(type));
+      dispatch(resetNoticesState());
+    },
+    [dispatch]
+  );
 
   const handleSorting = useCallback(
     (selectedValue) => {
@@ -167,7 +182,7 @@ const Filter = () => {
                 : SORTING
             }
             handleValues={handleSorting}
-            initValue={memoizedSortLabel}
+            initValue={memoizedSelectedSortLabel}
           />
           <Button width={viewportWidth > 767 ? "136px" : "100%"}>Reset</Button>
         </div>

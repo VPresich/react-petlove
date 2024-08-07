@@ -11,20 +11,21 @@ const SearchForm = ({ onSearch, initTopic = "" }) => {
     },
   });
 
+  const { handleSubmit } = methods;
+
   const onSubmit = (data) => {
     const topic = data.topic.trim();
-    console.log(topic);
     onSearch(topic);
   };
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <InputWithButton
           name="topic"
           placeholder="Search"
           type="text"
-          onSubmit={methods.handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
         />
       </form>
     </FormProvider>

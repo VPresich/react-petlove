@@ -9,7 +9,8 @@ const SortingForm = ({ options, handleValues, initValue = "Oldest" }) => {
       sort: initValue,
     },
   });
-  const { control } = methods;
+
+  const { control, setValue } = methods;
   const selectedValue = useWatch({
     control,
     name: "sort",
@@ -18,6 +19,10 @@ const SortingForm = ({ options, handleValues, initValue = "Oldest" }) => {
   useEffect(() => {
     handleValues(selectedValue);
   }, [selectedValue, handleValues]);
+
+  useEffect(() => {
+    setValue("sort", initValue);
+  }, [initValue, setValue]);
 
   return (
     <FormProvider {...methods}>

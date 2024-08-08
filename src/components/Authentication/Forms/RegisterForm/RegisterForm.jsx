@@ -13,7 +13,7 @@ export default function RegisterForm({ handleRegister }) {
       name: "",
       email: "",
       password: "",
-      confirmation: "",
+      confirmPassword: "",
     },
   });
 
@@ -57,7 +57,7 @@ export default function RegisterForm({ handleRegister }) {
               )}
             />
             <Controller
-              name="confirmation"
+              name="confirmPassword"
               control={methods.control}
               render={({ field }) => (
                 <Input

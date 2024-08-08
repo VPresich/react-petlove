@@ -12,12 +12,17 @@
 
   font-family: "Manrope", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.29;
   letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
+  color: rgba(38, 38, 38, 0.8);
+
   background-color: transparent;
-  transition: border-color 3000s ease-in-out;
+  transition: border-color 1000 ease-in-out;
+}
+
+input::placeholder {
+  color: rgba(38, 38, 38, 0.5);
 }
 
 .input:focus,
@@ -25,37 +30,89 @@
   border-color: var(--orange);
 }
 
-.error {
+.input.red {
+  border-color: var(--error);
+}
+
+.input.green {
+  border-color: var(--green);
+}
+
+.message {
   position: absolute;
   bottom: -12px;
-  left: 0;
+  left: 12px;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
+  font-size: 10px;
+  line-height: 1.2;
   letter-spacing: -0.03em;
+}
+
+.error {
   color: var(--error);
 }
 
+.success {
+  color: var(--green);
+}
+
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  color: var(--orange);
   position: absolute;
-  transform: translate(-200%, 75%);
-  transition: stroke 3000s ease-in-out;
+  top: 50%;
+  transform: translate(-200%, -50%);
+}
+
+.eyeIcon {
+  width: 100%;
+  height: 100%;
+  color: var(--orange);
+}
+
+.clearIcon {
+  width: 100%;
+  height: 100%;
+  color: var(--error);
+}
+
+.okIcon {
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  color: var(--green);
+}
+
+.icon.shift {
+  right: 10px;
 }
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px transparent inset;
   box-shadow: 0 0 0 1000px transparent inset;
   -webkit-text-fill-color: var(--orange);
-  transition: background-color 5000s ease-in-out;
+  transition: background-color 500 ease-in-out;
 }
 
 @media screen and (min-width: 768px) {
   .input {
-    padding: 14px;
-    height: 48px;
+    padding: 16px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+    color: rgba(38, 38, 38, 0.8);
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .message {
+    font-size: 12px;
+    line-height: 1.17;
+    left: 16px;
+    bottom: -16px;
   }
 }

@@ -8,10 +8,18 @@ import {
   ERR_EMAIL_REQUIRED,
   ERR_PASSWORD,
   ERR_PASSWORD_REQUIRED,
+  EMAIL_PATTERN,
+  ERR_CONFIRM_REQUIRED,
+  ERR_PASSWORD_MATCH,
 } from "../constants";
 
 export const feedbackSchema = Yup.object().shape({
   name: Yup.string().min(3, ERR_SHORT).max(50, ERR_LONG).required(ERR_REQUIRED),
-  email: Yup.string().email(ERR_EMAIL).required(ERR_EMAIL_REQUIRED),
-  password: Yup.string().min(6, ERR_PASSWORD).required(ERR_PASSWORD_REQUIRED),
+  email: Yup.string()
+    .matches(EMAIL_PATTERN, ERR_EMAIL)
+    .required(ERR_EMAIL_REQUIRED),
+  password: Yup.string().min(7, ERR_PASSWORD).required(ERR_PASSWORD_REQUIRED),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], ERR_PASSWORD_MATCH)
+    .required(ERR_CONFIRM_REQUIRED),
 });

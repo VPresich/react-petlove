@@ -13,6 +13,8 @@
 }
 
 .icon {
+  width: 18px;
+  height: 18px;
   fill: transparent;
   stroke: var(--orange);
 }

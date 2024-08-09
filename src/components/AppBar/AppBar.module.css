@@ -20,7 +20,8 @@
 
 .wrapper {
   display: flex;
-  column-gap: 12px;
+  align-items: center;
+  column-gap: 16px;
 }
 
 @media screen and (min-width: 768px) {
@@ -33,6 +34,10 @@
   .header.home {
     padding-left: 64px;
     padding-right: 64px;
+  }
+
+  .wrapper {
+    column-gap: 8px;
   }
 }
 

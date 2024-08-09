@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAuthHeader } from "../../api/axiosInst";
-import { register, logIn, logOut, refreshUser } from "./operations";
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  getFullUserInfo,
+} from "./operations";
 
 const initialState = {
   user: { name: null, email: null, avatarURL: "", phone: "" },
@@ -65,7 +71,7 @@ const authSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         state.error = action.payload;
       })
-
+      //-------------------------------------------------
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
         state.isLoggedIn = false;
@@ -80,6 +86,22 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
+        state.error = action.payload;
+      })
+      //------------------------------------------------
+      .addCase(getFullUserInfo.pending, (state) => {
+        state.isLoggedIn = false;
+        state.error = null;
+      })
+      .addCase(getFullUserInfo.fulfilled, (state, action) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.phone = action.payload.phone;
+        state.user.avatarURL = action.payload.avatar;
+        state.isLoggedIn = true;
+        state.error = null;
+      })
+      .addCase(getFullUserInfo.rejected, (state, action) => {
         state.error = action.payload;
       });
   },

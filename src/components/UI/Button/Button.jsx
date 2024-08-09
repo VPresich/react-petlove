@@ -34,6 +34,6 @@ const Button = ({
 
 export default Button;
 
-// const size = ["large", "medium", "small", "sxsmall"];
-// const background = ["primary", "secondary", "transparent", "cancel"];
+// const size = ["large", "medium", "small", "sxsmall", "sxxsmall"];
+// const background = ["primary", "secondary", "transparent", "cancel", "unactive"];
 // const uppercase = true;

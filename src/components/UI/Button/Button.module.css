@@ -57,7 +57,15 @@
 
 .btn.cancel:hover {
   background: #ccc;
+}
+
+.btn.unactive {
+  background: var(--white);
   color: var(--primary);
+}
+
+.btn.unactive:hover {
+  background: rgba(38, 38, 38, 0.05);
 }
 
 .btn.large,
@@ -73,6 +81,11 @@
 .btn.sxsmall {
   font-weight: 500;
   height: 44px;
+}
+
+.btn.sxxsmall {
+  font-weight: 500;
+  height: 38px;
 }
 
 @media screen and (min-width: 768px) {
@@ -94,7 +107,10 @@
   }
 
   .btn.sxsmall {
-    font-weight: 500;
     height: 48px;
+  }
+
+  .btn.sxxsmall {
+    height: 40px;
   }
 }

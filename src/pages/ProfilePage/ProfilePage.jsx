@@ -1,48 +1,84 @@
-import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
-import clsx from "clsx";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { /*useSelector,*/ useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { selectFavorites } from "../../redux/favorites/selectors";
-import { selectTheme } from "../../redux/auth/selectors";
-import { fetchFavorites } from "../../redux/favorites/operations";
-import CardsList from "../../components/NewsList/NewsList";
+import UserCard from "../../components/UserCard/UserCard";
+import NoticeItemList from "../../components/NoticeItemList/NoticeItemList";
+import Button from "../../components/UI/Button/Button";
+import { getFullUserInfo } from "../../redux/auth/operations";
 import DocumentTitle from "../../components/DocumentTitle";
-
+import {
+  errNotify,
+  successNotify,
+} from "../../auxiliary/notification/notification";
 import css from "./ProfilePage.module.css";
 
 const ProfilePage = () => {
+  const [isFavorite, setIsFavorite] = useState(true);
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  const theme = useSelector(selectTheme);
 
   useEffect(() => {
-    dispatch(fetchFavorites())
+    dispatch(getFullUserInfo())
       .unwrap()
-
+      .then((data) => {
+        console.log(data);
+        successNotify("success getFullUserInfo");
+      })
       .catch(() => {
-        toast.error("Error fetching");
+        errNotify("Error getFullUserInfo");
       });
   }, [dispatch]);
 
+  const handleDetails = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <>
-      <DocumentTitle>Favorites</DocumentTitle>
-      <div className={css.container}>
-        <section className={css.content}>
-          <h2 className="visually-hidden"> Favorites</h2>
-          {favorites && favorites.length !== 0 ? (
-            <CardsList nannies={favorites} />
-          ) : (
-            <Link to="/nannies" className={css.link}>
-              <span className={clsx(css.text, css[theme])}>
-                Looks like you have not added any nannies to your favorites
-                yet...
-              </span>
-            </Link>
-          )}
-        </section>
-      </div>
+      <DocumentTitle>Profile page</DocumentTitle>
+
+      <section className={css.container}>
+        <h2 className="visually-hidden"> Profile page</h2>
+        <UserCard />
+        <div className={css.details}>
+          <div className={css.buttons}>
+            <Button
+              onClick={handleDetails}
+              type="button"
+              width="123px"
+              background={isFavorite ? "primary" : "unactive"}
+            >
+              My favorite pets
+            </Button>
+            <Button
+              onClick={handleDetails}
+              type="button"
+              width="123px"
+              background={!isFavorite ? "primary" : "unactive"}
+            >
+              Viewed
+            </Button>
+          </div>
+          <div className={css.listContainer}>
+            {isFavorite && favorites.length > 0 ? (
+              <NoticeItemList notices={favorites} />
+            ) : (
+              isFavorite && (
+                <p className={css.message}>
+                  Oops,{" "}
+                  <span className={css.accent}>
+                    looks like there aren&apos;t any furries
+                  </span>{" "}
+                  on our adorable page yet. Do not worry! View your pets on the
+                  &quot;find your favorite pet&quot; page and add them to your
+                  favorites.
+                </p>
+              )
+            )}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

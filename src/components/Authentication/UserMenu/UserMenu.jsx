@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
 import {
@@ -13,16 +13,19 @@ const UserMenu = () => {
   const isHomePage = location.pathname === "/home";
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUserName);
+  const navigate = useNavigate();
 
   if (!isLoggedIn) return null;
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    navigate("/profile");
+  };
 
   return (
     <div className={css.container}>
-      <button className={css.userBtn} onClick={handleClick}>
-        <svg className={clsx(css.iconContainer)} aria-label="User icon">
-          <use className={clsx(css.icon)} href={`${iconsPath}#${"icon-man"}`} />
+      <button className={css.btn} onClick={handleClick}>
+        <svg className={clsx(css.icon)} aria-label="User icon">
+          <use href={`${iconsPath}#${"icon-user"}`} />
         </svg>
       </button>
       <p className={clsx(css.userName, isHomePage && css.home)}>{userName}</p>

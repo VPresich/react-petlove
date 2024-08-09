@@ -10,14 +10,29 @@ const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
     items: [],
+    favorites: [],
+    myPets: [],
+    viewedPets: [],
     isLoading: false,
     isAdding: false,
     isDeleting: false,
     error: null,
   },
   reducers: {
-    saveFavorites(state, action) {
+    saveFavoritesIds(state, action) {
       state.items = action.payload.map((favorite) => favorite._id);
+    },
+
+    saveFavorites(state, action) {
+      state.favorites = action.payload;
+    },
+
+    savePets(state, action) {
+      state.myPets = action.payload;
+    },
+
+    saveViewedPets(state, action) {
+      state.viewedPets = action.payload;
     },
   },
 
@@ -65,6 +80,9 @@ const favoritesSlice = createSlice({
       //-------------------------------------------
       .addCase(logOut.fulfilled, (state) => {
         state.items = [];
+        state.favorites = [];
+        state.myPets = [];
+        state.viewedPets = [];
         state.isLoading = false;
         state.isAdding = false;
         state.isDeleting = false;
@@ -75,4 +93,5 @@ const favoritesSlice = createSlice({
 });
 
 export default favoritesSlice.reducer;
-export const { saveFavorites } = favoritesSlice.actions;
+export const { saveFavoritesIds, saveFavorites, savePets, saveViewedPets } =
+  favoritesSlice.actions;

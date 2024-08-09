@@ -15,10 +15,10 @@ export default function AppBar() {
       <Logo />
 
       <AppNav />
-      {/* <div className={css.wrapper}> */}
-      <AuthMenu />
-      <MobileMenuBtn />
-      {/* </div> */}
+      <div className={css.wrapper}>
+        <AuthMenu />
+        <MobileMenuBtn />
+      </div>
     </header>
   );
 }

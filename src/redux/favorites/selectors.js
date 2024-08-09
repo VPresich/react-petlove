@@ -1,10 +1,14 @@
 import { createSelector } from "reselect";
-export const selectFavorites = (state) => state.favorites.items;
+export const selectFavoritesIds = (state) => state.favorites.items;
 
 export const selectIsFavorite = createSelector(
-  [selectFavorites, (_, noticeId) => noticeId],
-  (favorites, noticeId) => {
-    if (!favorites || !noticeId || favorites.length === 0) return false;
-    return favorites.some((favorite) => favorite === noticeId);
+  [selectFavoritesIds, (_, noticeId) => noticeId],
+  (favoritesIds, noticeId) => {
+    if (!favoritesIds || !noticeId || favoritesIds.length === 0) return false;
+    return favoritesIds.some((favorite) => favorite === noticeId);
   }
 );
+
+export const selectFavorites = (state) => state.favorites.favorites;
+export const selectPets = (state) => state.favorites.myPets;
+export const selectViewedPets = (state) => state.favorites.viewedPets;

@@ -26,7 +26,7 @@ export default function NewItem({ item }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read more
+            Learn more
           </a>
         </div>
       </div>

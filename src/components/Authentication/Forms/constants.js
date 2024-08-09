@@ -11,5 +11,9 @@ export const ERR_REGISTRATION = "Registration error";
 export const SUCCESS_REGISTRATION = "Successed registration";
 export const ERR_CONFIRM_REQUIRED = "Confirm Password is required";
 export const ERR_PASSWORD_MATCH = "Passwords must match";
+export const ERR_PHONE = "Phone number is invalide";
+export const ERR_AVATAR_URL = "Avatar url is invalide";
 
 export const EMAIL_PATTERN = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+export const URL_PATTERN = /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/;
+export const PHONE_PATTERN = /^\+38\d{10}$/;

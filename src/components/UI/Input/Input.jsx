@@ -7,7 +7,14 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import checkPasswordSecurity from "../../../auxiliary/checkPasswordSecurity";
 import css from "./Input.module.css";
 
-const Input = ({ name, onChange, value, placeholder, type }) => {
+const Input = ({
+  name,
+  onChange,
+  value,
+  placeholder,
+  type,
+  className = "",
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const {
     setValue,
@@ -30,7 +37,8 @@ const Input = ({ name, onChange, value, placeholder, type }) => {
   const inputClass = clsx(
     css.input,
     errors[name] && css.red,
-    isPasswordSecure && css.green
+    isPasswordSecure && css.green,
+    className && className
   );
 
   return (

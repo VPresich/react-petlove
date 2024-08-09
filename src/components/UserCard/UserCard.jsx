@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
+import { updateUserInfo } from "../../redux/auth/operations";
 import Button from "../../components/UI/Button/Button";
 import UploadFileButton from "../UI/UploadFileButton/UploadFileButton";
 import Image from "../UI/Image/Image";
@@ -8,6 +9,10 @@ import UserIcon from "../UI/UserIcon/UserIcon";
 import AuthButton from "../Authentication/AuthButton/AuthButton";
 import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
 import EditUserForm from "../Authentication/Forms/EditUserForm/EditUserForm";
+import {
+  errNotify,
+  successNotify,
+} from "../../auxiliary/notification/notification";
 import iconsPath from "../../assets/img/icons.svg";
 
 import css from "./UserCard.module.css";
@@ -15,6 +20,7 @@ import css from "./UserCard.module.css";
 const UserCard = () => {
   const { name, phone, email, avatarURL } = useSelector(selectUser);
   const [showUserModal, setShowUserModal] = useState(false);
+  const dispatch = useDispatch();
 
   const handleUserModaleClose = () => {
     setShowUserModal(false);
@@ -24,9 +30,16 @@ const UserCard = () => {
     setShowUserModal(true);
   };
 
-  const handleUserEdit = (values) => {
-    console.log("USEREDITData", values);
-    setShowUserModal(false);
+  const handleUserEdit = (data) => {
+    dispatch(updateUserInfo(data))
+      .unwrap()
+      .then(() => {
+        successNotify("Success user info update");
+        setShowUserModal(false);
+      })
+      .catch(() => {
+        errNotify("error user info update");
+      });
   };
 
   const handleUploadPhoto = (fileUrl) => {

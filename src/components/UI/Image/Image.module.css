@@ -17,8 +17,8 @@
 }
 
 .container.small {
-  width: 94px;
-  height: 94px;
+  width: 80px;
+  height: 80px;
 }
 
 .img {
@@ -57,6 +57,11 @@
   .container.medium {
     width: 110px;
     height: 110px;
+  }
+
+  .container.small {
+    width: 86px;
+    height: 86px;
   }
 
   .category {

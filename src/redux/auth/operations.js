@@ -133,12 +133,7 @@ export const updateUserInfo = createAsyncThunk(
   "auth/currentEdit",
   async (data, thunkAPI) => {
     try {
-      console.log(data);
       const response = await axiosInst.patch("users/current/edit", data);
-      // thunkAPI.dispatch(saveFavorites(response.data.noticesFavorites));
-      // thunkAPI.dispatch(saveViewedPets(response.data.noticesViewed));
-      // thunkAPI.dispatch(savePets(response.data.pets));
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

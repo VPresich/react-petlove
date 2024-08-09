@@ -4,7 +4,12 @@ import { uploadImage, updateUserInfo } from "../../../redux/auth/operations";
 import { errNotify } from "../../../auxiliary/notification/notification";
 import css from "./UploadFileButton.module.css";
 
-const UploadFileButton = ({ children, icon = null, onFileSelect, styles }) => {
+const UploadFileButton = ({
+  children,
+  icon = null,
+  onFileSelect,
+  className,
+}) => {
   const fileInputRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -23,7 +28,7 @@ const UploadFileButton = ({ children, icon = null, onFileSelect, styles }) => {
           dispatch(updateUserInfo({ avatar: result }))
             .unwrap()
             .then((data) => {
-              onFileSelect(data.avatar);
+              onFileSelect && onFileSelect(data.avatar);
             });
         })
         .catch(() => {
@@ -33,8 +38,8 @@ const UploadFileButton = ({ children, icon = null, onFileSelect, styles }) => {
   };
 
   return (
-    <div>
-      <button type="button" onClick={handleButtonClick} className={styles}>
+    <>
+      <button type="button" onClick={handleButtonClick} className={className}>
         {children}
         {icon && icon}
       </button>
@@ -44,7 +49,7 @@ const UploadFileButton = ({ children, icon = null, onFileSelect, styles }) => {
         onChange={handleFileChange}
         className={css.inputFile}
       />
-    </div>
+    </>
   );
 };
 

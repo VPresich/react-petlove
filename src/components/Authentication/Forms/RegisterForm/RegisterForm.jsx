@@ -21,7 +21,7 @@ export default function RegisterForm({ handleRegister }) {
 
   const onSubmit = async (values) => {
     const filteredValues = { ...values };
-    delete filteredValues.confirmation;
+    delete filteredValues.confirmPassword;
     try {
       await handleRegister(filteredValues);
       // reset();

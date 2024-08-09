@@ -54,6 +54,11 @@
     height: 150px;
   }
 
+  .container.medium {
+    width: 110px;
+    height: 110px;
+  }
+
   .category {
     top: 0;
     left: 4px;

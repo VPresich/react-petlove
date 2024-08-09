@@ -1,27 +1,20 @@
-import { useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import Button from "../../components/UI/Button/Button";
+import UploadFileButton from "../UI/UploadFileButton/UploadFileButton";
 import Image from "../UI/Image/Image";
 import UserIcon from "../UI/UserIcon/UserIcon";
 import AuthButton from "../Authentication/AuthButton/AuthButton";
 import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
 import EditUserForm from "../Authentication/Forms/EditUserForm/EditUserForm";
-import { uploadImage, updateUserInfo } from "../../redux/auth/operations";
 import iconsPath from "../../assets/img/icons.svg";
-import {
-  errNotify,
-  // successNotify,
-} from "../../auxiliary/notification/notification";
 
 import css from "./UserCard.module.css";
 
 const UserCard = () => {
   const { name, phone, email, avatarURL } = useSelector(selectUser);
-  const dispatch = useDispatch();
   const [showUserModal, setShowUserModal] = useState(false);
-
-  const fileInputRef = useRef(null);
 
   const handleUserModaleClose = () => {
     setShowUserModal(false);
@@ -36,28 +29,8 @@ const UserCard = () => {
     setShowUserModal(false);
   };
 
-  const handleUploadPhoto = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      dispatch(uploadImage(file))
-        .unwrap()
-        .then((result) => {
-          dispatch(updateUserInfo({ avatar: result }))
-            .unwrap()
-            .catch(() => {
-              errNotify("Error update avatar");
-            });
-        })
-        .catch(() => {
-          errNotify("Error upload avatar");
-        });
-    }
+  const handleUploadPhoto = (fileUrl) => {
+    console.log("fileURL: ", fileUrl);
   };
 
   return (
@@ -71,17 +44,16 @@ const UserCard = () => {
             </svg>
           </span>
         </div>
-        <div>
-          <button
-            onClick={handleUserModaleOpen}
-            type="button"
-            className={css.editBtn}
-          >
-            <svg className={css.iconEdit} aria-label="Edit icon">
-              <use href={`${iconsPath}#icon-edit`} />
-            </svg>
-          </button>
-        </div>
+
+        <button
+          onClick={handleUserModaleOpen}
+          type="button"
+          className={css.editBtn}
+        >
+          <svg className={css.iconEdit} aria-label="Edit icon">
+            <use href={`${iconsPath}#icon-edit`} />
+          </svg>
+        </button>
       </div>
       <div className={css.photoContainer}>
         {avatarURL ? (
@@ -89,30 +61,23 @@ const UserCard = () => {
         ) : (
           <div className={css.uploadWrapper}>
             <UserIcon />
-            <button
+            <UploadFileButton
               className={css.uploadBtn}
-              type="button"
-              onClick={handleUploadPhoto}
+              onFileSelect={handleUploadPhoto}
             >
               Upload photo
-            </button>
-            <input
-              className={css.inputFile}
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-            />
+            </UploadFileButton>
           </div>
         )}
       </div>
 
-      <p className={css.infoTitle}></p>
+      <p className={css.infoTitle}>My information</p>
       <div className={css.infoWrapper}>
         <span className={css.item}>{name}</span>
         <span className={css.item}>{email}</span>
         <span className={css.item}>{phone}</span>
       </div>
-      <div className={css.addBtnContainer}>
+      <div className={css.addWrapper}>
         <span className={css.addTitle}>My pets</span>
         <Button
           size="sxxsmall"

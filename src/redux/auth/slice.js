@@ -6,6 +6,7 @@ import {
   logOut,
   refreshUser,
   getFullUserInfo,
+  updateUserInfo,
 } from "./operations";
 
 const initialState = {
@@ -80,6 +81,8 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
+        state.user.phone = action.payload.phone;
+        state.user.avatarURL = action.payload.avatar;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
@@ -103,7 +106,24 @@ const authSlice = createSlice({
       })
       .addCase(getFullUserInfo.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      //------------------------------------------------;
+      .addCase(updateUserInfo.pending, (state) => {
+        state.isLoggedIn = false;
+        state.error = null;
+      })
+      .addCase(updateUserInfo.fulfilled, (state, action) => {
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.phone = action.payload.phone;
+        state.user.avatarURL = action.payload.avatar;
+        state.isLoggedIn = true;
+        state.error = null;
+      })
+      .addCase(updateUserInfo.rejected, (state, action) => {
+        state.error = action.payload;
       });
+    //------------------------------------------------;
   },
 });
 

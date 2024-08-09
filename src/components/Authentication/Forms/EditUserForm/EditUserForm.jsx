@@ -10,15 +10,15 @@ import css from "./EditUserForm.module.css";
 import { selectUser } from "../../../../redux/auth/selectors";
 
 const EditUserForm = ({ handleEdit }) => {
-  const { name, email, phone, photoURL } = useSelector(selectUser);
+  const { name, email, phone, avatarURL } = useSelector(selectUser);
 
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
-      name: { name },
-      email: { email },
-      phone: { phone },
-      photoUrl: { photoURL },
+      name: name,
+      email: email,
+      phone: phone,
+      avatarURL: avatarURL,
     },
   });
 
@@ -40,8 +40,8 @@ const EditUserForm = ({ handleEdit }) => {
         <p className={css.title}>Edit information</p>
         <div className={css.content}>
           <div className={css.photoContainer}>
-            {photoURL ? (
-              <Image imgUrl={photoURL} isSmall={false} />
+            {avatarURL ? (
+              <Image imgUrl={avatarURL} isSmall={false} />
             ) : (
               <UserIcon />
             )}

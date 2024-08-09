@@ -9,7 +9,7 @@ import { getFullUserInfo } from "../../redux/auth/operations";
 import DocumentTitle from "../../components/DocumentTitle";
 import {
   errNotify,
-  successNotify,
+  // successNotify,
 } from "../../auxiliary/notification/notification";
 import css from "./ProfilePage.module.css";
 
@@ -21,9 +21,8 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(getFullUserInfo())
       .unwrap()
-      .then((data) => {
-        console.log(data);
-        successNotify("success getFullUserInfo");
+      .then(() => {
+        // successNotify("success getFullUserInfo");
       })
       .catch(() => {
         errNotify("Error getFullUserInfo");

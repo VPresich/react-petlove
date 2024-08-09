@@ -7,14 +7,16 @@
   padding-right: 20px;
 
   display: flex;
+  align-items: center;
   flex-direction: column;
   background-color: var(--white);
 }
 
 .firstLine {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+
   align-items: center;
   margin-bottom: 28px;
 }
@@ -52,6 +54,32 @@
   height: 100%;
   fill: var(--white);
   stroke: var(--white);
+}
+
+.uploadWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uploadBtn {
+  width: 94px;
+  border: none;
+  outline: none;
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  background-color: transparent;
+  text-decoration-skip-ink: none;
+  color: var(--primary);
+}
+
+.inputFile {
+  display: none;
 }
 
 .editBtn {
@@ -106,6 +134,7 @@
 }
 
 .addBtnContainer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

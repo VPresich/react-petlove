@@ -14,6 +14,7 @@ const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
 const ProfilePage = lazy(() => import("../pages/ProfilePage/ProfilePage"));
 const AddPetPage = lazy(() => import("../pages/AddPetPage/AddPetPage"));
+const Page404 = lazy(() => import("../pages/Page404/Page404"));
 
 const App = () => {
   return (
@@ -28,7 +29,9 @@ const App = () => {
         <Route path="register" element={<RegisterPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="add-pet" element={<AddPetPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="page404" element={<Page404 />} />
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+        <Route path="*" element={<Navigate to="/page404" replace />} />
       </Route>
     </Routes>
   );

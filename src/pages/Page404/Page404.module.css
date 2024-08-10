@@ -1,0 +1,138 @@
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  padding-top: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.container {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--orange);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.imgWrapper {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.catContainer {
+  width: 109px;
+  height: 109px;
+}
+
+.four {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  font-size: 120px;
+  line-height: 100%;
+  color: var(--white);
+}
+
+.btn {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  color: var(--orange);
+  border-radius: 30px;
+  width: 150px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  margin: 0;
+  background-color: var(--orange-light);
+}
+
+.text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 375px) {
+  .section {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    width: 768px;
+    padding-top: 114px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+  }
+
+  .container {
+    border-radius: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .imgWrapper {
+    margin-bottom: 50px;
+  }
+
+  .four {
+    font-size: 300px;
+  }
+
+  .catContainer {
+    width: 280px;
+    height: 280px;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+
+  .btn {
+    font-size: 16px;
+    line-height: 1.25;
+    width: 162px;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    width: 1280px;
+    padding-top: 118px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 30px;
+  }
+
+  .container {
+    padding-left: 283px;
+    padding-right: 283px;
+  }
+
+  .imgWrapper {
+    margin-bottom: 40px;
+  }
+}

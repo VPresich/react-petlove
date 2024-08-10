@@ -18,3 +18,14 @@ export function getDateWithFormat(dateString) {
   const year = date.getFullYear();
   return `${day}/${month}/${year}`;
 }
+
+export function toLowerCase(obj) {
+  const newObj = {};
+  for (let key in obj) {
+    const lowerValue =
+      typeof obj[key] === "string" ? obj[key].toLowerCase() : obj[key];
+
+    newObj[key] = lowerValue;
+  }
+  return newObj;
+}

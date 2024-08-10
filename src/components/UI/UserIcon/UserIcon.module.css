@@ -20,6 +20,12 @@
   border-radius: 100%;
 }
 
+.container.sxsmall {
+  width: 68px;
+  height: 68px;
+  border-radius: 100%;
+}
+
 .icon {
   width: 50%;
   height: 50%;
@@ -37,8 +43,12 @@
     width: 110px;
     height: 110px;
   }
-
   .container.medium {
+    width: 86px;
+    height: 86px;
+  }
+
+  .container.sxsmall {
     width: 86px;
     height: 86px;
   }

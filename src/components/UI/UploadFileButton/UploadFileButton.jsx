@@ -7,6 +7,7 @@ import css from "./UploadFileButton.module.css";
 const UploadFileButton = ({
   children,
   icon = null,
+  isUploadToServer = true,
   onFileSelect,
   className,
 }) => {
@@ -25,11 +26,10 @@ const UploadFileButton = ({
       dispatch(uploadImage(file))
         .unwrap()
         .then((result) => {
-          dispatch(updateUserInfo({ avatar: result }))
-            .unwrap()
-            .then((data) => {
-              onFileSelect && onFileSelect(data.avatar);
-            });
+          if (isUploadToServer) {
+            dispatch(updateUserInfo({ avatar: result }));
+          }
+          onFileSelect && onFileSelect(result);
         })
         .catch(() => {
           errNotify("Error upload avatar");

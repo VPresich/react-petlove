@@ -5,8 +5,9 @@ import {
   ERR_PASSWORD,
   ERR_EMAIL_REQUIRED,
   ERR_PASSWORD_REQUIRED,
-  EMAIL_PATTERN,
 } from "../constants";
+
+import { EMAIL_PATTERN } from "../../../../auxiliary/patterns";
 
 export const feedbackSchema = Yup.object().shape({
   email: Yup.string()

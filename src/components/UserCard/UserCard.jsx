@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { updateUserInfo } from "../../redux/auth/operations";
@@ -21,6 +22,7 @@ const UserCard = () => {
   const { name, phone, email, avatarURL } = useSelector(selectUser);
   const [showUserModal, setShowUserModal] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleUserModaleClose = () => {
     setShowUserModal(false);
@@ -44,6 +46,10 @@ const UserCard = () => {
 
   const handleUploadPhoto = (fileUrl) => {
     console.log("fileURL: ", fileUrl);
+  };
+
+  const handleAddPet = () => {
+    navigate("/add-pet");
   };
 
   return (
@@ -93,6 +99,7 @@ const UserCard = () => {
       <div className={css.addWrapper}>
         <span className={css.addTitle}>My pets</span>
         <Button
+          onClick={handleAddPet}
           size="sxxsmall"
           width="103px"
           icon={

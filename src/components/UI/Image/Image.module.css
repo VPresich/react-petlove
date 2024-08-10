@@ -21,6 +21,11 @@
   height: 80px;
 }
 
+.container.sxsmall {
+  width: 68px;
+  height: 68px;
+}
+
 .img {
   border-radius: 50%;
   width: 100%;
@@ -60,6 +65,11 @@
   }
 
   .container.small {
+    width: 86px;
+    height: 86px;
+  }
+
+  .container.sxsmall {
     width: 86px;
     height: 86px;
   }

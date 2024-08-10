@@ -1,0 +1,243 @@
+.form {
+  font-family: "Manrope", sans-serif;
+  width: 100%;
+  padding-top: 28px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: var(--white);
+  position: relative;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 64px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+}
+
+.subTitle {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+  color: rgba(43, 43, 42, 0.4);
+}
+
+.genderGroupe {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+}
+
+.photoContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.photoInput {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uploadBtn {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--orange-light);
+  color: var(--primary);
+  border-radius: 30px;
+  height: 36px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.btnIconContainer {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnIcon {
+  width: 100%;
+  height: 100%;
+  fill: var(--orange);
+}
+
+.uploadBtn:hover {
+  background-color: var(--orange-light-hover);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 31px;
+}
+
+.inputAvatarUrl {
+  width: 100%;
+  border-radius: 30px;
+  padding: 9px 20px 9px 10px;
+  height: 36px;
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+.inputsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.dropdownWrapper {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 375px) {
+  .title {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .dropdownWrapper {
+    max-width: 143px;
+  }
+
+  .subTitle {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .photoInput {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .uploadBtn {
+    width: 117px;
+  }
+
+  .inputAvatarUrl {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    border-radius: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 136px;
+    padding-right: 136px;
+  }
+
+  .genderGroupe {
+    top: 112px;
+    left: 136px;
+  }
+
+  .dropdownWrapper {
+    max-width: 50%;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .subTitle {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .photoContainer {
+    margin-bottom: 12px;
+  }
+
+  .photoInput {
+    gap: 8px;
+  }
+
+  .uploadBtn {
+    height: 42px;
+    width: 146px;
+    font-size: 14px;
+    line-height: 1.29;
+    gap: 8px;
+  }
+
+  .content {
+    row-gap: 18px;
+    margin-bottom: 40px;
+  }
+
+  .inputAvatarUrl {
+    width: 278px;
+    font-size: 14px;
+    line-height: 1.29;
+    height: 42px;
+  }
+
+  .dropdownWrapper {
+    width: 210px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .buttons {
+    gap: 12px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 50%;
+  }
+
+  .genderGroupe {
+    top: 132px;
+    left: 80px;
+  }
+}

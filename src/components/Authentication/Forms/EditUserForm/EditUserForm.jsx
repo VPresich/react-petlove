@@ -62,7 +62,7 @@ const EditUserForm = ({ handleEdit }) => {
             />
             <UploadFileButton
               icon={
-                <svg className={css.btnIconContainer} aria-label="heart icon">
+                <svg className={css.btnIconContainer} aria-label="Upload icon">
                   <use className={css.icon} href={`${iconsPath}#icon-upload`} />
                 </svg>
               }

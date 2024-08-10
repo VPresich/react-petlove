@@ -20,7 +20,6 @@ export const addFavorite = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axiosInst.post(`notices/favorites/add/${id}`);
-      console.log("Operations: add_favorite", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -33,6 +32,31 @@ export const removeFavorite = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axiosInst.delete(`notices/favorites/remove/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addPet = createAsyncThunk("pets/add", async (data, thunkAPI) => {
+  try {
+    const response = await axiosInst.post(`users/current/pets/add`, data);
+    console.log("Operations: add_pet", response.data);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const removePetById = createAsyncThunk(
+  "pets/removePetById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axiosInst.delete(
+        `users/current/pets/remove/${id}`
+      );
+      console.log("Operations: remove_pet", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

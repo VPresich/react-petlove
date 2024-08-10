@@ -1,0 +1,68 @@
+.radioGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.customRadio.female {
+  background-color: var(--red-light);
+}
+
+.customRadio.male {
+  background-color: var(--blue-light);
+}
+
+.customRadio.multiple {
+  background-color: var(--orange-light);
+}
+
+.icon.female {
+  stroke: var(--red);
+}
+
+.icon.male {
+  stroke: var(--blue);
+}
+
+.icon.multiple {
+  fill: var(--orange);
+}
+
+.radioInput:checked + .customRadio .icon {
+  stroke: var(--white);
+}
+
+.radioInput:checked + .customRadio.female {
+  background-color: var(--red);
+}
+
+.radioInput:checked + .customRadio.male {
+  background-color: var(--blue);
+}
+
+.radioInput:checked + .customRadio.multiple {
+  background-color: var(--orange);
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

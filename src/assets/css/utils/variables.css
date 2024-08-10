@@ -15,4 +15,9 @@
 
   --error: #ef2447;
   --section-bgr: #f3f3f3;
+
+  --red-light: rgba(244, 63, 94, 0.1);
+  --blue-light: rgba(84, 173, 255, 0.1);
+  --blue: #54adff;
+  --red: #f43f5e;
 }

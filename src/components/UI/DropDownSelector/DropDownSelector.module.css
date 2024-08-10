@@ -17,6 +17,7 @@
   cursor: pointer;
   position: relative;
   background-color: var(--white);
+  border: 1px solid rgba(38, 38, 38, 0.15);
 }
 
 .btn .text {
@@ -99,5 +100,10 @@
     height: 48px;
     padding-left: 14px;
     padding-right: 14px;
+  }
+  .dropdown {
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
   }
 }

@@ -27,3 +27,7 @@ export const selectNoticeById = createSelector(
 export const selectCategoriesList = (state) => state.notices.categories;
 export const selectSexList = (state) => state.notices.sex;
 export const selectSpeciesList = (state) => state.notices.species;
+
+export const selectPetTypes = createSelector([selectSpeciesList], (types) =>
+  types.filter((type) => type !== "Show all")
+);

@@ -143,6 +143,10 @@
   color: var(--primary);
 }
 
+.petSection {
+  margin-bottom: 20px;
+}
+
 .addWrapper {
   width: 100%;
   display: flex;
@@ -168,6 +172,9 @@
 @media screen and (min-width: 375px) {
   .container {
     width: 335px;
+  }
+  .petSection {
+    margin-bottom: 40px;
   }
 }
 
@@ -230,6 +237,9 @@
     font-size: 18px;
     line-height: 1.33;
   }
+  .petSection {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -251,5 +261,8 @@
 
   .item {
     width: 100%;
+  }
+  .petSection {
+    margin-bottom: 40px;
   }
 }

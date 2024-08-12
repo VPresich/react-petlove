@@ -4,6 +4,8 @@ import {
   fetchFavoritesByIds,
   addFavorite,
   removeFavorite,
+  addPet,
+  removePetById,
 } from "../favorites/operations";
 
 const favoritesSlice = createSlice({
@@ -50,6 +52,8 @@ const favoritesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+
+      //---------------------------------------------
       .addCase(addFavorite.pending, (state) => {
         state.isAdding = true;
         state.error = null;
@@ -60,9 +64,10 @@ const favoritesSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(addFavorite.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isAdding = false;
         state.error = action.payload;
       })
+
       //---------------------------------------------
       .addCase(removeFavorite.pending, (state, action) => {
         state.isDeleting = action.meta.arg;
@@ -74,10 +79,41 @@ const favoritesSlice = createSlice({
         state.error = null;
       })
       .addCase(removeFavorite.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isDeleting = false;
         state.error = action.payload;
       })
       //-------------------------------------------
+
+      .addCase(addPet.pending, (state) => {
+        state.isAdding = true;
+        state.error = null;
+      })
+      .addCase(addPet.fulfilled, (state, action) => {
+        state.isAdding = false;
+        state.error = false;
+        state.myPets = action.payload.pets;
+      })
+      .addCase(addPet.rejected, (state, action) => {
+        state.isAdding = false;
+        state.error = action.payload;
+      })
+
+      //---------------------------------------------
+      .addCase(removePetById.pending, (state, action) => {
+        state.isDeleting = action.meta.arg;
+        state.error = null;
+      })
+      .addCase(removePetById.fulfilled, (state, action) => {
+        state.isDeleting = false;
+        state.error = null;
+        state.myPets = action.payload.pets;
+      })
+      .addCase(removePetById.rejected, (state, action) => {
+        state.isDeleting = false;
+        state.error = action.payload;
+      })
+      //-------------------------------------------
+
       .addCase(logOut.fulfilled, (state) => {
         state.items = [];
         state.favorites = [];

@@ -104,22 +104,24 @@ const UserCard = () => {
         <span className={css.item}>{email}</span>
         <span className={css.item}>{phone}</span>
       </div>
-      <div className={css.addWrapper}>
-        <span className={css.addTitle}>My pets</span>
-        <Button
-          onClick={handleAddPet}
-          size="sxxsmall"
-          width="103px"
-          icon={
-            <svg className={css.iconPlus} aria-label="Plus icon">
-              <use href={`${iconsPath}#icon-plus`} />
-            </svg>
-          }
-        >
-          Add pets
-        </Button>
+      <div className={css.petSection}>
+        <div className={css.addWrapper}>
+          <span className={css.addTitle}>My pets</span>
+          <Button
+            onClick={handleAddPet}
+            size="sxxsmall"
+            width="103px"
+            icon={
+              <svg className={css.iconPlus} aria-label="Plus icon">
+                <use href={`${iconsPath}#icon-plus`} />
+              </svg>
+            }
+          >
+            Add pets
+          </Button>
+        </div>
+        <PetsList />
       </div>
-      <PetsList />
       <AuthButton widthBtn="114px" background="secondary" size="medium" />
       {showUserModal && (
         <ModalWrapper onClose={handleUserModaleClose}>

@@ -6,7 +6,6 @@ import css from "./PetsList.module.css";
 const PetsList = () => {
   const pets = useSelector(selectPets);
   if (pets.length === 0) return;
-  console.log("Pet:", pets);
   return (
     <ul className={css.container}>
       {pets.map((pet) => (

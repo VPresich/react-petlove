@@ -72,34 +72,34 @@ const FindPetPage = () => {
   return (
     <>
       <DocumentTitle>Find pet page</DocumentTitle>
-      <section className={css.section}>
-        <div className={css.container}>
-          <h2 className="visually-hidden"> Notices</h2>
-          <PageTitle>Find your favorite pet</PageTitle>
-          <Filter />
-          <div className={css.catalog}>
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <>
-                {!error && noticesNum > 0 ? (
-                  <NoticeItemList notices={notices} />
-                ) : (
-                  <p className={css.text}>Not found notices.</p>
-                )}
-                {isMore && (
-                  <Button
-                    onClick={handleLoadMore}
-                    background="secondary"
-                    width="200px"
-                  >
-                    Load More
-                  </Button>
-                )}
-              </>
-            )}
-          </div>
+      <section className={css.container}>
+        {/* <div className={css.container}> */}
+        <h2 className="visually-hidden"> Notices</h2>
+        <PageTitle>Find your favorite pet</PageTitle>
+        <Filter />
+        <div className={css.catalog}>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <>
+              {!error && noticesNum > 0 ? (
+                <NoticeItemList notices={notices} />
+              ) : (
+                <p className={css.text}>Not found notices.</p>
+              )}
+              {isMore && (
+                <Button
+                  onClick={handleLoadMore}
+                  background="secondary"
+                  width="200px"
+                >
+                  Load More
+                </Button>
+              )}
+            </>
+          )}
         </div>
+        {/* </div> */}
       </section>
     </>
   );

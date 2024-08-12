@@ -1,7 +1,7 @@
 .radioGroup {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .radioLabel {
@@ -20,8 +20,8 @@
   border-radius: 30px;
   padding-top: 12px;
   padding-bottom: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 14px;
+  padding-right: 14px;
   height: 42px;
 }
 

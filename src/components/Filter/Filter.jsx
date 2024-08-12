@@ -14,6 +14,7 @@ import {
   saveKeyword,
   saveLocation,
   saveSortParam,
+  resetFilters,
 } from "../../redux/filters/slice";
 import {
   selectCategoriesList,
@@ -129,47 +130,48 @@ const Filter = () => {
     [dispatch]
   );
 
+  const handleReset = () => {
+    dispatch(resetFilters());
+  };
+
   return (
     <>
       <div className={css.filtersContainer}>
         <div className={css.searchLine}>
-          <div className={css.searchContainer}>
-            <SearchForm onSearch={handleSearch} initTopic={memoizedKeyword} />
-          </div>
+          <SearchForm
+            onSearch={handleSearch}
+            initTopic={memoizedKeyword}
+            className={css.searchContainer}
+          />
 
-          <div className={css.categoryContainer}>
-            <DropDownSelector
-              btnLabel="Category"
-              options={memoizedCategories}
-              selectedOption={memoizedSelectedCategory}
-              onChange={handleCategoryChange}
-            />
-          </div>
+          <DropDownSelector
+            btnLabel="Category"
+            options={memoizedCategories}
+            selectedOption={memoizedSelectedCategory}
+            onChange={handleCategoryChange}
+            className={css.categoryContainer}
+          />
 
-          <div className={css.genderContainer}>
-            <DropDownSelector
-              btnLabel="By gender"
-              options={memoizedSex}
-              selectedOption={memoizedSelectedSex}
-              onChange={handleGenderChange}
-            />
-          </div>
+          <DropDownSelector
+            btnLabel="By gender"
+            options={memoizedSex}
+            selectedOption={memoizedSelectedSex}
+            onChange={handleGenderChange}
+            className={css.genderContainer}
+          />
+          <DropDownSelector
+            btnLabel="By Type"
+            options={memoizedSpecies}
+            selectedOption={memoizedSelectedSpecies}
+            onChange={handleTypeChange}
+            className={css.typeContainer}
+          />
 
-          <div className={css.typeContainer}>
-            <DropDownSelector
-              btnLabel="By Type"
-              options={memoizedSpecies}
-              selectedOption={memoizedSelectedSpecies}
-              onChange={handleTypeChange}
-            />
-          </div>
-
-          <div className={css.locationContainer}>
-            <LocationSearch
-              onSearch={handleLocationSearch}
-              initlocation={memoizedLocation}
-            />
-          </div>
+          <LocationSearch
+            onSearch={handleLocationSearch}
+            initlocation={memoizedLocation}
+            className={css.locationContainer}
+          />
         </div>
 
         <HorSeparator />
@@ -177,14 +179,20 @@ const Filter = () => {
         <div className={css.sortLine}>
           <SortingForm
             options={
-              selectedCategory === "Sell" || selectedCategory === "Show all"
+              selectedCategory.toLowerCase() === "sell" ||
+              selectedCategory.toLowerCase() === "show all"
                 ? SELL_SORTING
                 : SORTING
             }
             handleValues={handleSorting}
             initValue={memoizedSelectedSortLabel}
           />
-          <Button width={viewportWidth > 767 ? "136px" : "100%"}>Reset</Button>
+          <Button
+            onClick={handleReset}
+            width={viewportWidth > 767 ? "190px" : "100%"}
+          >
+            Reset filters
+          </Button>
         </div>
       </div>
     </>

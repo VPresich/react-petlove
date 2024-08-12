@@ -1,9 +1,10 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { feedbackSchema } from "./feedbackScema";
+import clsx from "clsx";
 import InputWithButton from "../InputWithButton/InputWithButton";
 
-const LocationSearch = ({ onSearch, initLocation = "" }) => {
+const LocationSearch = ({ onSearch, initLocation = "", className = null }) => {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
     defaultValues: {
@@ -20,7 +21,10 @@ const LocationSearch = ({ onSearch, initLocation = "" }) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className={clsx(className && className)}
+      >
         <InputWithButton
           name="location"
           placeholder="Location"

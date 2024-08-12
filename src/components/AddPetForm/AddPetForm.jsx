@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../UI/Button/Button";
-import Image from "../UI/Image/Image";
-import UserIcon from "../UI/UserIcon/UserIcon";
+import ImageElem from "../UI/ImageElem/ImageElem";
+import IconElem from "../UI/IconElem/IconElem";
 import DropDownSelector from "../UI/DropDownSelector/DropDownSelector";
 import Input from "../UI/Input/Input";
 import { selectPetTypes } from "../../redux/notices/selectors";
@@ -43,7 +43,7 @@ const AddPetForm = ({ handleAddPet }) => {
       imgURL: "",
       species: "",
       birthday: "",
-      sex: "",
+      sex: "unknown",
     },
   });
 
@@ -77,9 +77,9 @@ const AddPetForm = ({ handleAddPet }) => {
         />
         <div className={css.photoContainer}>
           {imgURL ? (
-            <Image imgUrl={imgURL} size="sxsmall" />
+            <ImageElem imgUrl={imgURL} containerClass={css.imgContainer} />
           ) : (
-            <UserIcon size="sxsmall" iconId="icon-pet" />
+            <IconElem iconId="icon-pet" containerClass={css.imgContainer} />
           )}
         </div>
         <div className={css.content}>
@@ -131,7 +131,7 @@ const AddPetForm = ({ handleAddPet }) => {
               render={({ field }) => (
                 <DatePickerInput
                   {...field}
-                  name="birthday"
+                  // name="birthday"
                   setValue={setValue}
                   value={field.value}
                 />

@@ -50,6 +50,11 @@
   margin-bottom: 16px;
 }
 
+.imgContainer {
+  width: 68px;
+  height: 68px;
+}
+
 .photoInput {
   display: flex;
   flex-direction: column;
@@ -189,6 +194,16 @@
 
   .photoContainer {
     margin-bottom: 12px;
+  }
+
+  .imgContainer {
+    width: 86px;
+    height: 86px;
+  }
+
+  .imgContainer {
+    width: 86px;
+    height: 86px;
   }
 
   .photoInput {

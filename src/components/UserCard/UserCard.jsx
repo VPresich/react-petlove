@@ -5,8 +5,9 @@ import { selectUser } from "../../redux/auth/selectors";
 import { updateUserInfo } from "../../redux/auth/operations";
 import Button from "../../components/UI/Button/Button";
 import UploadFileButton from "../UI/UploadFileButton/UploadFileButton";
-import Image from "../UI/Image/Image";
-import UserIcon from "../UI/UserIcon/UserIcon";
+import ImageElem from "../UI/ImageElem/ImageElem";
+import IconElem from "../UI/IconElem/IconElem";
+import PetsList from "../PetsList/PetsList";
 import AuthButton from "../Authentication/AuthButton/AuthButton";
 import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
 import EditUserForm from "../Authentication/Forms/EditUserForm/EditUserForm";
@@ -76,10 +77,17 @@ const UserCard = () => {
       </div>
       <div className={css.photoContainer}>
         {avatarURL ? (
-          <Image imgUrl={avatarURL} size="medium" />
+          <ImageElem
+            imgUrl={avatarURL}
+            altText={name}
+            containerClass={css.imgContainer}
+          />
         ) : (
           <div className={css.uploadWrapper}>
-            <UserIcon />
+            <IconElem
+              containerClass={css.imgContainer}
+              iconClass={css.iconAvatar}
+            />
             <UploadFileButton
               className={css.uploadBtn}
               onFileSelect={handleUploadPhoto}
@@ -110,8 +118,8 @@ const UserCard = () => {
         >
           Add pets
         </Button>
-        <></>
       </div>
+      <PetsList />
       <AuthButton widthBtn="114px" background="secondary" size="medium" />
       {showUserModal && (
         <ModalWrapper onClose={handleUserModaleClose}>

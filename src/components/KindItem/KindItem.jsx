@@ -10,7 +10,9 @@ const KindItem = ({ title, value }) => {
         {capitalizeFirstLetter(title)}
       </span>
       <span className={clsx(css.item, css.value)}>
-        {title === "birthday" && value ? formatDate(value) : value}
+        {title === "birthday" && value
+          ? formatDate(value)
+          : capitalizeFirstLetter(value)}
       </span>
     </div>
   );

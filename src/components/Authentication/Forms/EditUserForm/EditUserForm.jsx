@@ -1,8 +1,8 @@
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import Button from "../../../UI/Button/Button";
-import Image from "../../../UI/Image/Image";
-import UserIcon from "../../../UI/UserIcon/UserIcon";
+import ImageElem from "../../../UI/ImageElem/ImageElem";
+import IconElement from "../../../UI/IconElem/IconElem";
 import Input from "../../../UI/Input/Input";
 import UploadFileButton from "../../../UI/UploadFileButton/UploadFileButton";
 import { feedbackSchema } from "./feedbackSchema";
@@ -38,14 +38,19 @@ const EditUserForm = ({ handleEdit }) => {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
         <p className={css.title}>Edit information</p>
-
-        <div className={css.photoContainer}>
-          {avatarURL ? (
-            <Image imgUrl={avatarURL} size="small" />
-          ) : (
-            <UserIcon size="medium" />
-          )}
-        </div>
+        {avatarURL ? (
+          <ImageElem
+            imgUrl={avatarURL}
+            altText={name}
+            containerClass={css.imgContainer}
+          />
+        ) : (
+          <IconElement
+            containerClass={css.imgContainer}
+            iconClass={css.userIcon}
+          />
+          // <UserIcon size="medium" />
+        )}
         <div className={css.content}>
           <div className={css.photoInput}>
             <Controller

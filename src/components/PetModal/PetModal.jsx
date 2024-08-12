@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
 import { selectIsFavorite } from "../../redux/favorites/selectors";
-import Image from "../UI/Image/Image";
+import ImageElem from "../UI/ImageElem/ImageElem";
 import Stars from "../../components/UI/Stars/Stars";
 import KindList from "../KindList/KindList";
 import Button from "../UI/Button/Button";
@@ -24,9 +24,12 @@ const PetModal = ({ notice, handleContact, handleFavorite }) => {
     <React.Fragment>
       <form className={css.form}>
         <div className={css.content}>
-          <div className={css.imgWrapper}>
-            <Image imgUrl={imgURL} category={category} />
-          </div>
+          <ImageElem
+            imgUrl={imgURL}
+            altText="pet"
+            detail={category}
+            containerClass={css.imgWrapper}
+          />
 
           <div className={css.titleWrapper}>
             <p className={css.title}>{title}</p>

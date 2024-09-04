@@ -3,22 +3,23 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchForm from "../../components/UI/SearchForm/SearchForm";
 import { getNewsWithParams } from "../../redux/news/operations";
 import { setPage, setKeyword } from "../../redux/news/slice";
+import PaginationBlock from "../../components/UI/PaginationBlock/PaginationBlock";
 import {
   errNotify,
   successNotify,
 } from "../../auxiliary/notification/notification";
+
 import {
   selectNews,
   selectCurrentPage,
+  selectTotalPages,
   selectIsLoading,
   selectItemsPerPage,
-  selectIsMore,
   selectError,
   selectNewsNumber,
   selectKeyword,
 } from "../../redux/news/selectors";
 
-import Button from "../../components/UI/Button/Button";
 import DocumentTitle from "../../components/DocumentTitle";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import NewsList from "../../components/NewsList/NewsList";
@@ -28,11 +29,10 @@ import css from "./NewsPage.module.css";
 const NewsPage = () => {
   const dispatch = useDispatch();
   const newsList = useSelector(selectNews);
-
   const currentPage = useSelector(selectCurrentPage);
+  const totalPages = useSelector(selectTotalPages);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);
-  const isMore = useSelector(selectIsMore);
   const error = useSelector(selectError);
   const noticesNum = useSelector(selectNewsNumber);
   const keyword = useSelector(selectKeyword);
@@ -60,12 +60,11 @@ const NewsPage = () => {
 
   const handleSearch = (topic) => {
     dispatch(setKeyword(topic));
-
     shouldFetch.current = true;
   };
 
-  const handleLoadMore = () => {
-    dispatch(setPage(currentPage + 1));
+  const handleLoadPage = (page) => {
+    dispatch(setPage(page));
     shouldFetch.current = true;
   };
 
@@ -91,15 +90,12 @@ const NewsPage = () => {
                 ) : (
                   <p className={css.text}>Not found news.</p>
                 )}
-                {isMore && (
-                  <Button
-                    onClick={handleLoadMore}
-                    background="secondary"
-                    width="200px"
-                  >
-                    Load More
-                  </Button>
-                )}
+
+                <PaginationBlock
+                  totalPages={totalPages}
+                  currentPage={currentPage}
+                  onClick={handleLoadPage}
+                />
               </>
             )}
           </div>

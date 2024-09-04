@@ -53,12 +53,7 @@ const noticesSlice = createSlice({
         state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
-
-        if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.results];
-        else {
-          state.items = action.payload.results;
-        }
+        state.items = action.payload.results;
       })
 
       .addCase(getNoticesPerPage.rejected, (state, action) => {
@@ -78,12 +73,7 @@ const noticesSlice = createSlice({
         state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
         state.totalPages = action.payload.totalPages;
-
-        if (state.currentPage > 1)
-          state.items = [...state.items, ...action.payload.results];
-        else {
-          state.items = action.payload.results;
-        }
+        state.items = action.payload.results;
       })
       .addCase(getNoticesWithParams.rejected, (state, action) => {
         state.isLoading = false;

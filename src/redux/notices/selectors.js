@@ -10,7 +10,7 @@ export const selectError = (state) => state.notices.error;
 export const selectItemsPerPage = (state) => state.notices.itemsPerPage;
 export const selectCurrentPage = (state) => state.notices.currentPage;
 
-const selectTotalPages = (state) => state.notices.totalPages;
+export const selectTotalPages = (state) => state.notices.totalPages;
 
 export const selectFavorites = (state) => state.notices.favorites;
 

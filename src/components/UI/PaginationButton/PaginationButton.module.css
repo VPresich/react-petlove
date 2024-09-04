@@ -1,0 +1,77 @@
+.btn {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border-radius: 100%;
+  border: 1px solid rgba(38, 38, 38, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: transparent;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  flex-shrink: 0;
+  color: var(--primary);
+  transition: background-color 0.3s ease-in-out, stroke 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.text {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  border-radius: 100%;
+  color: var(--primary);
+}
+
+.btn:hover,
+.btn.active {
+  background-color: var(--orange);
+  color: var(--secondary);
+  border: none;
+}
+
+.btn:disabled {
+  color: rgba(38, 38, 38, 0.05);
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  color: rgba(38, 38, 38, 0.05);
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: rgba(38, 38, 38, 0.6);
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
+}
+
+.btn:hover .icon {
+  fill: var(--secondary);
+}
+
+.btn:disabled .icon {
+  fill: rgba(38, 38, 38, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .btn,
+  .txt {
+    width: 44px;
+    height: 44px;
+  }
+}

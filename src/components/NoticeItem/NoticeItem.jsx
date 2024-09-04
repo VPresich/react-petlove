@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import clsx from "clsx";
 import { addFavorite, removeFavorite } from "../../redux/favorites/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectIsFavorite } from "../../redux/favorites/selectors";
@@ -15,7 +16,7 @@ import css from "./NoticeItem.module.css";
 
 const kinds = ["name", "birthday", "sex", "species", "category"];
 
-const NoticeItem = ({ notice }) => {
+const NoticeItem = ({ notice, forFavorites }) => {
   const { _id, name, imgURL, popularity, comment, price } = notice;
   const dispatch = useDispatch();
 
@@ -51,8 +52,12 @@ const NoticeItem = ({ notice }) => {
   };
 
   return (
-    <div className={css.container}>
-      <NoticeImage imgUrl={imgURL} altText={name} />
+    <div className={clsx(css.container, forFavorites && css.favorite)}>
+      <NoticeImage
+        imgUrl={imgURL}
+        altText={name}
+        auxStyles={forFavorites && css.imgFavorite}
+      />
       <div className={css.infoWrapper}>
         <div className={css.nameWrapper}>
           <span className={css.name}>{name}</span>
@@ -68,7 +73,7 @@ const NoticeItem = ({ notice }) => {
         </div>
       </div>
       <div className={css.buttons}>
-        <Button onClick={handleClick} width="231px">
+        <Button onClick={handleClick} max-width="231px">
           Read more
         </Button>
         <FavoriteButton id={_id} />

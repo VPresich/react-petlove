@@ -3,10 +3,18 @@
   padding-top: 114px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 80px;
   background-color: var(--section-bgr);
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
 }
 
 @media screen and (min-width: 768px) {
@@ -14,6 +22,7 @@
     padding-top: 167px;
     padding-left: 32px;
     padding-right: 32px;
+    padding-bottom: 88px;
     gap: 44px;
   }
 }
@@ -23,7 +32,8 @@
     padding-top: 178px;
     padding-left: 32px;
     padding-right: 32px;
-    background-color: var(--section-bgr);
-    gap: 40px;
+    padding-bottom: 80px;
+
+    gap: 32px;
   }
 }

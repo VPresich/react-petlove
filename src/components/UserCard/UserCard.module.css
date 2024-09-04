@@ -7,6 +7,7 @@
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--white);
+  flex-shrink: 0;
 }
 
 .firstLine {

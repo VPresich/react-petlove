@@ -11,7 +11,7 @@ export const selectItemsPerPage = (state) => state.news.itemsPerPage;
 export const selectCurrentPage = (state) => state.news.currentPage;
 export const selectKeyword = (state) => state.news.keyword;
 
-const selectTotalPages = (state) => state.news.totalPages;
+export const selectTotalPages = (state) => state.news.totalPages;
 
 export const selectFavorites = (state) => state.news.favorites;
 

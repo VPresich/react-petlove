@@ -1,7 +1,10 @@
+import React from "react";
 import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNoticesWithParams } from "../../redux/notices/operations";
 import { setPage } from "../../redux/notices/slice";
+import PaginationBlock from "../../components/UI/PaginationBlock/PaginationBlock";
+
 import {
   errNotify,
   successNotify,
@@ -14,14 +17,13 @@ import {
 import {
   selectNotices,
   selectCurrentPage,
+  selectTotalPages,
   selectIsLoading,
   selectItemsPerPage,
-  selectIsMore,
   selectError,
   selectNoticesNumber,
 } from "../../redux/notices/selectors";
 
-import Button from "../../components/UI/Button/Button";
 import DocumentTitle from "../../components/DocumentTitle";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import Filter from "../../components/Filter/Filter";
@@ -35,9 +37,9 @@ const FindPetPage = () => {
   const notices = useSelector(selectNotices);
 
   const currentPage = useSelector(selectCurrentPage);
+  const totalPages = useSelector(selectTotalPages);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const isLoading = useSelector(selectIsLoading);
-  const isMore = useSelector(selectIsMore);
   const error = useSelector(selectError);
   const noticesNum = useSelector(selectNoticesNumber);
   const query = useSelector(selectQueryParams);
@@ -65,15 +67,14 @@ const FindPetPage = () => {
     loadNotices();
   }, [loadNotices]);
 
-  const handleLoadMore = () => {
-    dispatch(setPage(currentPage + 1));
+  const handleLoadPage = (page) => {
+    dispatch(setPage(page));
   };
 
   return (
-    <>
+    <React.Fragment>
       <DocumentTitle>Find pet page</DocumentTitle>
       <section className={css.container}>
-        {/* <div className={css.container}> */}
         <h2 className="visually-hidden"> Notices</h2>
         <PageTitle>Find your favorite pet</PageTitle>
         <Filter />
@@ -81,27 +82,23 @@ const FindPetPage = () => {
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-            <>
+            <React.Fragment>
               {!error && noticesNum > 0 ? (
                 <NoticeItemList notices={notices} />
               ) : (
                 <p className={css.text}>Not found notices.</p>
               )}
-              {isMore && (
-                <Button
-                  onClick={handleLoadMore}
-                  background="secondary"
-                  width="200px"
-                >
-                  Load More
-                </Button>
-              )}
-            </>
+
+              <PaginationBlock
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onClick={handleLoadPage}
+              />
+            </React.Fragment>
           )}
         </div>
-        {/* </div> */}
       </section>
-    </>
+    </React.Fragment>
   );
 };
 

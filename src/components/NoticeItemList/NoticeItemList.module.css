@@ -11,4 +11,8 @@
     column-gap: 32px;
     row-gap: 40px;
   }
+
+  .favorite {
+    gap: 24px;
+  }
 }

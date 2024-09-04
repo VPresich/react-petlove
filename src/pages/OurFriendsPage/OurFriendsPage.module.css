@@ -2,6 +2,7 @@
   padding-top: 114px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 80px;
   background-color: var(--section-bgr);
 }
 
@@ -24,7 +25,6 @@
     padding-top: 178px;
     padding-left: 64px;
     padding-right: 64px;
-    background-color: var(--section-bgr);
   }
 
   .container {

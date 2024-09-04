@@ -1,11 +1,11 @@
 .container {
   width: 100%;
+  border-radius: 16px;
   overflow: hidden;
   flex-shrink: 0;
 }
 
 .container.main {
-  border-radius: 16px;
   height: 178px;
 }
 

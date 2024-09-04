@@ -1,0 +1,33 @@
+.container {
+  width: max-content;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.prevButtons,
+.nextButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.pagesButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: max-content;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .prevButtons,
+  .nextButtons {
+    gap: 8px;
+  }
+}

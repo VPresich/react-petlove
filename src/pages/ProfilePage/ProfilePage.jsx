@@ -45,7 +45,6 @@ const ProfilePage = () => {
             <Button
               onClick={handleDetails}
               type="button"
-              width="123px"
               background={isFavorite ? "primary" : "unactive"}
             >
               My favorite pets
@@ -53,7 +52,6 @@ const ProfilePage = () => {
             <Button
               onClick={handleDetails}
               type="button"
-              width="123px"
               background={!isFavorite ? "primary" : "unactive"}
             >
               Viewed
@@ -61,7 +59,7 @@ const ProfilePage = () => {
           </div>
           <div className={css.listContainer}>
             {isFavorite && favorites.length > 0 ? (
-              <NoticeItemList notices={favorites} />
+              <NoticeItemList notices={favorites} forFavorites={true} />
             ) : (
               isFavorite && (
                 <p className={css.message}>

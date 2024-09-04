@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInst } from "../../api/axiosInst";
 
 export const getNewsPerPage = createAsyncThunk(
-  "nannies/getPage",
+  "news/getPage",
   async ({ page, limit }, thunkAPI) => {
     try {
       const response = await axiosInst.get(`news`, {
@@ -19,7 +19,7 @@ export const getNewsPerPage = createAsyncThunk(
 );
 
 export const getNewsWithParams = createAsyncThunk(
-  "nannies/withParams",
+  "news/withParams",
   async ({ page, limit, keyword }, thunkAPI) => {
     try {
       const response = await axiosInst.get(`news`, {

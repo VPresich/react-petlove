@@ -8,59 +8,45 @@ export const selectActiveSex = (state) => state.filters.query.sex;
 export const selectActiveKeyword = (state) => state.filters.query.keyword;
 export const selectActiveLocation = (state) => state.filters.query.location;
 export const selectSortLabel = (state) => state.filters.sortLabel;
+export const selectQuery = (state) => state.filters.query;
 
 export const selectQueryParams = createSelector([selectFilters], (filters) => {
-  const query = filters.query;
-  if (!query) return {};
+  const query = filters.query || {};
 
-  const lowerCaseQuery = {};
-  for (const [key, value] of Object.entries(query)) {
-    if (
-      typeof value === "string" &&
-      value.toLowerCase() !== "show all" &&
-      value.trim() !== ""
-    ) {
-      lowerCaseQuery[key] = value.toLowerCase();
-    } else if (
-      typeof value !== "string" &&
-      value !== null &&
-      value !== undefined
-    ) {
-      lowerCaseQuery[key] = value;
+  return Object.keys(query).reduce((acc, key) => {
+    const value = query[key];
+    if (typeof value === "string") {
+      const lowerValue = value.toLowerCase();
+      if (lowerValue !== "show all" && lowerValue.trim() !== "") {
+        acc[key] = lowerValue;
+      }
+    } else if (value !== null && value !== undefined) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {});
+});
+
+export const selectSortParam = createSelector(
+  [selectSortLabel],
+  (sortLabel) => {
+    if (!sortLabel) return {};
+
+    switch (sortLabel) {
+      case "Oldest":
+        return { byDate: true };
+      case "Newest":
+        return { byDate: false };
+      case "Popular":
+        return { byPopularity: false };
+      case "Unpopular":
+        return { byPopularity: true };
+      case "Cheap":
+        return { byPrice: true };
+      case "Expensive":
+        return { byPrice: false };
+      default:
+        return {};
     }
   }
-
-  return lowerCaseQuery;
-});
-
-export const selectSortParam = createSelector([selectFilters], (filters) => {
-  const sortLabel = filters.sortLabel;
-  if (!sortLabel) return {};
-
-  const sortParam = {};
-  switch (sortLabel) {
-    case "Oldest":
-      sortParam.byDate = true;
-      break;
-
-    case "Newest":
-      sortParam.byDate = false;
-      break;
-
-    case "Popular":
-      sortParam.byPopularity = false;
-      break;
-    case "Unpopular":
-      sortParam.byPopularity = true;
-      break;
-    case "Cheap":
-      sortParam.byPrice = true;
-      break;
-    case "Expensive":
-      sortParam.byPrice = false;
-      break;
-    default:
-      break;
-  }
-  return sortParam;
-});
+);

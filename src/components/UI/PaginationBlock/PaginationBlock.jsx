@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import debounce from "lodash/debounce";
 import css from "./PaginationBlock.module.css";
 import paginationBullets from "./paginationBullets";
 import PaginationButton from "../PaginationButton/PaginationButton";
 
 const PaginationBlock = ({ totalPages, currentPage, onClick }) => {
-  console.log("PAGINATION BLOCK: ", totalPages, currentPage);
-
   const [bulletsToShow, setBulletsToShow] = useState(1);
 
   useEffect(() => {
@@ -20,10 +19,22 @@ const PaginationBlock = ({ totalPages, currentPage, onClick }) => {
         setBulletsToShow(1);
       }
     };
+
+    const debouncedUpdate = debounce(updateBulletsToShow, 200);
+    window.addEventListener("resize", debouncedUpdate);
     updateBulletsToShow();
-    window.addEventListener("resize", updateBulletsToShow);
-    return () => window.removeEventListener("resize", updateBulletsToShow);
+
+    return () => window.removeEventListener("resize", debouncedUpdate);
   }, []);
+
+  const handleClick = useCallback(
+    (page) => {
+      if (onClick) {
+        onClick(page);
+      }
+    },
+    [onClick]
+  );
 
   if (totalPages <= 1) return null;
 
@@ -32,14 +43,6 @@ const PaginationBlock = ({ totalPages, currentPage, onClick }) => {
     bulletsToShow,
     currentPage
   );
-  console.log("bulletsArray:", bulletsArray);
-
-  const handleClick = (page) => {
-    console.log(page);
-    if (onClick) {
-      onClick(page);
-    }
-  };
 
   return (
     <div className={css.container}>

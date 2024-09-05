@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNoticesWithParams } from "../../redux/notices/operations";
 import { setPage } from "../../redux/notices/slice";
@@ -35,7 +34,6 @@ import css from "./FindPetPage.module.css";
 const FindPetPage = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices);
-
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
   const itemsPerPage = useSelector(selectItemsPerPage);
@@ -45,7 +43,7 @@ const FindPetPage = () => {
   const query = useSelector(selectQueryParams);
   const sort = useSelector(selectSortParam);
 
-  const loadNotices = useCallback(() => {
+  useEffect(() => {
     dispatch(
       getNoticesWithParams({
         page: currentPage,
@@ -54,22 +52,20 @@ const FindPetPage = () => {
         sort,
       })
     )
-      .unwrap()
-      .then(() => {
-        successNotify("Success loading notices");
-      })
+      .unwrap(successNotify("Success Fetch notices"))
       .catch(() => {
-        errNotify("Error loading notices");
+        errNotify("Error fetching");
       });
   }, [dispatch, currentPage, itemsPerPage, query, sort]);
 
-  useEffect(() => {
-    loadNotices();
-  }, [loadNotices]);
-
-  const handleLoadPage = (page) => {
-    dispatch(setPage(page));
-  };
+  const handleLoadPage = useCallback(
+    (page) => {
+      if (page !== currentPage) {
+        dispatch(setPage(page));
+      }
+    },
+    [dispatch, currentPage]
+  );
 
   return (
     <React.Fragment>

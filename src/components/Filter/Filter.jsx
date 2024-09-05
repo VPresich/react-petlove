@@ -81,57 +81,123 @@ const Filter = () => {
   const memoizedKeyword = useMemo(() => keyword, [keyword]);
   const memoizedLocation = useMemo(() => location, [location]);
 
+  // const handleSearch = useCallback(
+  //   (topic) => {
+  //     dispatch(saveKeyword(topic));
+  //     dispatch(resetNoticesState());
+  //   },
+  //   [dispatch]
+  // );
+
   const handleSearch = useCallback(
     (topic) => {
-      dispatch(saveKeyword(topic));
-      dispatch(resetNoticesState());
+      if (topic !== memoizedKeyword) {
+        dispatch(saveKeyword(topic));
+        dispatch(resetNoticesState());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedKeyword]
   );
+
+  // const handleLocationSearch = useCallback(
+  //   (location) => {
+  //     dispatch(saveLocation(location));
+  //     dispatch(resetNoticesState());
+  //   },
+  //   [dispatch]
+  // );
 
   const handleLocationSearch = useCallback(
     (location) => {
-      dispatch(saveLocation(location));
-      dispatch(resetNoticesState());
+      if (location !== memoizedLocation) {
+        dispatch(saveLocation(location));
+        dispatch(resetNoticesState());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedLocation]
   );
+
+  // const handleCategoryChange = useCallback(
+  //   (category) => {
+  //     dispatch(saveCategory(category));
+  //     dispatch(resetNoticesState());
+  //     dispatch(resetSorting());
+  //   },
+  //   [dispatch]
+  // );
 
   const handleCategoryChange = useCallback(
     (category) => {
-      dispatch(saveCategory(category));
-      dispatch(resetNoticesState());
-      dispatch(resetSorting());
+      if (category !== memoizedSelectedCategory) {
+        dispatch(saveCategory(category));
+        dispatch(resetNoticesState());
+        dispatch(resetSorting());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedSelectedCategory]
   );
+
+  // const handleGenderChange = useCallback(
+  //   (gender) => {
+  //     dispatch(saveSex(gender));
+  //     dispatch(resetNoticesState());
+  //   },
+  //   [dispatch]
+  // );
 
   const handleGenderChange = useCallback(
     (gender) => {
-      dispatch(saveSex(gender));
-      dispatch(resetNoticesState());
+      if (gender !== memoizedSelectedSex) {
+        dispatch(saveSex(gender));
+        dispatch(resetNoticesState());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedSelectedSex]
   );
+
+  // const handleTypeChange = useCallback(
+  //   (type) => {
+  //     dispatch(saveSpecies(type));
+  //     dispatch(resetNoticesState());
+  //   },
+  //   [dispatch]
+  // );
 
   const handleTypeChange = useCallback(
     (type) => {
-      dispatch(saveSpecies(type));
-      dispatch(resetNoticesState());
+      if (type !== memoizedSelectedSpecies) {
+        dispatch(saveSpecies(type));
+        dispatch(resetNoticesState());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedSelectedSpecies]
   );
+
+  // const handleSorting = useCallback(
+  //   (selectedValue) => {
+  //     dispatch(saveSortParam(selectedValue));
+  //     dispatch(resetNoticesState());
+  //   },
+  //   [dispatch]
+  // );
 
   const handleSorting = useCallback(
     (selectedValue) => {
-      dispatch(saveSortParam(selectedValue));
-      dispatch(resetNoticesState());
+      if (selectedValue !== memoizedSelectedSortLabel) {
+        dispatch(saveSortParam(selectedValue));
+        dispatch(resetNoticesState());
+      }
     },
-    [dispatch]
+    [dispatch, memoizedSelectedSortLabel]
   );
+
+  // const handleReset = () => {
+  //   dispatch(resetFilters());
+  // };
 
   const handleReset = () => {
     dispatch(resetFilters());
+    dispatch(resetNoticesState());
   };
 
   return (

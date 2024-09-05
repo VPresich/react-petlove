@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SearchForm from "../../components/UI/SearchForm/SearchForm";
 import { getNewsWithParams } from "../../redux/news/operations";
@@ -36,40 +36,32 @@ const NewsPage = () => {
   const error = useSelector(selectError);
   const noticesNum = useSelector(selectNewsNumber);
   const keyword = useSelector(selectKeyword);
-  const shouldFetch = useRef(true);
 
   useEffect(() => {
-    if (shouldFetch.current) {
-      dispatch(
-        getNewsWithParams({
-          page: currentPage,
-          limit: itemsPerPage,
-          keyword,
-        })
-      )
-        .unwrap()
-        .then(() => {
-          successNotify("Success loading news");
-        })
-        .catch(() => {
-          errNotify("Error loading news");
-        });
-      shouldFetch.current = false;
-    }
+    dispatch(
+      getNewsWithParams({
+        page: currentPage,
+        limit: itemsPerPage,
+        keyword,
+      })
+    )
+      .unwrap(successNotify("Success Fetch news"))
+      .catch(() => {
+        errNotify("Error fetching");
+      });
   }, [dispatch, currentPage, itemsPerPage, keyword]);
 
   const handleSearch = (topic) => {
     dispatch(setKeyword(topic));
-    shouldFetch.current = true;
+    dispatch(setPage(1));
   };
 
   const handleLoadPage = (page) => {
     dispatch(setPage(page));
-    shouldFetch.current = true;
   };
 
   return (
-    <>
+    <React.Fragment>
       <DocumentTitle>News page</DocumentTitle>
       <section className={css.section}>
         <div className={css.container}>
@@ -101,7 +93,7 @@ const NewsPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </React.Fragment>
   );
 };
 

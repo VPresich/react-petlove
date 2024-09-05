@@ -14,39 +14,55 @@ const filtersSlice = createSlice({
   },
   reducers: {
     saveKeyword: (state, action) => {
-      state.query.keyword = action.payload;
+      if (state.query.keyword !== action.payload) {
+        state.query.keyword = action.payload;
+      }
     },
 
     saveLocation: (state, action) => {
-      state.query.locationId = action.payload;
+      if (state.query.locationId !== action.payload) {
+        state.query.locationId = action.payload;
+      }
     },
 
     saveCategory: (state, action) => {
-      state.query.category = action.payload;
+      if (state.query.category !== action.payload) {
+        state.query.category = action.payload;
+      }
     },
 
     saveSpecies: (state, action) => {
-      state.query.species = action.payload;
+      if (state.query.species !== action.payload) {
+        state.query.species = action.payload;
+      }
     },
 
     saveSex: (state, action) => {
-      state.query.sex = action.payload;
+      if (state.query.sex !== action.payload) {
+        state.query.sex = action.payload;
+      }
     },
 
     saveSortParam: (state, action) => {
-      state.sortLabel = action.payload;
+      if (state.sortLabel !== action.payload) {
+        state.sortLabel = action.payload;
+      }
     },
 
     resetSorting: (state) => {
-      state.sortLabel = "Oldest";
+      if (state.sortLabel !== "Oldest") {
+        state.sortLabel = "Oldest";
+      }
     },
 
     resetFilters: (state) => {
-      state.query.keyword = "";
-      state.query.locationId = "";
-      state.query.species = "";
-      state.query.category = "";
-      state.query.sex = "";
+      state.query = {
+        keyword: "",
+        locationId: "",
+        species: "",
+        category: "",
+        sex: "",
+      };
       state.sortLabel = "Oldest";
     },
   },

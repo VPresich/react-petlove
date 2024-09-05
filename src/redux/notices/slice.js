@@ -29,6 +29,10 @@ const noticesSlice = createSlice({
       state.currentPage = action.payload;
     },
 
+    resetPage(state) {
+      state.currentPage = 1;
+    },
+
     resetNoticesState(state) {
       state.currentPage = 1;
       state.items = [];
@@ -69,6 +73,8 @@ const noticesSlice = createSlice({
       .addCase(getNoticesWithParams.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+
+        console.log("getNoticesWithParams", action.payload);
         state.currentPage = action.payload.page;
         state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
@@ -165,5 +171,5 @@ const noticesSlice = createSlice({
   },
 });
 
-export const { setPage, resetNoticesState } = noticesSlice.actions;
+export const { setPage, resetNoticesState, resetPage } = noticesSlice.actions;
 export default noticesSlice.reducer;

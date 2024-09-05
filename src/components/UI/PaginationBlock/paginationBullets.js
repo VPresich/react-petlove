@@ -1,5 +1,4 @@
 function paginationBullets(total, bulletsNumber, activeNumber) {
-  console.log("PAGINATION BULLETS: ", total, bulletsNumber, activeNumber);
   const bullets = [];
   if (bulletsNumber === 1) {
     bullets.push({
@@ -21,7 +20,6 @@ function paginationBullets(total, bulletsNumber, activeNumber) {
   } else {
     const diff = total - activeNumber;
     if (diff > bulletsNumber - 1) {
-      console.log("PAGINATION BULLETS DIIF: ", diff, 1);
       for (let i = 0; i < bulletsNumber - 1; i++) {
         bullets.push({
           number: String(i + activeNumber),
@@ -35,7 +33,6 @@ function paginationBullets(total, bulletsNumber, activeNumber) {
         btn: false,
       });
     } else if (diff === bulletsNumber - 1) {
-      console.log("PAGINATION BULLETS DIIF ====: ", diff, 2);
       for (let i = total - diff; i <= total; i++) {
         bullets.push({
           number: String(i),
@@ -44,7 +41,6 @@ function paginationBullets(total, bulletsNumber, activeNumber) {
         });
       }
     } else {
-      console.log("PAGINATION BULLETS DIIF: ", diff, 3);
       bullets.push({
         number: "...",
         isActive: false,

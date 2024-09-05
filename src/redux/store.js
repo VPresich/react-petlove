@@ -6,6 +6,7 @@ import friendReducer from "./friends/slice";
 import newsReducer from "./news/slice";
 import filtersReducer from "./filters/slice";
 import favoritesReducer from "./favorites/slice";
+import citiesReducer from "./cities/slice";
 
 import {
   persistStore,
@@ -32,6 +33,7 @@ const store = configureStore({
     news: newsReducer,
     filters: filtersReducer,
     favorites: favoritesReducer,
+    cities: citiesReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

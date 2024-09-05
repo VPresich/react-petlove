@@ -44,6 +44,7 @@ const FindPetPage = () => {
   const sort = useSelector(selectSortParam);
 
   useEffect(() => {
+    console.log("query:", query);
     dispatch(
       getNoticesWithParams({
         page: currentPage,

@@ -15,6 +15,7 @@ import {
   getSex,
   getSpecies,
 } from "../../redux/notices/operations";
+import { getAllCities } from "../../redux/cities/operations";
 import AppBar from "../AppBar/AppBar";
 import Loader from "../../components/UI/Loader/Loader";
 
@@ -63,6 +64,15 @@ const MainLayout = () => {
       })
       .catch(() => {
         errNotify("Error get Sex");
+      });
+
+    dispatch(getAllCities())
+      .unwrap()
+      .then(() => {
+        // successNotify("Success get cities");
+      })
+      .catch(() => {
+        errNotify("Error get cities");
       });
   }, [dispatch]);
 

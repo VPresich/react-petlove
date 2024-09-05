@@ -22,7 +22,7 @@
   letter-spacing: -0.03em;
   color: rgba(38, 38, 38, 0.5);
   background-color: var(--white);
-  transition: border-color 300ms ease-in-out;
+  transition: border-color 500ms ease-in-out;
 }
 
 .input:focus,

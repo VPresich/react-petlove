@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useMemo, useState, useEffect, useCallback } from "react";
 import SearchForm from "../../components/UI/SearchForm/SearchForm";
-import LocationSearch from "../../components/UI/LocationSearch/LocationSearch";
+import LocationSelect from "../UI/LocationSelect/LocationSelect";
 import DropDownSelector from "../../components/UI/DropDownSelector/DropDownSelector";
 import SortingForm from "../../components/UI/SortingForm/SortingForm";
 import Button from "../UI/Button/Button";
@@ -39,6 +39,7 @@ import css from "./Filter.module.css";
 const Filter = () => {
   const dispatch = useDispatch();
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [resetTrigger, setResetTrigger] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,14 +82,6 @@ const Filter = () => {
   const memoizedKeyword = useMemo(() => keyword, [keyword]);
   const memoizedLocation = useMemo(() => location, [location]);
 
-  // const handleSearch = useCallback(
-  //   (topic) => {
-  //     dispatch(saveKeyword(topic));
-  //     dispatch(resetNoticesState());
-  //   },
-  //   [dispatch]
-  // );
-
   const handleSearch = useCallback(
     (topic) => {
       if (topic !== memoizedKeyword) {
@@ -99,32 +92,16 @@ const Filter = () => {
     [dispatch, memoizedKeyword]
   );
 
-  // const handleLocationSearch = useCallback(
-  //   (location) => {
-  //     dispatch(saveLocation(location));
-  //     dispatch(resetNoticesState());
-  //   },
-  //   [dispatch]
-  // );
-
   const handleLocationSearch = useCallback(
-    (location) => {
-      if (location !== memoizedLocation) {
-        dispatch(saveLocation(location));
+    (selectedLocation) => {
+      if (selectedLocation && selectedLocation.value !== memoizedLocation) {
+        console.log(selectedLocation.value);
+        dispatch(saveLocation(selectedLocation.value));
         dispatch(resetNoticesState());
       }
     },
     [dispatch, memoizedLocation]
   );
-
-  // const handleCategoryChange = useCallback(
-  //   (category) => {
-  //     dispatch(saveCategory(category));
-  //     dispatch(resetNoticesState());
-  //     dispatch(resetSorting());
-  //   },
-  //   [dispatch]
-  // );
 
   const handleCategoryChange = useCallback(
     (category) => {
@@ -137,14 +114,6 @@ const Filter = () => {
     [dispatch, memoizedSelectedCategory]
   );
 
-  // const handleGenderChange = useCallback(
-  //   (gender) => {
-  //     dispatch(saveSex(gender));
-  //     dispatch(resetNoticesState());
-  //   },
-  //   [dispatch]
-  // );
-
   const handleGenderChange = useCallback(
     (gender) => {
       if (gender !== memoizedSelectedSex) {
@@ -154,14 +123,6 @@ const Filter = () => {
     },
     [dispatch, memoizedSelectedSex]
   );
-
-  // const handleTypeChange = useCallback(
-  //   (type) => {
-  //     dispatch(saveSpecies(type));
-  //     dispatch(resetNoticesState());
-  //   },
-  //   [dispatch]
-  // );
 
   const handleTypeChange = useCallback(
     (type) => {
@@ -173,14 +134,6 @@ const Filter = () => {
     [dispatch, memoizedSelectedSpecies]
   );
 
-  // const handleSorting = useCallback(
-  //   (selectedValue) => {
-  //     dispatch(saveSortParam(selectedValue));
-  //     dispatch(resetNoticesState());
-  //   },
-  //   [dispatch]
-  // );
-
   const handleSorting = useCallback(
     (selectedValue) => {
       if (selectedValue !== memoizedSelectedSortLabel) {
@@ -191,13 +144,10 @@ const Filter = () => {
     [dispatch, memoizedSelectedSortLabel]
   );
 
-  // const handleReset = () => {
-  //   dispatch(resetFilters());
-  // };
-
   const handleReset = () => {
     dispatch(resetFilters());
     dispatch(resetNoticesState());
+    setResetTrigger((prev) => !prev);
   };
 
   return (
@@ -233,10 +183,10 @@ const Filter = () => {
             className={css.typeContainer}
           />
 
-          <LocationSearch
-            onSearch={handleLocationSearch}
-            initlocation={memoizedLocation}
+          <LocationSelect
+            onLocationSelect={handleLocationSearch}
             className={css.locationContainer}
+            resetTrigger={resetTrigger}
           />
         </div>
 

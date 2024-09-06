@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import MainLayout from "./MainLayout/MainLayout";
 import SplashScreen from "./SplashScreen/SplashScreen";
+import PrivateRoute from "./PrivateRoute";
+import RestrictedRoute from "./RestrictedRoute";
 
 const PetHomePage = lazy(() => import("../pages/PetHomePage/PetHomePage"));
 const NewsPage = lazy(() => import("../pages/NewsPage/NewsPage"));
@@ -25,12 +27,34 @@ const App = () => {
         <Route path="news" element={<NewsPage />} />
         <Route path="find" element={<FindPetPage />} />
         <Route path="friends" element={<OurFriendsPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="add-pet" element={<AddPetPage />} />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute redirectTo="/profile" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              redirectTo="/profile"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <PrivateRoute redirectTo="/home" component={<ProfilePage />} />
+          }
+        />
+        <Route
+          path="add-pet"
+          element={
+            <PrivateRoute redirectTo="/home" component={<AddPetPage />} />
+          }
+        />
         <Route path="page404" element={<Page404 />} />
-        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
         <Route path="*" element={<Navigate to="/page404" replace />} />
       </Route>
     </Routes>

@@ -13,7 +13,8 @@ const initialState = {
   user: { name: null, email: null, avatarURL: "", phone: "" },
   token: null,
   isLoggedIn: false,
-  isRefreshing: true,
+  isRefreshing: false,
+  isLoading: false,
   error: null,
 };
 
@@ -22,7 +23,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     resetRefreshState(state, action) {
-      state.isRefreshing = action.payload;
+      state.isRefreshing = action.payload || false;
     },
     saveToken(state, action) {
       state.token = action.payload;
@@ -93,7 +94,7 @@ const authSlice = createSlice({
       })
       //------------------------------------------------
       .addCase(getFullUserInfo.pending, (state) => {
-        state.isLoggedIn = false;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(getFullUserInfo.fulfilled, (state, action) => {
@@ -101,15 +102,16 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
         state.user.phone = action.payload.phone;
         state.user.avatarURL = action.payload.avatar;
-        state.isLoggedIn = true;
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(getFullUserInfo.rejected, (state, action) => {
         state.error = action.payload;
+        state.isLoading = false;
       })
       //------------------------------------------------;
       .addCase(updateUserInfo.pending, (state) => {
-        state.isLoggedIn = false;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(updateUserInfo.fulfilled, (state, action) => {
@@ -117,11 +119,12 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
         state.user.phone = action.payload.phone;
         state.user.avatarURL = action.payload.avatar;
-        state.isLoggedIn = true;
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
         state.error = action.payload;
+        state.isLoading = false;
       });
     //------------------------------------------------;
   },

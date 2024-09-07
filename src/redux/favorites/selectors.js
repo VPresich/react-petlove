@@ -12,3 +12,9 @@ export const selectIsFavorite = createSelector(
 export const selectFavorites = (state) => state.favorites.favorites;
 export const selectPets = (state) => state.favorites.myPets;
 export const selectViewedPets = (state) => state.favorites.viewedPets;
+
+export const selectViewedPetById = (state, petId) =>
+  state.favorites.viewedPets.find((pet) => pet._id === petId);
+
+export const selectIsLoading = (state) => state.favorites.isLoading;
+export const selectError = (state) => state.favorites.error;

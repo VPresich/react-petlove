@@ -6,6 +6,7 @@ import {
   removeFavorite,
   addPet,
   removePetById,
+  getViewedPetById,
 } from "../favorites/operations";
 
 const favoritesSlice = createSlice({
@@ -110,6 +111,30 @@ const favoritesSlice = createSlice({
       })
       .addCase(removePetById.rejected, (state, action) => {
         state.isDeleting = false;
+        state.error = action.payload;
+      })
+      //-------------------------------------------
+
+      .addCase(getViewedPetById.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+
+      .addCase(getViewedPetById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const existingPetIndex = state.viewedPets.findIndex(
+          (pet) => pet._id === action.payload._id
+        );
+        if (existingPetIndex !== -1) {
+          state.viewedPets[existingPetIndex] = action.payload;
+        } else {
+          state.viewedPets.push(action.payload);
+        }
+      })
+      .addCase(getViewedPetById.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload;
       })
       //-------------------------------------------

@@ -63,3 +63,15 @@ export const removePetById = createAsyncThunk(
     }
   }
 );
+
+export const getViewedPetById = createAsyncThunk(
+  "notises/getViewedById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axiosInst.get(`notices/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

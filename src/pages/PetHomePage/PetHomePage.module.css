@@ -58,7 +58,7 @@
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 16px;
-    padding-bottom: 16px;
+    padding-bottom: 32px;
   }
 
   .infoContainer {
@@ -87,6 +87,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .section {
+    padding-bottom: 16px;
+  }
+
   .infoContainer {
     padding-left: 64px;
     padding-right: 64px;

@@ -8,6 +8,7 @@ import UserCard from "../../components/UserCard/UserCard";
 import NoticeItemList from "../../components/NoticeItemList/NoticeItemList";
 import Button from "../../components/UI/Button/Button";
 import { getFullUserInfo } from "../../redux/auth/operations";
+import EmptyFavoritesMsg from "../../components/EmptyFavoritesMsg/EmptyFavoritesMsg";
 import DocumentTitle from "../../components/DocumentTitle";
 import {
   errNotify,
@@ -64,17 +65,7 @@ const ProfilePage = () => {
             {isFavorite && favorites.length > 0 ? (
               <NoticeItemList notices={favorites} forFavorites={true} />
             ) : (
-              isFavorite && (
-                <p className={css.message}>
-                  Oops,{" "}
-                  <span className={css.accent}>
-                    looks like there aren&apos;t any furries
-                  </span>{" "}
-                  on our adorable page yet. Do not worry! View your pets on the
-                  &quot;find your favorite pet&quot; page and add them to your
-                  favorites.
-                </p>
-              )
+              isFavorite && <EmptyFavoritesMsg />
             )}
             {!isFavorite && viewedPets.length > 0 ? (
               <NoticeItemList
@@ -83,17 +74,7 @@ const ProfilePage = () => {
                 isFavoriteButton={false}
               />
             ) : (
-              !isFavorite && (
-                <p className={css.message}>
-                  Oops,{" "}
-                  <span className={css.accent}>
-                    looks like there aren&apos;t any furries
-                  </span>{" "}
-                  on our adorable page yet. Do not worry! View your pets on the
-                  &quot;find your favorite pet&quot; page and add them to your
-                  favorites.
-                </p>
-              )
+              !isFavorite && <EmptyFavoritesMsg />
             )}
           </div>
         </div>

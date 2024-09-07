@@ -26,29 +26,7 @@
   margin-bottom: 20px;
 }
 
-.message {
-  width: 100%;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-  text-align: center;
-  color: var(--primary);
-}
-
-.accent {
-  font-weight: 700;
-  color: var(--orange);
-}
-
-.listContainer {
-}
-
 @media screen and (min-width: 375px) {
-  .message {
-    width: 300px;
-  }
-
   .buttons {
     width: 256px;
     gap: 10px;
@@ -61,12 +39,6 @@
     padding-right: 32px;
     padding-top: 114px;
     padding-bottom: 46px;
-  }
-
-  .message {
-    width: 458px;
-    font-size: 16px;
-    line-height: 1.25;
   }
 
   .buttons {

@@ -62,25 +62,27 @@ const NoticeItem = ({
         altText={name}
         auxStyles={forFavorites && css.imgFavorite}
       />
-      <div className={css.infoWrapper}>
-        <div className={css.nameWrapper}>
-          <span className={css.name}>{name}</span>
-          <div className={css.ratingWrapper}>
-            <span className={css.price}>{price}</span>
-            <Star isFilled={true} />
-            <span>{popularity}</span>
+      <div className={css.wrapper}>
+        <div className={css.infoWrapper}>
+          <div className={css.nameWrapper}>
+            <span className={css.name}>{name}</span>
+            <div className={css.ratingWrapper}>
+              <span className={css.price}>{price}</span>
+              <Star isFilled={true} />
+              <span>{popularity}</span>
+            </div>
+          </div>
+          <div className={css.kindsWrapper}>
+            <KindList kinds={kinds} notice={notice} />
+            <p className={css.description}>{comment}</p>
           </div>
         </div>
-        <div className={css.kindsWrapper}>
-          <KindList kinds={kinds} notice={notice} />
-          <p className={css.comment}>{comment}</p>
+        <div className={css.buttons}>
+          <Button onClick={handleClick} max-width="231px">
+            Read more
+          </Button>
+          {isFavoriteButton && <FavoriteButton id={_id} />}
         </div>
-      </div>
-      <div className={css.buttons}>
-        <Button onClick={handleClick} max-width="231px">
-          Read more
-        </Button>
-        {isFavoriteButton && <FavoriteButton id={_id} />}
       </div>
       {showPetModal && (
         <ModalWrapper onClose={handlePetModaleClose}>

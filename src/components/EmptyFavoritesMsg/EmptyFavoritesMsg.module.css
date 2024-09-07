@@ -6,6 +6,7 @@
   letter-spacing: -0.02em;
   text-align: center;
   color: var(--primary);
+  margin-top: 60px;
 }
 
 .accent {
@@ -15,7 +16,7 @@
 
 @media screen and (min-width: 375px) {
   .message {
-    width: 300px;
+    width: 335px;
   }
 }
 
@@ -24,5 +25,6 @@
     width: 458px;
     font-size: 16px;
     line-height: 1.25;
+    margin-top: 160px;
   }
 }

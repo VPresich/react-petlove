@@ -6,12 +6,11 @@
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   row-gap: 40px;
 }
 
 .details {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,6 +23,13 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+}
+
+.listContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 375px) {
@@ -50,8 +56,6 @@
 @media screen and (min-width: 1280px) {
   .container {
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
     padding-bottom: 62px;
     column-gap: 32px;
   }

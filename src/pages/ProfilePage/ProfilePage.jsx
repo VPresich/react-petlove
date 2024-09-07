@@ -1,7 +1,9 @@
-import { /*useSelector,*/ useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectFavorites } from "../../redux/favorites/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectFavorites,
+  selectViewedPets,
+} from "../../redux/favorites/selectors";
 import UserCard from "../../components/UserCard/UserCard";
 import NoticeItemList from "../../components/NoticeItemList/NoticeItemList";
 import Button from "../../components/UI/Button/Button";
@@ -17,6 +19,7 @@ const ProfilePage = () => {
   const [isFavorite, setIsFavorite] = useState(true);
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
+  const viewedPets = useSelector(selectViewedPets);
 
   useEffect(() => {
     dispatch(getFullUserInfo())
@@ -62,6 +65,25 @@ const ProfilePage = () => {
               <NoticeItemList notices={favorites} forFavorites={true} />
             ) : (
               isFavorite && (
+                <p className={css.message}>
+                  Oops,{" "}
+                  <span className={css.accent}>
+                    looks like there aren&apos;t any furries
+                  </span>{" "}
+                  on our adorable page yet. Do not worry! View your pets on the
+                  &quot;find your favorite pet&quot; page and add them to your
+                  favorites.
+                </p>
+              )
+            )}
+            {!isFavorite && viewedPets.length > 0 ? (
+              <NoticeItemList
+                notices={viewedPets}
+                forFavorites={true}
+                isFavoriteButton={false}
+              />
+            ) : (
+              !isFavorite && (
                 <p className={css.message}>
                   Oops,{" "}
                   <span className={css.accent}>

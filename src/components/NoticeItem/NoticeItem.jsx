@@ -16,7 +16,11 @@ import css from "./NoticeItem.module.css";
 
 const kinds = ["name", "birthday", "sex", "species", "category"];
 
-const NoticeItem = ({ notice, forFavorites }) => {
+const NoticeItem = ({
+  notice,
+  isFavoriteButton = true,
+  forFavorites = false,
+}) => {
   const { _id, name, imgURL, popularity, comment, price } = notice;
   const dispatch = useDispatch();
 
@@ -76,7 +80,7 @@ const NoticeItem = ({ notice, forFavorites }) => {
         <Button onClick={handleClick} max-width="231px">
           Read more
         </Button>
-        <FavoriteButton id={_id} />
+        {isFavoriteButton && <FavoriteButton id={_id} />}
       </div>
       {showPetModal && (
         <ModalWrapper onClose={handlePetModaleClose}>

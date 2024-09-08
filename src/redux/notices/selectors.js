@@ -12,8 +12,6 @@ export const selectCurrentPage = (state) => state.notices.currentPage;
 
 export const selectTotalPages = (state) => state.notices.totalPages;
 
-export const selectFavorites = (state) => state.notices.favorites;
-
 export const selectIsMore = createSelector(
   [selectCurrentPage, selectTotalPages],
   (currPage, lastPage) => currPage < lastPage

@@ -9,13 +9,17 @@ const Button = ({
   uppercase = false,
   width,
   icon = null,
+  as = "button",
+  href,
   ...props
 }) => {
   const style = {
     width: width || "100%",
   };
+
+  const Component = as;
   return (
-    <button
+    <Component
       className={clsx(
         css.btn,
         css[size],
@@ -24,11 +28,12 @@ const Button = ({
       )}
       style={style}
       onClick={onClick}
+      href={href}
       {...props}
     >
       {children}
       {icon && icon}
-    </button>
+    </Component>
   );
 };
 

@@ -37,6 +37,15 @@ const favoritesSlice = createSlice({
     saveViewedPets(state, action) {
       state.viewedPets = action.payload;
     },
+
+    savePetToFavorite(state, action) {
+      const existingFavorite = state.favorites.find(
+        (pet) => pet._id === action.payload._id
+      );
+      if (!existingFavorite) {
+        state.favorites.push(action.payload);
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -63,6 +72,9 @@ const favoritesSlice = createSlice({
         state.isAdding = false;
         state.error = false;
         state.items = action.payload;
+        state.favorites = state.favorites.filter((item) =>
+          action.payload.includes(item._id)
+        );
       })
       .addCase(addFavorite.rejected, (state, action) => {
         state.isAdding = false;
@@ -76,6 +88,9 @@ const favoritesSlice = createSlice({
       })
       .addCase(removeFavorite.fulfilled, (state, action) => {
         state.items = action.payload;
+        state.favorites = state.favorites.filter((item) =>
+          action.payload.includes(item._id)
+        );
         state.isDeleting = false;
         state.error = null;
       })
@@ -154,5 +169,10 @@ const favoritesSlice = createSlice({
 });
 
 export default favoritesSlice.reducer;
-export const { saveFavoritesIds, saveFavorites, savePets, saveViewedPets } =
-  favoritesSlice.actions;
+export const {
+  saveFavoritesIds,
+  saveFavorites,
+  savePets,
+  saveViewedPets,
+  savePetToFavorite,
+} = favoritesSlice.actions;

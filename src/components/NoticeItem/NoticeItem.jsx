@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addFavorite, removeFavorite } from "../../redux/favorites/operations";
+import { savePetToFavorite } from "../../redux/favorites/slice";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectIsFavorite } from "../../redux/favorites/selectors";
 import NoticeImage from "../UI/NoticeImage/NoticeImage";
@@ -46,6 +47,7 @@ const NoticeItem = ({
     if (isFavorite) {
       dispatch(removeFavorite(_id));
     } else {
+      dispatch(savePetToFavorite(notice));
       dispatch(addFavorite(_id));
     }
     handlePetModaleClose();

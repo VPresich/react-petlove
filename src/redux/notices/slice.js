@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { capitalizeFirstLetter } from "../../auxiliary/formats";
 import {
   getNoticesPerPage,
-  getNoticeById,
   getNoticesWithParams,
   getCategories,
   getSpecies,
@@ -18,7 +17,6 @@ const noticesSlice = createSlice({
     species: [],
     isLoading: false,
     error: null,
-    favorites: [],
     currentPage: 1,
     totalItems: 30,
     totalPages: 1,
@@ -73,8 +71,6 @@ const noticesSlice = createSlice({
       .addCase(getNoticesWithParams.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
-        console.log("getNoticesWithParams", action.payload);
         state.currentPage = action.payload.page;
         state.itemsPerPage = action.payload.perPage;
         state.totalItems = action.payload.totalRecords;
@@ -82,28 +78,6 @@ const noticesSlice = createSlice({
         state.items = action.payload.results;
       })
       .addCase(getNoticesWithParams.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      //------------------------------------------------------
-
-      .addCase(getNoticeById.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(getNoticeById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const existingIndex = state.items.findIndex(
-          (item) => item._id === action.payload._id
-        );
-        if (existingIndex !== -1) {
-          state.items[existingIndex] = action.payload;
-        } else {
-          state.items.push(action.payload);
-        }
-      })
-      .addCase(getNoticeById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

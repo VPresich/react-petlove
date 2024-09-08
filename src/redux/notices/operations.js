@@ -18,18 +18,6 @@ export const getNoticesPerPage = createAsyncThunk(
   }
 );
 
-export const getNoticeById = createAsyncThunk(
-  "notices/noticeById",
-  async (id, thunkAPI) => {
-    try {
-      const response = await axiosInst.get(`notices/${id}`);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const getNoticesWithParams = createAsyncThunk(
   "notices/getWithParams",
   async ({ page, limit, query, sort }, thunkAPI) => {

@@ -16,10 +16,7 @@ import Button from "../UI/Button/Button";
 import css from "./PetModal.module.css";
 import PetErrorModal from "../PetErrorModal/PetErrorModal";
 import iconsPath from "../../assets/img/icons.svg";
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 import Loader from "../UI/Loader/Loader";
 
 const kinds = ["name", "birthday", "sex", "species"];
@@ -28,18 +25,20 @@ const PetModal = ({ notice, handleContact, handleFavorite }) => {
   const { _id } = notice;
   const dispatch = useDispatch();
 
-  const viewedPet = useSelector((state) => selectViewedPetById(state, _id));
   const isFavorite = useSelector((state) => selectIsFavorite(state, _id));
+  const viewedPet = useSelector((state) => selectViewedPetById(state, _id));
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  if (!viewedPet && !error) {
+    console.log("email: ", viewedPet);
+  }
   useEffect(() => {
     if (_id) {
       dispatch(getViewedPetById(_id))
         .unwrap()
         .then((data) => {
-          console.log("useEffect, data: ", data);
-          successNotify("Successfully retrieved pet by ID");
+          console.log("useEffect, data: ", data.user.email);
         })
         .catch(() => {
           errNotify("Error retrieving pet by ID");
@@ -89,7 +88,10 @@ const PetModal = ({ notice, handleContact, handleFavorite }) => {
                   {isFavorite ? "Remove from" : "Add to"}
                 </Button>
                 <Button
-                  onClick={handleContact}
+                  as="a"
+                  href={`mailto:${viewedPet.user.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   type="button"
                   size="sxsmall"
                   background="secondary"

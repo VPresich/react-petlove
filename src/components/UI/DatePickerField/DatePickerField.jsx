@@ -4,13 +4,14 @@ import { useFormContext } from "react-hook-form";
 import { registerLocale } from "react-datepicker";
 import { FaRegCalendar } from "react-icons/fa";
 import enGB from "date-fns/locale/en-GB";
-import { format, parse } from "date-fns";
+import { format, parse, isAfter } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import clsx from "clsx";
 import "./DatePickerField.css";
 import css from "./DatePickerField.module.css";
 
 const dataFormat = "yyyy-MM-dd";
+const today = new Date();
 
 const customLocale = {
   ...enGB,
@@ -27,10 +28,21 @@ const DatePickerInput = ({ name, setValue, value }) => {
   );
   const {
     formState: { errors },
+    setError,
+    clearErrors,
   } = useFormContext();
   const datePickerRef = useRef(null);
 
   const handleDateChange = (date) => {
+    if (isAfter(date, today)) {
+      setError(name, {
+        type: "manual",
+        message: "Date cannot be in the future",
+      });
+    } else {
+      clearErrors(name);
+    }
+
     setSelectedDate(date);
     const formattedDate = format(date, dataFormat);
     setValue(name, formattedDate);
@@ -59,6 +71,7 @@ const DatePickerInput = ({ name, setValue, value }) => {
         showPopperArrow={false}
         locale="custom-en-GB"
         dateFormat={dataFormat}
+        maxDate={today}
       />
       <FaRegCalendar className="datepicker__icon" onClick={handleIconClick} />
       {errors[name] && (

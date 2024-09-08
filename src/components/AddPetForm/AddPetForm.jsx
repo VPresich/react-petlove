@@ -131,7 +131,6 @@ const AddPetForm = ({ handleAddPet }) => {
               render={({ field }) => (
                 <DatePickerInput
                   {...field}
-                  // name="birthday"
                   setValue={setValue}
                   value={field.value}
                 />

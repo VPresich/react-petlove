@@ -24,14 +24,14 @@ const EditUserForm = ({ handleEdit }) => {
     },
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setValue } = methods;
 
   const onSubmit = async (values) => {
     handleEdit && handleEdit(values);
   };
 
   const handleEditAvatar = (url) => {
-    console.log("URL", url);
+    setValue("avatar", url);
   };
 
   return (
@@ -49,7 +49,6 @@ const EditUserForm = ({ handleEdit }) => {
             containerClass={css.imgContainer}
             iconClass={css.userIcon}
           />
-          // <UserIcon size="medium" />
         )}
         <div className={css.content}>
           <div className={css.photoInput}>

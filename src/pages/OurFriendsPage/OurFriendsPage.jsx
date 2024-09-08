@@ -7,10 +7,7 @@ import {
   selectError,
   selectFriendsNumber,
 } from "../../redux/friends/selectors";
-import {
-  errNotify,
-  // successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 import FriendsList from "../../components/FriendsList/FriendsList";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import DocumentTitle from "../../components/DocumentTitle";
@@ -26,9 +23,6 @@ const OurFriendsPage = () => {
   useEffect(() => {
     dispatch(getAllFriends())
       .unwrap()
-      .then(() => {
-        // successNotify("Success loading friends");
-      })
       .catch(() => {
         errNotify("Error loading friends");
       });

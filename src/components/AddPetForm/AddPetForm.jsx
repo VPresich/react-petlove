@@ -51,7 +51,6 @@ const AddPetForm = ({ handleAddPet }) => {
   const imgURL = watch("imgURL");
 
   const onSubmit = (values) => {
-    console.log("Submite :", values);
     handleAddPet && handleAddPet(values);
   };
 

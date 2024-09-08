@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// export const BaseURL = "https://teachers-rest-api.onrender.com/api/";
-
 export const BaseURL = "https://petlove.b.goit.study/api/";
 export const axiosInst = axios.create({
   baseURL: BaseURL,

@@ -4,10 +4,7 @@ import SearchForm from "../../components/UI/SearchForm/SearchForm";
 import { getNewsWithParams } from "../../redux/news/operations";
 import { setPage, setKeyword } from "../../redux/news/slice";
 import PaginationBlock from "../../components/UI/PaginationBlock/PaginationBlock";
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 
 import {
   selectNews,
@@ -45,7 +42,7 @@ const NewsPage = () => {
         keyword,
       })
     )
-      .unwrap(successNotify("Success Fetch news"))
+      .unwrap()
       .catch(() => {
         errNotify("Error fetching");
       });

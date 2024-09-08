@@ -10,10 +10,7 @@ import Button from "../../components/UI/Button/Button";
 import { getFullUserInfo } from "../../redux/auth/operations";
 import EmptyFavoritesMsg from "../../components/EmptyFavoritesMsg/EmptyFavoritesMsg";
 import DocumentTitle from "../../components/DocumentTitle";
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 import css from "./ProfilePage.module.css";
 
 const ProfilePage = () => {
@@ -25,9 +22,6 @@ const ProfilePage = () => {
   useEffect(() => {
     dispatch(getFullUserInfo())
       .unwrap()
-      .then(() => {
-        successNotify("success getFullUserInfo");
-      })
       .catch(() => {
         errNotify("Error getFullUserInfo");
       });

@@ -29,17 +29,10 @@ const PetModal = ({ notice, handleContact, handleFavorite }) => {
   const viewedPet = useSelector((state) => selectViewedPetById(state, _id));
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
-  if (!viewedPet && !error) {
-    console.log("email: ", viewedPet);
-  }
   useEffect(() => {
     if (_id) {
       dispatch(getViewedPetById(_id))
         .unwrap()
-        .then((data) => {
-          console.log("useEffect, data: ", data.user.email);
-        })
         .catch(() => {
           errNotify("Error retrieving pet by ID");
         });

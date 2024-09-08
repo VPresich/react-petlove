@@ -4,6 +4,7 @@ import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { errNotify } from "../../../../auxiliary/notification/notification";
 import css from "./RegisterForm.module.css";
 
 export default function RegisterForm({ handleRegister }) {
@@ -17,16 +18,15 @@ export default function RegisterForm({ handleRegister }) {
     },
   });
 
-  const { handleSubmit /*, reset*/ } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = async (values) => {
     const filteredValues = { ...values };
     delete filteredValues.confirmPassword;
     try {
       await handleRegister(filteredValues);
-      // reset();
     } catch (error) {
-      console.log(error.message);
+      errNotify(error.message);
     }
   };
 

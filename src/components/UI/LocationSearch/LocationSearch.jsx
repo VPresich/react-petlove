@@ -14,7 +14,6 @@ const LocationSearch = ({ onSearch, initLocation = "", className = null }) => {
 
   const onSubmit = (data) => {
     const topic = data.topic.trim();
-    console.log(topic);
     onSearch(topic);
     methods.reset();
   };

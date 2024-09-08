@@ -5,10 +5,7 @@ import KindList from "../KindList/KindList";
 import EllipsisText from "../UI/EllipsisText/EllipsisText";
 import ImageElem from "../UI/ImageElem/ImageElem";
 import iconsPath from "../../assets/img/icons.svg";
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 
 import css from "./PetItem.module.css";
 
@@ -21,10 +18,6 @@ const PetItem = ({ pet }) => {
   const handleDeletePet = () => {
     dispatch(removePetById(_id))
       .unwrap()
-      .then((data) => {
-        console.log("Deleted data: ", data);
-        successNotify("Success pet delete");
-      })
       .catch(() => {
         errNotify("Error pet delete");
       });

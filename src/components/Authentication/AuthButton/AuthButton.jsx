@@ -2,10 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../UI/Button/Button";
-import {
-  // successNotify,
-  errNotify,
-} from "../../../auxiliary/notification/notification";
+import { errNotify } from "../../../auxiliary/notification/notification";
 
 import ModalWrapper from "../../UI/ModalWrapper/ModalWrapper";
 import ModalApproveAction from "../../ModalApproveAction/ModalApproveAction";
@@ -30,7 +27,6 @@ export default function AuthButton({ widthBtn, background, handleClick }) {
     dispatch(logOut())
       .unwrap()
       .then(() => {
-        // successNotify("success logout");
         handleClick && handleClick();
       })
       .catch(() => {

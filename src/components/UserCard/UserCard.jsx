@@ -11,10 +11,7 @@ import PetsList from "../PetsList/PetsList";
 import AuthButton from "../Authentication/AuthButton/AuthButton";
 import ModalWrapper from "../../components/UI/ModalWrapper/ModalWrapper";
 import EditUserForm from "../Authentication/Forms/EditUserForm/EditUserForm";
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 import iconsPath from "../../assets/img/icons.svg";
 
 import css from "./UserCard.module.css";
@@ -37,7 +34,6 @@ const UserCard = () => {
     dispatch(updateUserInfo(data))
       .unwrap()
       .then(() => {
-        successNotify("Success user info update");
         setShowUserModal(false);
       })
       .catch(() => {
@@ -45,8 +41,8 @@ const UserCard = () => {
       });
   };
 
-  const handleUploadPhoto = (fileUrl) => {
-    console.log("fileURL: ", fileUrl);
+  const handleUploadPhoto = (/*fileUrl*/) => {
+    // console.log("fileURL: ", fileUrl);
   };
 
   const handleAddPet = () => {

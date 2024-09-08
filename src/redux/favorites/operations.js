@@ -42,7 +42,6 @@ export const removeFavorite = createAsyncThunk(
 export const addPet = createAsyncThunk("pets/add", async (data, thunkAPI) => {
   try {
     const response = await axiosInst.post(`users/current/pets/add`, data);
-    console.log("Operations: add_pet", response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -56,7 +55,6 @@ export const removePetById = createAsyncThunk(
       const response = await axiosInst.delete(
         `users/current/pets/remove/${id}`
       );
-      console.log("Operations: remove_pet", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

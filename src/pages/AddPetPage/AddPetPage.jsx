@@ -14,10 +14,7 @@ import imgTablet2x from "../../assets/img/add-pet/pet-tablet@2x.png";
 import imgMobile1x from "../../assets/img/add-pet/pet-mobile@1x.png";
 import imgMobile2x from "../../assets/img/add-pet/pet-mobile@2x.png";
 
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 import css from "./AddPetPage.module.css";
 
 const imageData = {
@@ -35,11 +32,9 @@ const AddPetPage = () => {
   const navigate = useNavigate();
 
   const handleAddPet = (values) => {
-    console.log(values);
     dispatch(addPet(values))
       .unwrap()
       .then(() => {
-        successNotify("Success in adding");
         navigate("/profile");
       })
       .catch(() => {

@@ -4,7 +4,7 @@ import { feedbackSchema } from "./feedbackSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from "./LoginForm.module.css";
 import Input from "../../../UI/Input/Input";
-
+import { errNotify } from "../../../../auxiliary/notification/notification";
 export default function LoginForm({ handleLogin }) {
   const methods = useForm({
     resolver: yupResolver(feedbackSchema),
@@ -21,7 +21,7 @@ export default function LoginForm({ handleLogin }) {
       await handleLogin(values);
       reset();
     } catch (error) {
-      console.log(error.message);
+      errNotify(error.message);
     }
   };
 

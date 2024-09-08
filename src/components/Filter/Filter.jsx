@@ -95,7 +95,6 @@ const Filter = () => {
   const handleLocationSearch = useCallback(
     (selectedLocation) => {
       if (selectedLocation && selectedLocation.value !== memoizedLocation) {
-        console.log(selectedLocation.value);
         dispatch(saveLocation(selectedLocation.value));
         dispatch(resetNoticesState());
       }

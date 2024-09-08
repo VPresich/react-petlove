@@ -4,10 +4,7 @@ import { getNoticesWithParams } from "../../redux/notices/operations";
 import { setPage } from "../../redux/notices/slice";
 import PaginationBlock from "../../components/UI/PaginationBlock/PaginationBlock";
 
-import {
-  errNotify,
-  successNotify,
-} from "../../auxiliary/notification/notification";
+import { errNotify } from "../../auxiliary/notification/notification";
 
 import {
   selectQueryParams,
@@ -26,7 +23,7 @@ import {
 import DocumentTitle from "../../components/DocumentTitle";
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import Filter from "../../components/Filter/Filter";
-
+import Loader from "../../components/UI/Loader/Loader";
 import NoticeItemList from "../../components/NoticeItemList/NoticeItemList";
 
 import css from "./FindPetPage.module.css";
@@ -44,7 +41,6 @@ const FindPetPage = () => {
   const sort = useSelector(selectSortParam);
 
   useEffect(() => {
-    console.log("query:", query);
     dispatch(
       getNoticesWithParams({
         page: currentPage,
@@ -53,7 +49,7 @@ const FindPetPage = () => {
         sort,
       })
     )
-      .unwrap(successNotify("Success Fetch notices"))
+      .unwrap()
       .catch(() => {
         errNotify("Error fetching");
       });
@@ -77,7 +73,7 @@ const FindPetPage = () => {
         <Filter />
         <div className={css.catalog}>
           {isLoading ? (
-            <p>Loading...</p>
+            <Loader />
           ) : (
             <React.Fragment>
               {!error && noticesNum > 0 ? (

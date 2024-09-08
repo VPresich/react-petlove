@@ -41,8 +41,7 @@ const LoginPage = () => {
   const handleLogin = (values) => {
     dispatch(logIn(values))
       .unwrap()
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         successNotify(SUCCESS_LOGIN);
       })
       .catch(() => {

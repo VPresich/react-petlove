@@ -20,7 +20,6 @@ const filtersSlice = createSlice({
     },
 
     saveLocation: (state, action) => {
-      console.log(action.payload);
       if (state.query.locationId !== action.payload) {
         state.query.locationId = action.payload;
       }

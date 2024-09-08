@@ -42,8 +42,7 @@ const RegisterPage = () => {
   const handleRegister = (values) => {
     dispatch(register(values))
       .unwrap()
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         successNotify(SUCCESS_REGISTRATION);
       })
       .catch(() => {

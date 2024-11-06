@@ -5,7 +5,7 @@ export const getAllCities = createAsyncThunk(
   "cities/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axiosInst.get(`cities`);
+      const response = await axiosInst.get(`cities/locations`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
